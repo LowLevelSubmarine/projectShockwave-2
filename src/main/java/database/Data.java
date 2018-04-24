@@ -1,21 +1,57 @@
 package database;
 
+import com.thoughtworks.xstream.XStream;
+import com.thoughtworks.xstream.converters.ConversionException;
 import com.toddway.shelf.Shelf;
 import com.toddway.shelf.ShelfItem;
+import core.JDAHandler;
+import database.config.TokenPair;
 import net.dv8tion.jda.core.entities.Guild;
 import net.dv8tion.jda.core.entities.User;
 
-import java.io.File;
+import java.io.*;
 
-public class Data {
-    private static String ORIGINPATH = "PSWD2/";
-    private static String UPATH = "USER";
-    private static String GPATH = "GUILD";
-    private static String BPATH = "BOT";
-    private static Shelf USHELF = new Shelf(new File(ORIGINPATH + UPATH));
-    private static Shelf GSHELF = new Shelf(new File(ORIGINPATH + GPATH));
-    private static Shelf BSHELF = new Shelf(new File(ORIGINPATH + BPATH));
+public class DATA {
+
+    private static final String ORIGINPATH = "PSWD2";
+    private static final String UPATH = "USER";
+    private static final String GPATH = "GUILD";
+    private static final String BPATH = "BOT";
+    private static Shelf USHELF = new Shelf(new File(ORIGINPATH + File.separator + UPATH));
+    private static Shelf GSHELF = new Shelf(new File(ORIGINPATH + File.separator + GPATH));
+    private static Shelf BSHELF = new Shelf(new File(ORIGINPATH + File.separator + BPATH));
+    private static final String CONFIGPATH = "config.xml";
+    private static File CONFIGFILE = new File(CONFIGPATH);
     private static Config CONFIG;
+    private static XStream XSTREAM = buildXStream();
+
+    public static boolean boot() {
+        try {
+
+            if (!CONFIGFILE.exists()) {
+                FileWriter writer = new FileWriter(CONFIGFILE);
+                XSTREAM.toXML(new Config(), writer);
+                writer.close();
+            }
+            FileReader reader = new FileReader(CONFIGFILE);
+            CONFIG = (Config) XSTREAM.fromXML(reader);
+            reader.close();
+
+            return CONFIG.valid();
+
+        } catch (ConversionException e) {
+            e.printStackTrace();
+            System.out.println("An Error accoured while reading the \"" + CONFIGPATH + "\" file." +
+                    "\nTry deleting the File before running projectShockwave again.");
+            return false;
+        } catch (IOException e) {
+            JDAHandler.fatalError();
+            return false;
+        }
+    }
+    public static void shutdown() {
+
+    }
 
     public static USettings user(User user) {
         return new USettings(user);
@@ -38,5 +74,16 @@ public class Data {
     }
     static ShelfItem getBotItem(BSettings.keys key) {
         return BSHELF.item(key.name());
+    }
+
+    private static XStream buildXStream() {
+        XStream xStream = new XStream();
+        Class[] classes = new Class[] {Config.class, TokenPair.class};
+        XStream.setupDefaultSecurity(xStream);
+        xStream.allowTypes(classes);
+
+        xStream.alias("TokenPair", TokenPair.class);
+        xStream.alias("Config", Config.class);
+        return xStream;
     }
 }

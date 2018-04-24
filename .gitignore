@@ -1,1 +1,4 @@
 config.xml
+target/
+.idea/
+projectShockwave 2.iml

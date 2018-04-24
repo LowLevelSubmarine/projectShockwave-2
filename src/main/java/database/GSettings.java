@@ -13,7 +13,7 @@ public class GSettings {
     }
 
     public TextChannel getNotifychannel() {
-        ShelfItem item = Data.getGuildItem(keys.NOTIFYCHANNEL);
+        ShelfItem item = DATA.getGuildItem(keys.NOTIFYCHANNEL, this.guild);
         if (item.exists()) return item.get(TextChannel.class);
         else return this.guild.getDefaultChannel();
     }
