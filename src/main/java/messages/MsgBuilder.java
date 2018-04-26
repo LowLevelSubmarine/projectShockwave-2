@@ -71,4 +71,10 @@ public class MsgBuilder {
         builder.addField("Errorcode", ExceptionUtils.getExceptionMessage(exception), false);
         return builder.build();
     }
+    public static MessageEmbed shutdownQuerry(String reason) {
+        MsgBuilder builder = new MsgBuilder(PSW2COLOR, "♦", "SHUTDOWN");
+        builder.setDescription("Willst du projectShockwave wirklich herunterfahren?");
+        if (reason != null) builder.addField("Grund", reason,false);
+        return builder.build();
+    }
 }

@@ -1,6 +1,8 @@
 package commands.administration;
 
 import commands.*;
+import messages.MsgBuilder;
+import net.dv8tion.jda.core.entities.TextChannel;
 
 public class Shutdown implements CommandInterface, ButtonHook {
     @Override
@@ -10,7 +12,9 @@ public class Shutdown implements CommandInterface, ButtonHook {
 
     @Override
     public void run(CommandInfo info) {
-
+        TextChannel textChannel = info.getChannel();
+        String reason = info.getRaw(1);
+        textChannel.sendMessage(MsgBuilder.shutdownQuerry(reason)).queue(m -> ButtonHandler.registerTicket(m, this));
     }
 
     @Override
