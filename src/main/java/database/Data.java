@@ -6,7 +6,6 @@ import com.toddway.shelf.Shelf;
 import com.toddway.shelf.ShelfItem;
 import core.JDAHandler;
 import database.config.Config;
-import database.config.TokenPair;
 import net.dv8tion.jda.core.entities.Guild;
 import net.dv8tion.jda.core.entities.User;
 
@@ -24,7 +23,7 @@ public class DATA {
     private static final String CONFIGPATH = "config.xml";
     private static File CONFIGFILE = new File(CONFIGPATH);
     private static Config CONFIG;
-    private static XStream XSTREAM = buildXStream();
+    private static XStream XSTREAM = Config.buildCompatibleXStream();
 
     public static boolean boot() {
         try {
@@ -75,16 +74,5 @@ public class DATA {
     }
     static ShelfItem getBotItem(BSettings.keys key) {
         return BSHELF.item(key.name());
-    }
-
-    private static XStream buildXStream() {
-        XStream xStream = new XStream();
-        Class[] classes = new Class[] {Config.class, TokenPair.class};
-        XStream.setupDefaultSecurity(xStream);
-        xStream.allowTypes(classes);
-
-        xStream.alias("TokenPair", TokenPair.class);
-        xStream.alias("Config", Config.class);
-        return xStream;
     }
 }

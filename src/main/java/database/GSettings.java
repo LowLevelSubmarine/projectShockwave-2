@@ -12,11 +12,29 @@ public class GSettings {
         this.guild = guild;
     }
 
+
+
+    public String getPrefix() {
+        ShelfItem item = DATA.getGuildItem(keys.PREFIX, this.guild);
+        if (item.exists()) return item.get(String.class);
+        return DATA.config().getPrefix();
+    }
+    public void setPrefix(String prefix) {
+        ShelfItem item = DATA.getGuildItem(keys.PREFIX, this.guild);
+        item.put(prefix);
+    }
+
     public TextChannel getNotifychannel() {
         ShelfItem item = DATA.getGuildItem(keys.NOTIFYCHANNEL, this.guild);
         if (item.exists()) return item.get(TextChannel.class);
-        else return this.guild.getDefaultChannel();
+        return this.guild.getDefaultChannel();
     }
+    public void setNotifyChannel(TextChannel notifyChannel) {
+        ShelfItem item = DATA.getGuildItem(keys.NOTIFYCHANNEL, this.guild);
+        item.put(notifyChannel);
+    }
+
+
 
     public enum keys {
         PREFIX, NOTIFYCHANNEL,

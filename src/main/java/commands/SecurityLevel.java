@@ -3,8 +3,6 @@ package commands;
 import net.dv8tion.jda.core.Permission;
 import net.dv8tion.jda.core.entities.Member;
 
-import java.util.ArrayList;
-
 public enum SecurityLevel {
     NONE, GUILD, BOT, OWNER;
 
@@ -21,6 +19,4 @@ public enum SecurityLevel {
         }
         return false;
     }
-
-    public ArrayList<String> getOtherPermissionOfO
 }

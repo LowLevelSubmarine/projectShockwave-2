@@ -1,6 +1,6 @@
 package database.config;
 
-public class TokenPair {
+public class BotUser {
     private String name = "The name of the token";
     private String token = "The token";
 

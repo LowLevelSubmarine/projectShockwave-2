@@ -1,7 +1,7 @@
 package core;
 
 import database.DATA;
-import database.config.TokenPair;
+import database.config.BotUser;
 import listeners.GuildMessageReactionAddListener;
 import listeners.GuildMessageReactionRemoveListener;
 import listeners.GuildMessageReceivedListener;
@@ -36,9 +36,9 @@ public class JDAHandler {
         }
 
         //Set JDA
-        TokenPair tokenPair = DATA.config().getTokenPair();
+        BotUser botUser = DATA.config().getTokenPair();
         JDABuilder builder = new JDABuilder(AccountType.BOT);
-        builder.setToken(tokenPair.getToken());
+        builder.setToken(botUser.getToken());
         builder.setStatus(OnlineStatus.ONLINE);
         builder.setGame(DATA.bot().getGame());
         builder.setAutoReconnect(true);
@@ -51,7 +51,7 @@ public class JDAHandler {
         builder.addEventListener(new ReadyListener());
 
         //Build JDA
-        System.out.println("ProjectShockwave is booting as " + tokenPair.getName());
+        System.out.println("ProjectShockwave is booting as " + botUser.getName());
         try {
             JDA = builder.buildBlocking();
         } catch (LoginException e) {
