@@ -1,39 +1,36 @@
 package commands;
 
+import core.ExceptionLogger;
 import messages.MsgBuilder;
-import net.dv8tion.jda.core.events.message.guild.GuildMessageReceivedEvent;
 
 import java.util.HashMap;
 
 public class CommandHandler {
     private static HashMap<String, Class> COMMANDS = new HashMap<>();
 
-    public static void fire(GuildMessageReceivedEvent event) {
-        CommandInfo info = new CommandInfo(event);
-        //Checks if command exists
+    public static void fire(CommandInfo info) {
+        //Check if command exists
         if (COMMANDS.containsKey(info.getInvoke())) {
             try {
+                //Cast command-class to command-interface, check permissions of the member and run
                 CommandInterface cmdInterface = (CommandInterface) COMMANDS.get(info.getInvoke()).newInstance();
-                checkPermissionAndRun(cmdInterface, event, info);
+                checkPermissionAndRun(cmdInterface, info);
             } catch (InstantiationException | IllegalAccessException e) {
-                e.printStackTrace();
+                ExceptionLogger.log(e);
             }
         }
-
     }
 
     public static void addCommand(String invoke, Class command) {
         COMMANDS.put(invoke, command);
     }
 
-
-
-    private static void checkPermissionAndRun(CommandInterface cmdInterface, GuildMessageReceivedEvent event, CommandInfo info) {
+    private static void checkPermissionAndRun(CommandInterface cmdInterface, CommandInfo info) {
         SecurityLevel securityLevel = cmdInterface.securityLevel();
-        if (securityLevel.isAuthorized(event.getMember())) {
+        if (securityLevel.isAuthorized(info.getMember())) {
             cmdInterface.run(info);
         } else {
-            event.getChannel().sendMessage(MsgBuilder.missingAuthorization()).queue();
+            info.getChannel().sendMessage(MsgBuilder.missingAuthorization()).queue();
         }
     }
 }

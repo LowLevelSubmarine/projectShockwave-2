@@ -11,7 +11,7 @@ import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
 
-public class ErrorHandler {
+public class ExceptionLogger {
 
     private final static String EXCEPTIONLOGFILENAME = "errors";
     private static BufferedWriter writer;

@@ -1,10 +1,8 @@
 package commands.administration;
 
-import commands.CommandInfo;
-import commands.CommandInterface;
-import commands.SecurityLevel;
+import commands.*;
 
-public class Shutdown implements CommandInterface {
+public class Shutdown implements CommandInterface, ButtonHook {
     @Override
     public SecurityLevel securityLevel() {
         return SecurityLevel.BOT;
@@ -12,6 +10,11 @@ public class Shutdown implements CommandInterface {
 
     @Override
     public void run(CommandInfo info) {
+
+    }
+
+    @Override
+    public void onButtonPress(ButtonEvent event) {
 
     }
 
