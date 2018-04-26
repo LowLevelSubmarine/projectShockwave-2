@@ -2,6 +2,7 @@ package core;
 
 import database.DATA;
 import fr.bmartel.protocol.http.utils.ExceptionUtils;
+import messages.MsgBuilder;
 import net.dv8tion.jda.core.entities.PrivateChannel;
 import net.dv8tion.jda.core.entities.User;
 
@@ -49,10 +50,10 @@ public class ErrorHandler {
     }
     private static void contactDebugSupporter(Exception exception) {
         try {
-            for (String debugSupporterId : DATA.config().getDebugSupporterIds()) {
-                User user = Statics.GUILD.getJDA().getUserById(debugSupporterId);
+            for (String debugSupporterId : DATA.config().getDebugSupporters()) {
+                User user = JDAHandler.getJDA().getUserById(debugSupporterId);
                 PrivateChannel channel = user.openPrivateChannel().complete();
-                channel.sendMessage(MessagePresets.exceptionLogInfo(exception)).queue();
+                channel.sendMessage(MsgBuilder.exceptionLogInfo(exception)).queue();
             }
         } catch (Exception e) {
             NotifyConsole.debug("ExceptionLogger", "An error occurred while trying to contact debugSupporter");

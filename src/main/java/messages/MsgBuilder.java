@@ -1,5 +1,6 @@
 package messages;
 
+import fr.bmartel.protocol.http.utils.ExceptionUtils;
 import net.dv8tion.jda.core.EmbedBuilder;
 import net.dv8tion.jda.core.entities.MessageEmbed;
 
@@ -62,6 +63,12 @@ public class MsgBuilder {
     public static MessageEmbed missingAuthorization() {
         MsgBuilder builder = new MsgBuilder(PSW2COLOR, "⚠", "MISSING PERMISSION");
         builder.setDescription("Du hast nicht die benörigten Berechtigungen um diesen Befehl auszuführen");
+        return builder.build();
+    }
+    public static MessageEmbed exceptionLogInfo(Exception exception) {
+        MsgBuilder builder = new MsgBuilder(PSW2COLOR, "\uD83D\uDED1", "EXCEPTION");
+        builder.setDescription("Ich hatte einen Fehler");
+        builder.addField("Errorcode", ExceptionUtils.getExceptionMessage(exception), false);
         return builder.build();
     }
 }

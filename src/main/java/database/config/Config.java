@@ -24,7 +24,7 @@ public class Config {
         this.backup_game = "The status";
         this.debug_mode = "false or true";
         this.debug_supporters = new ArrayList<>();
-        this.debug_supporters.add("example user-id");
+        this.debug_supporters.add("user-id of a debug-supporter");
     }
 
     public static XStream buildCompatibleXStream() {
@@ -84,5 +84,9 @@ public class Config {
 
     public boolean debugMode() {
         return Toolkit.getAsBoolean(this.debug_mode);
+    }
+
+    public List<String> getDebugSupporters() {
+        return this.debug_supporters;
     }
 }
