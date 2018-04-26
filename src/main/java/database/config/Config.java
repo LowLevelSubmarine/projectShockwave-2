@@ -1,6 +1,5 @@
-package database;
+package database.config;
 
-import database.config.TokenPair;
 import net.dv8tion.jda.core.entities.Game;
 
 import java.util.ArrayList;

@@ -59,4 +59,9 @@ public class MsgBuilder {
         if (reason != null) builder.addField("Grund", reason, false);
         return builder.build();
     }
+    public static MessageEmbed missingAuthorization() {
+        MsgBuilder builder = new MsgBuilder(PSW2COLOR, "⚠", "MISSING PERMISSION");
+        builder.setDescription("Du hast nicht die benörigten Berechtigungen um diesen Befehl auszuführen");
+        return builder.build();
+    }
 }

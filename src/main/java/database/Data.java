@@ -5,6 +5,7 @@ import com.thoughtworks.xstream.converters.ConversionException;
 import com.toddway.shelf.Shelf;
 import com.toddway.shelf.ShelfItem;
 import core.JDAHandler;
+import database.config.Config;
 import database.config.TokenPair;
 import net.dv8tion.jda.core.entities.Guild;
 import net.dv8tion.jda.core.entities.User;

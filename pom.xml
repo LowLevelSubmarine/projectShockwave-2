@@ -18,9 +18,19 @@
     </build>
     <dependencies>
         <dependency>
+            <groupId>com.sedmelluq</groupId>
+            <artifactId>lavaplayer</artifactId>
+            <version>LATEST</version>
+        </dependency>
+        <dependency>
             <groupId>net.dv8tion</groupId>
             <artifactId>JDA</artifactId>
             <version>3.6.0_358</version>
+        </dependency>
+        <dependency>
+            <groupId>fr.bmartel</groupId>
+            <artifactId>jspeedtest</artifactId>
+            <version>1.32.0</version>
         </dependency>
         <dependency>
             <groupId>com.github.toddway</groupId>
@@ -38,6 +48,7 @@
             <version>1.7.21</version>
         </dependency>
     </dependencies>
+
     <repositories>
         <repository>
             <id>tmate</id>

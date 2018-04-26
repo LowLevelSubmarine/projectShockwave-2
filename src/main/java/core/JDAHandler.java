@@ -2,6 +2,9 @@ package core;
 
 import database.DATA;
 import database.config.TokenPair;
+import listeners.GuildMessageReactionAddListener;
+import listeners.GuildMessageReactionRemoveListener;
+import listeners.GuildMessageReceivedListener;
 import listeners.ReadyListener;
 import messages.MsgBuilder;
 import net.dv8tion.jda.core.AccountType;
@@ -40,6 +43,11 @@ public class JDAHandler {
         builder.setGame(DATA.bot().getGame());
         builder.setAutoReconnect(true);
         builder.setEnableShutdownHook(false);
+
+        //Add listeners
+        builder.addEventListener(new GuildMessageReactionAddListener());
+        builder.addEventListener(new GuildMessageReactionRemoveListener());
+        builder.addEventListener(new GuildMessageReceivedListener());
         builder.addEventListener(new ReadyListener());
 
         //Build JDA
