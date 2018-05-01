@@ -4,6 +4,8 @@ import com.toddway.shelf.ShelfItem;
 import net.dv8tion.jda.core.entities.Guild;
 import net.dv8tion.jda.core.entities.TextChannel;
 
+import java.util.ArrayList;
+
 public class GSettings {
 
     private Guild guild;
@@ -17,7 +19,7 @@ public class GSettings {
     public String getPrefix() {
         ShelfItem item = DATA.getGuildItem(keys.PREFIX, this.guild);
         if (item.exists()) return item.get(String.class);
-        return DATA.config().getPrefix();
+        return DATA.config().getBackupPrefix();
     }
     public void setPrefix(String prefix) {
         ShelfItem item = DATA.getGuildItem(keys.PREFIX, this.guild);

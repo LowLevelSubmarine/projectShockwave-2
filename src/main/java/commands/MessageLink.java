@@ -24,6 +24,21 @@ public class MessageLink {
     }
 
     public Message getMessage() {
-        return this.channel.getMessageById(messageId).complete();
+        return this.channel.getMessageById(this.messageId).complete();
+    }
+
+    @Override
+    public int hashCode() {
+        return (this.channel.getId() + this.messageId).hashCode();
+    }
+
+    @Override
+    public boolean equals(Object object) {
+        try {
+            MessageLink messageLink = (MessageLink) object;
+            return messageLink.channel.equals(this.channel) && messageLink.messageId.equals(this.messageId);
+        } catch (ClassCastException e) {
+            return false;
+        }
     }
 }

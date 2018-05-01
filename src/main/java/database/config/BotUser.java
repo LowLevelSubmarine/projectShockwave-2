@@ -10,4 +10,14 @@ public class BotUser {
     public String getToken() {
         return this.token;
     }
+
+    public String isValid() {
+        if (this.name.isEmpty()) {
+            return "The field \"name\" is empty";
+        }
+        if (this.token.isEmpty()) {
+            return "The field \"token\" is empty";
+        }
+        return null;
+    }
 }

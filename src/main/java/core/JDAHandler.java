@@ -1,9 +1,7 @@
 package core;
 
 import database.DATA;
-import database.config.BotUser;
-import listeners.GuildMessageReactionAddListener;
-import listeners.GuildMessageReactionRemoveListener;
+import listeners.GenericGuildMessageReactionListener;
 import listeners.GuildMessageReceivedListener;
 import listeners.ReadyListener;
 import messages.MsgBuilder;
@@ -19,7 +17,6 @@ import net.dv8tion.jda.core.entities.TextChannel;
 import javax.security.auth.login.LoginException;
 import java.util.LinkedList;
 import java.util.List;
-import java.util.concurrent.TimeUnit;
 
 public class JDAHandler {
 
@@ -30,35 +27,35 @@ public class JDAHandler {
 
     //Boots everything connected to the DiscordAPI up
     public static void boot() {
-        //Required pre-boot-operations
-        if (!DATA.boot()) {
-            return;
+        if (bootPreOperations()) {
+            //Set JDA
+            JDABuilder builder = new JDABuilder(AccountType.BOT);
+            builder.setToken(Main.getToken());
+            builder.setStatus(OnlineStatus.ONLINE);
+            builder.setGame(DATA.bot().getGame());
+            builder.setAutoReconnect(true);
+            builder.setEnableShutdownHook(false);
+
+            //Add listeners
+            builder.addEventListener(new GenericGuildMessageReactionListener());
+            builder.addEventListener(new GuildMessageReceivedListener());
+            builder.addEventListener(new ReadyListener());
+
+            //Build JDA
+            try {
+                JDA = builder.buildBlocking();
+            } catch (LoginException e) {
+                System.out.println("The given token is invalid");
+            } catch (InterruptedException e) {
+                System.out.println("An error accoured while connecting to the Discord API.\nFor more informaiton visit status.discordapp.com");
+            }
+
+            NotifyConsole.log("JDAHandler.class", Statics.TITLE + " is up and running");
         }
+    }
 
-        //Set JDA
-        BotUser botUser = DATA.config().getTokenPair();
-        JDABuilder builder = new JDABuilder(AccountType.BOT);
-        builder.setToken(botUser.getToken());
-        builder.setStatus(OnlineStatus.ONLINE);
-        builder.setGame(DATA.bot().getGame());
-        builder.setAutoReconnect(true);
-        builder.setEnableShutdownHook(false);
-
-        //Add listeners
-        builder.addEventListener(new GuildMessageReactionAddListener());
-        builder.addEventListener(new GuildMessageReactionRemoveListener());
-        builder.addEventListener(new GuildMessageReceivedListener());
-        builder.addEventListener(new ReadyListener());
-
-        //Build JDA
-        System.out.println("ProjectShockwave is booting as " + botUser.getName());
-        try {
-            JDA = builder.buildBlocking();
-        } catch (LoginException e) {
-            System.out.println("The given token is invalid");
-        } catch (InterruptedException e) {
-            System.out.println("An Error accoured while connecting to the Discord API.\nFor more informaiton visit status.discordapp.com");
-        }
+    private static boolean bootPreOperations() {
+        return DATA.boot();
     }
 
     //Shuts everything connected to the DiscordAPI entirely down
@@ -69,11 +66,13 @@ public class JDAHandler {
             JDA.shutdown();
             DATA.shutdown();
             JDA = null;
+            NotifyConsole.log("JDAHandler.class", Statics.TITLE + " is shutting down");
         }
     }
 
     public static void restart(String reason) {
-        REASON = reason;
+        shutdown(reason);
+        boot();
     }
 
 
@@ -84,15 +83,14 @@ public class JDAHandler {
     public static JDA getJDA() {
         return JDA;
     }
+    public static void updateJDA(JDA jda) {
+        JDA = jda;
+    }
     public static void fatalError() {
         System.out.println("Es gab einen fatalen Fehler beim ausführen des Codes");
         System.exit(1);
     }
 
-    private static void notifyAboutRestart() {
-        MessageEmbed embed = MsgBuilder.restartNotification(REASON, RESTARTTIME);
-        notifyGuildsAndWait(embed, RESTARTTIME);
-    }
     private static void notifyAboutShudown() {
         MessageEmbed embed = MsgBuilder.shutdownNotification(REASON, SHUTDOWNTIME);
         notifyGuildsAndWait(embed, SHUTDOWNTIME);
@@ -100,13 +98,6 @@ public class JDAHandler {
 
 
 
-    private static void notifyGuilds(MessageEmbed embed, int seconds) {
-        //Send all messages and queue deletion
-        for (Guild guild : JDAHandler.getJDA().getGuilds()) {
-            TextChannel textChannel = DATA.guild(guild).getNotifychannel();
-            textChannel.sendMessage(embed).queue(m -> m.delete().queueAfter(seconds, TimeUnit.SECONDS));
-        }
-    }
     private static void notifyGuildsAndWait(MessageEmbed embed, int seconds) {
         //List of Messages wich should later be deleted
         List<Message> messages = new LinkedList<>();

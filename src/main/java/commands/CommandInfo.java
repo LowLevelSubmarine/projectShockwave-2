@@ -1,6 +1,8 @@
 package commands;
 
+import core.NotifyConsole;
 import database.DATA;
+import net.dv8tion.jda.core.JDA;
 import net.dv8tion.jda.core.entities.*;
 import net.dv8tion.jda.core.events.message.guild.GuildMessageReceivedEvent;
 
@@ -16,17 +18,20 @@ public class CommandInfo {
     private String[] arguments;
     private boolean isCommand;
 
+    private Message message;
     private User user;
     private Member member;
     private Guild guild;
+    private JDA jda;
     private TextChannel channel;
 
     public CommandInfo(GuildMessageReceivedEvent event) {
         this.raw = event.getMessage().getContentRaw();
         this.prefix = DATA.guild(event.getGuild()).getPrefix();
-        if (raw.startsWith(prefix)) {
+        //Only parse when raw fits the command pattern (Starts with the invoke and has more content than just the invoke)
+        if (raw.startsWith(prefix) && raw.length() > prefix.length()) {
             this.isCommand = true;
-            this.raw = raw.replaceFirst(prefix, "");
+            this.raw = this.raw.replaceFirst(prefix, "");
             parseInfo(event);
         } else {
             this.isCommand = false;
@@ -34,11 +39,12 @@ public class CommandInfo {
     }
 
     private void parseInfo(GuildMessageReceivedEvent event) {
-        this.raw = event.getMessage().getContentRaw();
         this.arguments = raw.split(" ");
+        this.message = event.getMessage();
         this.user = event.getAuthor();
         this.member = event.getMember();
         this.guild = event.getGuild();
+        this.jda = event.getJDA();
         this.channel = event.getChannel();
     }
 
@@ -47,7 +53,7 @@ public class CommandInfo {
     }
 
     public String getInvoke() {
-        return getArgument(0);
+        return getArgument(0).toLowerCase();
     }
     public String getRaw() {
         return this.raw;
@@ -69,15 +75,27 @@ public class CommandInfo {
             return null;
         }
     }
+
+    public Message getMessage() {
+        return message;
+    }
+
     public User getUser() {
         return this.user;
     }
+
     public Member getMember() {
         return this.member;
     }
+
     public Guild getGuild() {
         return this.guild;
     }
+
+    public JDA getJDA() {
+        return this.jda;
+    }
+
     public TextChannel getChannel() {
         return this.channel;
     }

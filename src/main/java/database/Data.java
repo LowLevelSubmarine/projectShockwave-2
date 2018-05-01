@@ -5,6 +5,7 @@ import com.thoughtworks.xstream.converters.ConversionException;
 import com.toddway.shelf.Shelf;
 import com.toddway.shelf.ShelfItem;
 import core.JDAHandler;
+import core.NotifyConsole;
 import database.config.Config;
 import net.dv8tion.jda.core.entities.Guild;
 import net.dv8tion.jda.core.entities.User;
@@ -37,17 +38,20 @@ public class DATA {
             CONFIG = (Config) XSTREAM.fromXML(reader);
             reader.close();
 
-            return CONFIG.valid();
-
+            String flaws = CONFIG.getFlaws();
+            if (flaws != null) {
+                System.out.println(flaws);
+                return false;
+            }
+            return true;
         } catch (ConversionException e) {
             e.printStackTrace();
-            System.out.println("An Error accoured while reading the \"" + CONFIGPATH + "\" file." +
-                    "\nTry deleting the File before running projectShockwave again.");
-            return false;
+            NotifyConsole.log("data.class", "An error accoured while reading the \"" + CONFIGPATH + "\" file. " +
+                    "Try deleting the File before running projectShockwave again.");
         } catch (IOException e) {
             JDAHandler.fatalError();
-            return false;
         }
+        return false;
     }
     public static void shutdown() {
 

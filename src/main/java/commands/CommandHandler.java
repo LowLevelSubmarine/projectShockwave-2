@@ -1,28 +1,50 @@
 package commands;
 
-import core.ExceptionLogger;
 import messages.MsgBuilder;
 
-import java.util.HashMap;
+import java.util.*;
 
 public class CommandHandler {
     private static HashMap<String, Class> COMMANDS = new HashMap<>();
+    private static String COMMANDLIST = null;
 
     public static void fire(CommandInfo info) {
-        //Check if command exists
-        if (COMMANDS.containsKey(info.getInvoke())) {
-            try {
-                //Cast command-class to command-interface, check permissions of the member and run
-                CommandInterface cmdInterface = (CommandInterface) COMMANDS.get(info.getInvoke()).newInstance();
-                checkPermissionAndRun(cmdInterface, info);
-            } catch (InstantiationException | IllegalAccessException e) {
-                ExceptionLogger.log(e);
-            }
+        CommandInterface cmInterface = getCommandInterface(info.getInvoke());
+        if (cmInterface != null) {
+            checkPermissionAndRun(cmInterface, info);
         }
     }
 
     public static void addCommand(String invoke, Class command) {
         COMMANDS.put(invoke, command);
+    }
+
+    public static CommandInterface getCommandInterface(String invoke) {
+        invoke = invoke.toLowerCase();
+        if (COMMANDS.containsKey(invoke)) {
+            try {
+                return (CommandInterface) COMMANDS.get(invoke).newInstance();
+            } catch (InstantiationException | IllegalAccessException e) {
+                return null;
+            }
+        } else {
+            return null;
+        }
+    }
+
+    public static String getCommandList() {
+        return COMMANDLIST;
+    }
+
+    public static void renderCommandList() {
+        COMMANDLIST = "";
+        List<String> invokes = new LinkedList<>();
+        invokes.addAll(COMMANDS.keySet());
+        Collections.sort(invokes);
+        for (String invoke : invokes) {
+            CommandInterface cmdInterface = getCommandInterface(invoke);
+            COMMANDLIST += "\n-" + invoke + " [" + cmdInterface.title() + "]";
+        }
     }
 
     private static void checkPermissionAndRun(CommandInterface cmdInterface, CommandInfo info) {

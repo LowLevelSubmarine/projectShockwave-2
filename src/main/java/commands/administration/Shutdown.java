@@ -1,10 +1,20 @@
 package commands.administration;
 
 import commands.*;
+import core.JDAHandler;
+import core.ShutdownHook;
 import messages.MsgBuilder;
+import net.dv8tion.jda.core.entities.Message;
 import net.dv8tion.jda.core.entities.TextChannel;
+import net.dv8tion.jda.core.entities.User;
 
 public class Shutdown implements CommandInterface, ButtonHook {
+
+    private static final String buttonAccept = "✅";
+    private static final String buttonDeny = "❌";
+    private String shutdownReason;
+    private User user;
+
     @Override
     public SecurityLevel securityLevel() {
         return SecurityLevel.BOT;
@@ -13,27 +23,46 @@ public class Shutdown implements CommandInterface, ButtonHook {
     @Override
     public void run(CommandInfo info) {
         TextChannel textChannel = info.getChannel();
-        String reason = info.getRaw(1);
-        textChannel.sendMessage(MsgBuilder.shutdownQuerry(reason)).queue(m -> ButtonHandler.registerTicket(m, this));
+        this.shutdownReason = info.getRaw(1);
+        this.user = info.getUser();
+        Message message = textChannel.sendMessage(MsgBuilder.shutdownQuerry(this.shutdownReason)).complete();
+        message.addReaction(buttonAccept).queue();
+        message.addReaction(buttonDeny).queue();
+        ButtonHandler.registerTicket(message, this);
     }
 
     @Override
     public void onButtonPress(ButtonEvent event) {
-
+        if (this.user.equals(event.getUser())) {
+            switch (event.getEmote()) {
+                case buttonAccept:
+                    event.getMessageLink().getMessage().delete().complete();
+                    JDAHandler.shutdown(this.shutdownReason);
+                    break;
+                case buttonDeny:
+                    event.getMessageLink().getMessage().delete().queue();
+                    break;
+                default:
+                    ButtonHandler.registerTicket(event, this);
+                    break;
+            }
+        } else {
+            ButtonHandler.registerTicket(event, this);
+        }
     }
 
     @Override
     public String title() {
-        return "Fährt den Bot herunter";
+        return "Fährt projectShockwave herunter";
     }
 
     @Override
     public String description() {
-        return "Fährt den Bot herunter und zeigt gegebenenfalls einen Grund dafür. Der Vorgang muss zuerst bestätigt werden.";
+        return "Fährt projectShockwave herunter und zeigt gegebenenfalls einen Grund dafür an. Der Vorgang muss zunächst bestätigt werden.";
     }
 
     @Override
     public String syntax(String p) {
-        return p + "shutdown < _ | GRUND >";
+        return p + "shutdown < _ | Grund >";
     }
 }

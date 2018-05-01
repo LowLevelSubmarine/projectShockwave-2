@@ -7,9 +7,12 @@ import net.dv8tion.jda.core.hooks.ListenerAdapter;
 
 public class GuildMessageReceivedListener extends ListenerAdapter {
     public void onGuildMessageReceived(GuildMessageReceivedEvent event) {
+        if (event.getAuthor().isBot()) {
+            return;
+        }
         CommandInfo cmdInfo = new CommandInfo(event);
         if (cmdInfo.isCommand()) {
-            CommandHandler.fire(event);
+            CommandHandler.fire(cmdInfo);
         }
     }
 }
