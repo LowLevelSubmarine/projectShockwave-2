@@ -28,6 +28,11 @@ public class MessageLink {
     }
 
     @Override
+    public String toString() {
+        return "TC:" + this.channel.getId() + " / MSG: " + this.messageId;
+    }
+
+    @Override
     public int hashCode() {
         return (this.channel.getId() + this.messageId).hashCode();
     }

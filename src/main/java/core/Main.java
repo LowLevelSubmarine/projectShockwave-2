@@ -36,11 +36,12 @@ public class Main {
         CommandHandler.addCommand("restart", Restart.class);
         CommandHandler.addCommand("shutdown", Shutdown.class);
         //CommandHandler.addCommand("speedtest", Speedtest.class);
-        CommandHandler.addCommand("info", Info.class);
+        CommandHandler.addCommand("changelog", Changelog.class);
         CommandHandler.addCommand("help", Help.class);
-        CommandHandler.addCommand("ping", Ping.class);
+        CommandHandler.addCommand("info", Info.class);
         CommandHandler.addCommand("invite", Invite.class);
         CommandHandler.addCommand("permissions", Permissions.class);
+        CommandHandler.addCommand("ping", Ping.class);
         CommandHandler.addCommand("version", Version.class);
         CommandHandler.renderCommandList();
     }

@@ -86,6 +86,7 @@ public class Speedtest implements CommandInterface, ISpeedTestListener {
 
 
     private void updateMessage() {
+        System.out.println(this.messageLink);
         MessageEmbed embed = MsgBuilder.speedtestProgress(this.downloadProgress, this.uploadProgress);
         Message message = this.messageLink.getMessage();
         message.editMessage(embed).queue();

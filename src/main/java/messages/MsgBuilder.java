@@ -145,9 +145,15 @@ public class MsgBuilder {
         MsgBuilder builder = new MsgBuilder(PSW2COLOR, "ℹ", "PERMISSIONS");
         builder.setDescription("Hier siehst du eine Übersicht aller Berechtigungen");
         builder.addField(SecurityLevel.NONE.toString(), "Wie der Name schon sagt wird für diese Berechtigung nichts benötigt, sie ist für Commands die nur den jeweiligen User etwas betreffen", true);
-        builder.addField(SecurityLevel.GUILD.toString(), "Diese Berechtigung erfordert den Besitz einer Rolle mit Admin Berechtigungen auf dem ausführenden Server, sie ist für Commands mit Serverweiten auswirkungen", true);
+        builder.addField(SecurityLevel.GUILD.toString(), "Diese Berechtigung erfordert den Besitz einer Rolle mit Admin Berechtigungen auf dem ausführenden Server, sie ist für Commands mit serverweiten Auswirkungen", true);
         builder.addField(SecurityLevel.BOT.toString(), "Diese Berechtigung kann nur von Usern mit Owner Berechtigung verteilt werden, sie ist für hosting bezogene Commands oder für solche die alle Nutzer etwas betreffen", true);
         builder.addField(SecurityLevel.OWNER.toString(), "Wer diese Berechtigung besitzt wird vom Bot Hoster festgelegt, sie ist ausschließlich dafür da festzulegen wer die " + SecurityLevel.BOT.getTitle() + " Berechtigung erhält", true);
+        return builder.build();
+    }
+    public static MessageEmbed changelog(String changes) {
+        MsgBuilder builder = new MsgBuilder(PSW2COLOR, "ℹ", "CHANGELOG");
+        builder.setDescription("Folgendes hat sich seit der letzten Version von \"" + Statics.TITLE + "\" geändert");
+        builder.addField("Änderungen", changes, false);
         return builder.build();
     }
 }
