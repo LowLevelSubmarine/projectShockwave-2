@@ -28,6 +28,11 @@ public class Invite implements CommandInterface {
     }
 
     @Override
+    public String category() {
+        return "Infos";
+    }
+
+    @Override
     public String title() {
         return "Generiert einen invite Link";
     }

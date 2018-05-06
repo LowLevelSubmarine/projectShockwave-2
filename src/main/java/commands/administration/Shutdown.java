@@ -52,6 +52,11 @@ public class Shutdown implements CommandInterface, ButtonHook {
     }
 
     @Override
+    public String category() {
+        return "Administrierung";
+    }
+
+    @Override
     public String title() {
         return "Fährt projectShockwave herunter";
     }

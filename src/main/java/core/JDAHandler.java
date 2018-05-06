@@ -49,8 +49,7 @@ public class JDAHandler {
             } catch (InterruptedException e) {
                 System.out.println("An error accoured while connecting to the Discord API.\nFor more informaiton visit status.discordapp.com");
             }
-
-            NotifyConsole.log("JDAHandler.class", Statics.TITLE + " is up and running");
+            NotifyConsole.log(JDAHandler.class, Statics.TITLE + " is up and running");
         }
     }
 
@@ -64,9 +63,8 @@ public class JDAHandler {
             REASON = reason;
             notifyAboutShudown();
             JDA.shutdown();
-            DATA.shutdown();
             JDA = null;
-            NotifyConsole.log("JDAHandler.class", Statics.TITLE + " is shutting down");
+            NotifyConsole.log(JDAHandler.class, Statics.TITLE + " is shutting down");
         }
     }
 

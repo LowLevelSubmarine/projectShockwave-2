@@ -25,6 +25,11 @@ public class Version implements CommandInterface {
     }
 
     @Override
+    public String category() {
+        return "Infos";
+    }
+
+    @Override
     public String title() {
         return "Gibt die Version an";
     }

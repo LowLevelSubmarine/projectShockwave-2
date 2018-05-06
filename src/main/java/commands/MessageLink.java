@@ -29,7 +29,7 @@ public class MessageLink {
 
     @Override
     public String toString() {
-        return "TC:" + this.channel.getId() + " / MSG: " + this.messageId;
+        return "MSGLNK:" + this.channel.getId() + "-" + this.messageId;
     }
 
     @Override

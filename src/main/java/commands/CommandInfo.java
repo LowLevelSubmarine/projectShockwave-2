@@ -2,6 +2,7 @@ package commands;
 
 import core.NotifyConsole;
 import database.DATA;
+import messages.MsgBuilder;
 import net.dv8tion.jda.core.JDA;
 import net.dv8tion.jda.core.entities.*;
 import net.dv8tion.jda.core.events.message.guild.GuildMessageReceivedEvent;
@@ -65,6 +66,11 @@ public class CommandInfo {
             return null;
         }
     }
+
+    public String getPrefix() {
+        return this.prefix;
+    }
+
     public String[] getArguments() {
         return this.arguments;
     }
@@ -98,6 +104,11 @@ public class CommandInfo {
 
     public TextChannel getChannel() {
         return this.channel;
+    }
+
+    public void wrongSyntax() {
+        MessageEmbed embed = MsgBuilder.wrongSyntaxInfo(this.prefix, this.arguments[0]);
+        this.channel.sendMessage(embed).queue();
     }
 
     private boolean isValidIndex(int index) {

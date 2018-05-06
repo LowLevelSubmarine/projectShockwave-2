@@ -25,6 +25,11 @@ public class Changelog implements CommandInterface {
     }
 
     @Override
+    public String category() {
+        return "Infos";
+    }
+
+    @Override
     public String title() {
         return "Die letzten Änderungen";
     }

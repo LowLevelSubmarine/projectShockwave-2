@@ -6,7 +6,7 @@ import java.util.*;
 
 public class CommandHandler {
     private static HashMap<String, Class> COMMANDS = new HashMap<>();
-    private static String COMMANDLIST = null;
+    private static HashMap<String, String> COMMANDLIST = null;
 
     public static void fire(CommandInfo info) {
         CommandInterface cmInterface = getCommandInterface(info.getInvoke());
@@ -32,18 +32,29 @@ public class CommandHandler {
         }
     }
 
-    public static String getCommandList() {
+    public static Map<String, String> getCommandList() {
         return COMMANDLIST;
     }
 
     public static void renderCommandList() {
-        COMMANDLIST = "";
-        List<String> invokes = new LinkedList<>();
-        invokes.addAll(COMMANDS.keySet());
-        Collections.sort(invokes);
-        for (String invoke : invokes) {
+        //Get all commands
+        HashMap<String, ArrayList<String>> commandList = new HashMap<>();
+        for (String invoke : COMMANDS.keySet()) {
             CommandInterface cmdInterface = getCommandInterface(invoke);
-            COMMANDLIST += "\n-" + invoke + " [" + cmdInterface.title() + "]";
+            ArrayList<String> categoryList = commandList.getOrDefault(cmdInterface.category(), new ArrayList<>());
+            categoryList.add("**" + invoke + "** " + cmdInterface.title());
+            commandList.put(cmdInterface.category(), categoryList);
+        }
+        //Sort commands inside of the categorys and add them as a String to the global commandlist maü
+        COMMANDLIST = new HashMap<>();
+        for (String categoryName : commandList.keySet()) {
+            ArrayList<String> categoryList = commandList.get(categoryName);
+            Collections.sort(categoryList);
+            String categoryListString = "";
+            for (String singeLine : categoryList) {
+                categoryListString += "\n" + singeLine;
+            }
+            COMMANDLIST.put(categoryName, categoryListString);
         }
     }
 

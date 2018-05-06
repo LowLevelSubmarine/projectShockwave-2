@@ -14,47 +14,23 @@ import java.io.*;
 
 public class DATA {
 
-    private static final String ORIGINPATH = "PSWD2";
-    private static final String UPATH = "USER";
-    private static final String GPATH = "GUILD";
-    private static final String BPATH = "BOT";
-    private static Shelf USHELF = new Shelf(new File(ORIGINPATH + File.separator + UPATH));
-    private static Shelf GSHELF = new Shelf(new File(ORIGINPATH + File.separator + GPATH));
-    private static Shelf BSHELF = new Shelf(new File(ORIGINPATH + File.separator + BPATH));
     private static final String CONFIGPATH = "config.xml";
+    private static final String FOLDERNAME = "PSW2 Database";
+    private static final String UFILENAME = "Users";
+    private static final String GFILENAME = "Guilds";
+    private static final String BFILENAME = "Bot";
+    private static Shelf USHELF;
+    private static Shelf GSHELF;
+    private static Shelf BSHELF;
     private static File CONFIGFILE = new File(CONFIGPATH);
     private static Config CONFIG;
     private static XStream XSTREAM = Config.buildCompatibleXStream();
 
     public static boolean boot() {
-        try {
-
-            if (!CONFIGFILE.exists()) {
-                FileWriter writer = new FileWriter(CONFIGFILE);
-                XSTREAM.toXML(new Config(), writer);
-                writer.close();
-            }
-            FileReader reader = new FileReader(CONFIGFILE);
-            CONFIG = (Config) XSTREAM.fromXML(reader);
-            reader.close();
-
-            String flaws = CONFIG.getFlaws();
-            if (flaws != null) {
-                System.out.println(flaws);
-                return false;
-            }
-            return true;
-        } catch (ConversionException e) {
-            e.printStackTrace();
-            NotifyConsole.log("data.class", "An error accoured while reading the \"" + CONFIGPATH + "\" file. " +
-                    "Try deleting the File before running projectShockwave again.");
-        } catch (IOException e) {
-            JDAHandler.fatalError();
-        }
-        return false;
-    }
-    public static void shutdown() {
-
+        boolean success;
+        createShelfs();
+        success = loadConfigXML();
+        return success;
     }
 
     public static USettings user(User user) {
@@ -78,5 +54,49 @@ public class DATA {
     }
     static ShelfItem getBotItem(BSettings.keys key) {
         return BSHELF.item(key.name());
+    }
+
+    private static void createShelfs() {
+        USHELF = createShelf(FOLDERNAME, UFILENAME);
+        GSHELF = createShelf(FOLDERNAME, GFILENAME);
+        BSHELF = createShelf(FOLDERNAME, BFILENAME);
+    }
+    private static boolean loadConfigXML() {
+        try {
+            if (!CONFIGFILE.exists()) {
+                FileWriter writer = new FileWriter(CONFIGFILE);
+                XSTREAM.toXML(new Config(), writer);
+                writer.close();
+            }
+            FileReader reader = new FileReader(CONFIGFILE);
+            CONFIG = (Config) XSTREAM.fromXML(reader);
+            reader.close();
+
+            String flaws = CONFIG.getFlaws();
+            if (flaws != null) {
+                System.out.println(flaws);
+                return false;
+            }
+            return true;
+        } catch (ConversionException e) {
+            e.printStackTrace();
+            NotifyConsole.log(DATA.class, "An error accoured while reading the \"" + CONFIGPATH + "\" file. " +
+                    "Try deleting the File before running projectShockwave again.");
+        } catch (IOException e) {
+            JDAHandler.fatalError();
+        }
+        return false;
+    }
+    private static Shelf createShelf(String folderName, String fileName) {
+        //Create or get folder
+        File folder = new File(folderName);
+        folder.mkdir();
+
+        //Create or get file
+        String path = folderName + "/" + fileName;
+        File file = new File(path);
+
+        //Return shelf
+        return new Shelf(file);
     }
 }

@@ -22,6 +22,11 @@ public class Ping implements CommandInterface {
     }
 
     @Override
+    public String category() {
+        return "Infos";
+    }
+
+    @Override
     public String title() {
         return "Gibt den Ping an";
     }

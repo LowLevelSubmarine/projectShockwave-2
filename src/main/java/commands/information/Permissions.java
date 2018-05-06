@@ -5,6 +5,7 @@ import commands.CommandInterface;
 import commands.SecurityLevel;
 import messages.MsgBuilder;
 import net.dv8tion.jda.core.entities.MessageEmbed;
+import net.dv8tion.jda.core.entities.PrivateChannel;
 
 public class Permissions implements CommandInterface {
     @Override
@@ -16,7 +17,13 @@ public class Permissions implements CommandInterface {
     public void run(CommandInfo info) {
         //Send message
         MessageEmbed embed = MsgBuilder.permissions();
-        info.getChannel().sendMessage(embed).queue();
+        PrivateChannel privateChannel = info.getUser().openPrivateChannel().complete();
+        privateChannel.sendMessage(embed).queue();
+    }
+
+    @Override
+    public String category() {
+        return "Infos";
     }
 
     @Override

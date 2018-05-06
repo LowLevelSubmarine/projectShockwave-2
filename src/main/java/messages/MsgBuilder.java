@@ -6,9 +6,13 @@ import core.JDAHandler;
 import core.Statics;
 import fr.bmartel.protocol.http.utils.ExceptionUtils;
 import net.dv8tion.jda.core.EmbedBuilder;
+import net.dv8tion.jda.core.entities.Message;
 import net.dv8tion.jda.core.entities.MessageEmbed;
+import net.dv8tion.jda.core.entities.User;
 
 import java.awt.*;
+import java.util.HashMap;
+import java.util.Map;
 
 public class MsgBuilder {
 
@@ -55,29 +59,29 @@ public class MsgBuilder {
 
     public static MessageEmbed bootupNotification() {
         MsgBuilder builder = new MsgBuilder(PSW2COLOR, "\uD83D\uDD3A", "BOOTED UP");
-        builder.setDescription(selfMention() + " ist nun Betriebsbereit");
+        builder.setDescription(selfMention() + " ist nun Betriebsbereit.");
         return builder.build();
     }
     public static MessageEmbed restartNotification(String reason, int seconds) {
         MsgBuilder builder = new MsgBuilder(PSW2COLOR, "\uD83D\uDD3B", "SHUTTING DOWN");
-        builder.setDescription(selfMention() + " wird in " + seconds + " Sekunden neu gestartet");
+        builder.setDescription(selfMention() + " wird in " + seconds + " Sekunden neu gestartet!");
         if (reason != null) builder.addField("Grund", reason, false);
         return builder.build();
     }
     public static MessageEmbed shutdownNotification(String reason, int seconds) {
         MsgBuilder builder = new MsgBuilder(PSW2COLOR, "\uD83D\uDD3B", "SHUTTING DOWN");
-        builder.setDescription(selfMention() + " wird in " + seconds + " Sekunden heruntergefahren");
+        builder.setDescription(selfMention() + " wird in " + seconds + " Sekunden heruntergefahren!");
         if (reason != null) builder.addField("Grund", reason, false);
         return builder.build();
     }
     public static MessageEmbed missingAuthorization() {
         MsgBuilder builder = new MsgBuilder(PSW2COLOR, "⚠", "MISSING PERMISSION");
-        builder.setDescription("Du hast nicht die benörigten Berechtigungen um diesen Befehl auszuführen");
+        builder.setDescription("Du hast nicht die benötigten Berechtigungen um diesen Befehl auszuführen!");
         return builder.build();
     }
     public static MessageEmbed exceptionLogInfo(Exception exception) {
         MsgBuilder builder = new MsgBuilder(PSW2COLOR, "\uD83D\uDED1", "EXCEPTION");
-        builder.setDescription("Ich hatte einen Fehler");
+        builder.setDescription("Ich hatte einen Fehler!");
         builder.addField("Errorcode", ExceptionUtils.getExceptionMessage(exception), false);
         return builder.build();
     }
@@ -101,12 +105,15 @@ public class MsgBuilder {
     }
     public static MessageEmbed commandDescriptionMissingCommand() {
         MsgBuilder builder = new MsgBuilder(PSW2COLOR, "ℹ", "HELP");
-        builder.setDescription("Der angegebene Command existiert nicht");
+        builder.setDescription("Der angegebene Command existiert nicht!");
         return builder.build();
     }
     public static MessageEmbed commandList() {
         MsgBuilder builder = new MsgBuilder(PSW2COLOR, "ℹ", "COMMANDS");
-        builder.setDescription(CommandHandler.getCommandList());
+        Map<String, String> commandList = CommandHandler.getCommandList();
+        for (String categoryName : commandList.keySet()) {
+            builder.addField(categoryName, commandList.get(categoryName), true);
+        }
         return builder.build();
     }
     public static MessageEmbed speedtestProgress(String downloadProgress, String uploadProgress) {
@@ -119,7 +126,7 @@ public class MsgBuilder {
     }
     public static MessageEmbed ping(long ping) {
         MsgBuilder builder = new MsgBuilder(PSW2COLOR, "⚙", "PING");
-        builder.setDescription("Die Discord API hat aktuell einen Ping von " + ping + "ms");
+        builder.setDescription("Die Discord API hat aktuell einen Ping von " + ping + "ms.");
         return builder.build();
     }
     public static MessageEmbed info(String hosterMention, String devMention, String serverInvite) {
@@ -131,29 +138,53 @@ public class MsgBuilder {
     }
     public static MessageEmbed version(String versionNumber, String versionTitle) {
         MsgBuilder builder = new MsgBuilder(PSW2COLOR, "ℹ", "VERSION");
-        builder.setDescription(selfMention() + " läuft aktuell mit folgender " + Statics.TITLE + " Version");
+        builder.setDescription(selfMention() + " läuft aktuell mit folgender " + Statics.TITLE + " Version.");
         builder.addField("Nummer", versionNumber, true);
         builder.addField("Name", versionTitle, true);
         return builder.build();
     }
     public static MessageEmbed invite(String botInvite) {
         MsgBuilder builder = new MsgBuilder(PSW2COLOR, "\uD83D\uDD17", "SHARE");
-        builder.setDescription("Mit diesem " + link("Link", botInvite) + " kannst du " + selfMention() + " auch auf deinen Server einladen");
+        builder.setDescription("Mit diesem " + link("Link", botInvite) + " kannst du " + selfMention() + " auch auf deinen Server einladen.");
         return builder.build();
     }
     public static MessageEmbed permissions() {
         MsgBuilder builder = new MsgBuilder(PSW2COLOR, "ℹ", "PERMISSIONS");
-        builder.setDescription("Hier siehst du eine Übersicht aller Berechtigungen");
-        builder.addField(SecurityLevel.NONE.toString(), "Wie der Name schon sagt wird für diese Berechtigung nichts benötigt, sie ist für Commands die nur den jeweiligen User etwas betreffen", true);
-        builder.addField(SecurityLevel.GUILD.toString(), "Diese Berechtigung erfordert den Besitz einer Rolle mit Admin Berechtigungen auf dem ausführenden Server, sie ist für Commands mit serverweiten Auswirkungen", true);
-        builder.addField(SecurityLevel.BOT.toString(), "Diese Berechtigung kann nur von Usern mit Owner Berechtigung verteilt werden, sie ist für hosting bezogene Commands oder für solche die alle Nutzer etwas betreffen", true);
-        builder.addField(SecurityLevel.OWNER.toString(), "Wer diese Berechtigung besitzt wird vom Bot Hoster festgelegt, sie ist ausschließlich dafür da festzulegen wer die " + SecurityLevel.BOT.getTitle() + " Berechtigung erhält", true);
+        builder.setDescription("Hier siehst du eine Übersicht aller Berechtigungen:");
+        builder.addField(SecurityLevel.NONE.toString(), "Wie der Name schon sagt wird für diese Berechtigung nichts benötigt, " +
+                "sie ist für Commands die nur den jeweiligen User etwas betreffen.", true);
+        builder.addField(SecurityLevel.GUILD.toString(), "Diese Berechtigung erfordert den Besitz einer Rolle mit Admin Berechtigungen " +
+                "auf dem ausführenden Server, sie ist für Commands mit serverweiten Auswirkungen.", true);
+        builder.addField(SecurityLevel.BOT.toString(), "Diese Berechtigung kann nur von Usern mit Owner Berechtigung verteilt werden, " +
+                "sie ist für hosting bezogene Commands oder für solche die alle Nutzer etwas betreffen.", true);
+        builder.addField(SecurityLevel.OWNER.toString(), "Wer diese Berechtigung besitzt wird vom Bot Hoster festgelegt, " +
+                "sie ist ausschließlich dafür da festzulegen wer die " + SecurityLevel.BOT.getTitle() + " Berechtigung erhält.", true);
         return builder.build();
     }
     public static MessageEmbed changelog(String changes) {
         MsgBuilder builder = new MsgBuilder(PSW2COLOR, "ℹ", "CHANGELOG");
-        builder.setDescription("Folgendes hat sich seit der letzten Version von \"" + Statics.TITLE + "\" geändert");
+        builder.setDescription("Folgendes hat sich seit der letzten Version von \"" + Statics.TITLE + "\" geändert:");
         builder.addField("Änderungen", changes, false);
+        return builder.build();
+    }
+    public static MessageEmbed setPrefixDone(String oldPrefix, String newPrefix) {
+        MsgBuilder builder = new MsgBuilder(PSW2COLOR, "\uD83D\uDD27", "PREFIX");
+        builder.setDescription("Das Prefix wurde von \"" + oldPrefix + "\" zu \"**" + newPrefix + "**\" geändert.");
+        return builder.build();
+    }
+    public static MessageEmbed wrongSyntaxInfo(String prefix, String invoke) {
+        MsgBuilder builder = new MsgBuilder(PSW2COLOR, "⚠", "SYNTAX ERROR");
+        builder.setDescription("Falscher Syntax! Schreibe \"" + prefix + "help " + invoke + "\" für mehr Hilfe.");
+        return builder.build();
+    }
+    public static MessageEmbed addBotadminDone(User user) {
+        MsgBuilder builder = new MsgBuilder(PSW2COLOR, "✅", "ADDED BOTUSER");
+        builder.setDescription("Dem User " + user.getAsMention() + " wurde die " + SecurityLevel.BOT.toString() + " Berechtigung erteilt.");
+        return builder.build();
+    }
+    public static MessageEmbed removeBotadminDone(User user) {
+        MsgBuilder builder = new MsgBuilder(PSW2COLOR, "✅", "REMOVED BOTUSER");
+        builder.setDescription("Dem User " + user.getAsMention() + " wurde die " + SecurityLevel.BOT.toString() + " Berechtigung entzogen.");
         return builder.build();
     }
 }

@@ -49,6 +49,11 @@ public class Restart implements CommandInterface, ButtonHook {
     }
 
     @Override
+    public String category() {
+        return "Administrierung";
+    }
+
+    @Override
     public String title() {
         return "Startet projectShockwave neu";
     }

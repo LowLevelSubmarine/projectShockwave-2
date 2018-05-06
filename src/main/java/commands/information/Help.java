@@ -36,6 +36,11 @@ public class Help implements CommandInterface {
     }
 
     @Override
+    public String category() {
+        return "Infos";
+    }
+
+    @Override
     public String title() {
         return "Eine Liste aller Commands";
     }

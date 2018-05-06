@@ -5,12 +5,12 @@ import database.DATA;
 import java.time.LocalDateTime;
 
 public class NotifyConsole {
-    public static void log(String author, String text) {
-        print("log", author, text);
+    public static void log(Class clss, String text) {
+        print("log", clss.getName(), text);
     }
-    public static void debug(String author, String text) {
+    public static void debug(Class clss, String text) {
         if (DATA.config().debugMode()) {
-            print("debug", author, text);
+            print("debug", clss.getName(), text);
         }
     }
 

@@ -19,7 +19,7 @@ public class ExceptionLogger {
     public static void log (Exception exception) {
         writeToLogFile(exception);
         contactDebugSupporter(exception);
-        NotifyConsole.debug("ExceptionLogger", "Succsessfully catched and logged Exception");
+        NotifyConsole.debug(ExceptionLogger.class, "Succsessfully catched and logged Exception");
     }
 
 
@@ -33,7 +33,7 @@ public class ExceptionLogger {
                 }
                 writer = new BufferedWriter(new FileWriter(logFile, true));
             } catch (IOException e) {
-                NotifyConsole.debug("ExceptionLogger", "An error while trying create or get exceptionlogfile");
+                NotifyConsole.debug(ExceptionLogger.class, "An error while trying create or get exceptionlogfile");
             }
         }
     }
@@ -45,7 +45,7 @@ public class ExceptionLogger {
             writer.newLine();
             writer.flush();
         } catch (IOException e) {
-            NotifyConsole.debug("ExceptionLogger", "An error occurred while writen to exceptionlogfile");
+            NotifyConsole.debug(ExceptionLogger.class, "An error occurred while writen to exceptionlogfile");
         }
     }
     private static void contactDebugSupporter(Exception exception) {
@@ -56,7 +56,7 @@ public class ExceptionLogger {
                 channel.sendMessage(MsgBuilder.exceptionLogInfo(exception)).queue();
             }
         } catch (Exception e) {
-            NotifyConsole.debug("ExceptionLogger", "An error occurred while trying to contact debugSupporter");
+            NotifyConsole.debug(ExceptionLogger.class, "An error occurred while trying to contact debugSupporter");
         }
     }
 }
