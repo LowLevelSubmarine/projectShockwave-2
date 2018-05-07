@@ -88,6 +88,9 @@ public class JDAHandler {
         System.out.println("Es gab einen fatalen Fehler beim ausführen des Codes");
         System.exit(1);
     }
+    public static String getUsername() {
+        return JDA.getSelfUser().getName();
+    }
 
     private static void notifyAboutShudown() {
         MessageEmbed embed = MsgBuilder.shutdownNotification(REASON, SHUTDOWNTIME);

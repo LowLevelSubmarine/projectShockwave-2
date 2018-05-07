@@ -1,6 +1,5 @@
 package commands;
 
-import core.NotifyConsole;
 import database.DATA;
 import messages.MsgBuilder;
 import net.dv8tion.jda.core.JDA;

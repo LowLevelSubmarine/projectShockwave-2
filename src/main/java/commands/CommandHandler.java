@@ -2,7 +2,10 @@ package commands;
 
 import messages.MsgBuilder;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.HashMap;
+import java.util.Map;
 
 public class CommandHandler {
     private static HashMap<String, Class> COMMANDS = new HashMap<>();
@@ -42,7 +45,7 @@ public class CommandHandler {
         for (String invoke : COMMANDS.keySet()) {
             CommandInterface cmdInterface = getCommandInterface(invoke);
             ArrayList<String> categoryList = commandList.getOrDefault(cmdInterface.category(), new ArrayList<>());
-            categoryList.add("**" + invoke + "** " + cmdInterface.title());
+            categoryList.add(invoke + " - " + cmdInterface.title());
             commandList.put(cmdInterface.category(), categoryList);
         }
         //Sort commands inside of the categorys and add them as a String to the global commandlist maü

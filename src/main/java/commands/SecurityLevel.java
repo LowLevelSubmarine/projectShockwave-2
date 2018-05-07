@@ -68,8 +68,8 @@ public enum SecurityLevel {
         return member.hasPermission(Permission.ADMINISTRATOR);
     }
     private boolean isBotAdmin(User user) {
-        ArrayList<User> botAdmins = DATA.bot().getBotAdmins();
-        return botAdmins.contains(user);
+        ArrayList<String> botAdmins = DATA.bot().getBotAdmins();
+        return botAdmins.contains(user.getId());
     }
     private boolean isBotOwner(User user) {
         List<String> botOwners = DATA.config().getOwners();

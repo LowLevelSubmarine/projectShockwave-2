@@ -50,17 +50,17 @@ public class Restart implements CommandInterface, ButtonHook {
 
     @Override
     public String category() {
-        return "Administrierung";
+        return "Administration";
     }
 
     @Override
     public String title() {
-        return "Startet projectShockwave neu";
+        return "Startet " + JDAHandler.getUsername() + " neu";
     }
 
     @Override
     public String description() {
-        return "Startet projectShockwave neu und gibt gegebenenfalls einen Grund dafür an. Der Vorgang muss zunächst bestätigt werden";
+        return "Startet " + JDAHandler.getUsername() + " neu und gibt gegebenenfalls einen Grund dafür an. Der Vorgang muss zunächst bestätigt werden";
     }
 
     @Override

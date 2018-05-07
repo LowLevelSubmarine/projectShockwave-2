@@ -5,7 +5,9 @@ import commands.administration.Restart;
 import commands.administration.Shutdown;
 import commands.administration.Speedtest;
 import commands.information.*;
+import commands.settings.SetBotadmins;
 import commands.settings.SetPrefix;
+import commands.settings.SetStatus;
 import database.DATA;
 import database.config.BotUser;
 
@@ -43,7 +45,8 @@ public class Main {
         CommandHandler.addCommand("permissions", Permissions.class);
         CommandHandler.addCommand("ping", Ping.class);
         CommandHandler.addCommand("version", Version.class);
+        CommandHandler.addCommand("setbotadmins", SetBotadmins.class);
         CommandHandler.addCommand("setprefix", SetPrefix.class);
-        CommandHandler.renderCommandList();
+        CommandHandler.addCommand("setstatus", SetStatus.class);
     }
 }

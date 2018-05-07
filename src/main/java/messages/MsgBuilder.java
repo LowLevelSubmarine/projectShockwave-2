@@ -6,12 +6,10 @@ import core.JDAHandler;
 import core.Statics;
 import fr.bmartel.protocol.http.utils.ExceptionUtils;
 import net.dv8tion.jda.core.EmbedBuilder;
-import net.dv8tion.jda.core.entities.Message;
 import net.dv8tion.jda.core.entities.MessageEmbed;
 import net.dv8tion.jda.core.entities.User;
 
 import java.awt.*;
-import java.util.HashMap;
 import java.util.Map;
 
 public class MsgBuilder {
@@ -178,13 +176,18 @@ public class MsgBuilder {
         return builder.build();
     }
     public static MessageEmbed addBotadminDone(User user) {
-        MsgBuilder builder = new MsgBuilder(PSW2COLOR, "✅", "ADDED BOTUSER");
-        builder.setDescription("Dem User " + user.getAsMention() + " wurde die " + SecurityLevel.BOT.toString() + " Berechtigung erteilt.");
+        MsgBuilder builder = new MsgBuilder(PSW2COLOR, "\uD83D\uDD27", "ADDED BOTUSER");
+        builder.setDescription("Dem User " + user.getAsMention() + " wurde die " + SecurityLevel.BOT.getTitle() + " Berechtigung erteilt.");
         return builder.build();
     }
     public static MessageEmbed removeBotadminDone(User user) {
-        MsgBuilder builder = new MsgBuilder(PSW2COLOR, "✅", "REMOVED BOTUSER");
-        builder.setDescription("Dem User " + user.getAsMention() + " wurde die " + SecurityLevel.BOT.toString() + " Berechtigung entzogen.");
+        MsgBuilder builder = new MsgBuilder(PSW2COLOR, "\uD83D\uDD27", "REMOVED BOTUSER");
+        builder.setDescription("Dem User " + user.getAsMention() + " wurde die " + SecurityLevel.BOT.getTitle() + " Berechtigung entzogen.");
+        return builder.build();
+    }
+    public static MessageEmbed setStatusDone() {
+        MsgBuilder builder = new MsgBuilder(PSW2COLOR, "\uD83D\uDD27", "EDITED STATUS");
+        builder.setDescription("Der Status von " + selfMention() + " wurde erfolgreich umgestellt");
         return builder.build();
     }
 }

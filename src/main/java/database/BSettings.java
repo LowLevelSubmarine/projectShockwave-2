@@ -18,24 +18,14 @@ public class BSettings {
         item.put(game);
     }
 
-    public ArrayList<User> getBotAdmins() {
+    public ArrayList<String> getBotAdmins() {
         ShelfItem item = DATA.getBotItem(keys.BOTADMINS);
         if (item.exists()) return item.get(ArrayList.class);
-        else return new ArrayList<>();
+        return new ArrayList<>();
     }
-    public void setBotAdmins(ArrayList<User> botAdmins) {
+    public void setBotAdmins(ArrayList<String> botAdmins) {
         ShelfItem item = DATA.getBotItem(keys.BOTADMINS);
         item.put(botAdmins);
-    }
-    public void addBotadmin(User user) {
-        ArrayList<User> botAdmins = getBotAdmins();
-        botAdmins.add(user);
-        setBotAdmins(botAdmins);
-    }
-    public void removeBotadmin(User user) {
-        ArrayList<User> botAdmins = getBotAdmins();
-        botAdmins.remove(user);
-        setBotAdmins(botAdmins);
     }
 
     public enum keys {

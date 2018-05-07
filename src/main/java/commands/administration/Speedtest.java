@@ -2,9 +2,7 @@ package commands.administration;
 
 import commands.CommandInfo;
 import commands.CommandInterface;
-import commands.MessageLink;
 import commands.SecurityLevel;
-import core.NotifyConsole;
 import core.Toolkit;
 import fr.bmartel.speedtest.SpeedTestReport;
 import fr.bmartel.speedtest.SpeedTestSocket;
@@ -67,7 +65,7 @@ public class Speedtest implements CommandInterface, ISpeedTestListener {
 
     @Override
     public String category() {
-        return "Administrierung";
+        return "Administration";
     }
 
     @Override

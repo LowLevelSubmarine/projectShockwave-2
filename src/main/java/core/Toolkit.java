@@ -24,4 +24,10 @@ public class Toolkit {
         }
         return string;
     }
+    public static boolean isOneOf(String a, String... b) {
+        for (String c : b) {
+            if (a.equals(c)) return true;
+        }
+        return false;
+    }
 }

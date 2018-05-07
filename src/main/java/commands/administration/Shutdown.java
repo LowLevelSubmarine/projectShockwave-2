@@ -2,7 +2,6 @@ package commands.administration;
 
 import commands.*;
 import core.JDAHandler;
-import core.ShutdownHook;
 import messages.MsgBuilder;
 import net.dv8tion.jda.core.entities.Message;
 import net.dv8tion.jda.core.entities.TextChannel;
@@ -53,17 +52,17 @@ public class Shutdown implements CommandInterface, ButtonHook {
 
     @Override
     public String category() {
-        return "Administrierung";
+        return "Administration";
     }
 
     @Override
     public String title() {
-        return "Fährt projectShockwave herunter";
+        return "Fährt " + JDAHandler.getUsername() + " herunter";
     }
 
     @Override
     public String description() {
-        return "Fährt projectShockwave herunter und zeigt gegebenenfalls einen Grund dafür an. Der Vorgang muss zunächst bestätigt werden.";
+        return "Fährt " + JDAHandler.getUsername() + " herunter und zeigt gegebenenfalls einen Grund dafür an. Der Vorgang muss zunächst bestätigt werden.";
     }
 
     @Override

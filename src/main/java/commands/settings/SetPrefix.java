@@ -1,6 +1,5 @@
 package commands.settings;
 
-import commands.CommandHandler;
 import commands.CommandInfo;
 import commands.CommandInterface;
 import commands.SecurityLevel;

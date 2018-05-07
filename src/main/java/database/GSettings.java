@@ -4,8 +4,6 @@ import com.toddway.shelf.ShelfItem;
 import net.dv8tion.jda.core.entities.Guild;
 import net.dv8tion.jda.core.entities.TextChannel;
 
-import java.util.ArrayList;
-
 public class GSettings {
 
     private Guild guild;

@@ -1,7 +1,7 @@
 package listeners;
 
+import commands.CommandHandler;
 import core.JDAHandler;
-import core.Main;
 import database.DATA;
 import messages.MsgBuilder;
 import net.dv8tion.jda.core.JDA;
@@ -18,6 +18,7 @@ public class ReadyListener extends ListenerAdapter {
 
     public void onReady(ReadyEvent event) {
         JDAHandler.updateJDA(event.getJDA());
+        CommandHandler.renderCommandList();
         notifyAboutBootup(event.getJDA());
     }
 
