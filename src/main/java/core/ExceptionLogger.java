@@ -13,7 +13,7 @@ import java.io.IOException;
 
 public class ExceptionLogger {
 
-    private final static String EXCEPTIONLOGFILENAME = "errors";
+    private final static String EXCEPTIONLOGFILENAME = "errors.txt";
     private static BufferedWriter writer;
 
     public static void log (Exception exception) {

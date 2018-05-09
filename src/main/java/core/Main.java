@@ -4,8 +4,13 @@ import commands.CommandHandler;
 import commands.administration.Restart;
 import commands.administration.Shutdown;
 import commands.administration.Speedtest;
+import commands.administration.Statistics;
+import commands.administration.statistics.GuildDetails;
+import commands.administration.statistics.RunningOn;
+import commands.administration.statistics.StatisticHandler;
 import commands.information.*;
 import commands.settings.SetBotadmins;
+import commands.settings.SetNotifyChannel;
 import commands.settings.SetPrefix;
 import commands.settings.SetStatus;
 import database.DATA;
@@ -19,6 +24,7 @@ public class Main {
     public static void main(String[] args) {
         Runtime.getRuntime().addShutdownHook(new ShutdownHook());
         addCommands();
+        addStatistics();
         parseToken();
         JDAHandler.boot();
     }
@@ -38,6 +44,7 @@ public class Main {
         CommandHandler.addCommand("restart", Restart.class);
         CommandHandler.addCommand("shutdown", Shutdown.class);
         CommandHandler.addCommand("speedtest", Speedtest.class);
+        CommandHandler.addCommand("statistics", Statistics.class);
         CommandHandler.addCommand("changelog", Changelog.class);
         CommandHandler.addCommand("help", Help.class);
         CommandHandler.addCommand("info", Info.class);
@@ -46,7 +53,13 @@ public class Main {
         CommandHandler.addCommand("ping", Ping.class);
         CommandHandler.addCommand("version", Version.class);
         CommandHandler.addCommand("setbotadmins", SetBotadmins.class);
+        CommandHandler.addCommand("setnotifychannel", SetNotifyChannel.class);
         CommandHandler.addCommand("setprefix", SetPrefix.class);
         CommandHandler.addCommand("setstatus", SetStatus.class);
+    }
+
+    private static void addStatistics() {
+        StatisticHandler.addStatistic(new RunningOn());
+        StatisticHandler.addStatistic(new GuildDetails());
     }
 }

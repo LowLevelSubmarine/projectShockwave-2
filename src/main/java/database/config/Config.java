@@ -1,7 +1,7 @@
 package database.config;
 
 import com.thoughtworks.xstream.XStream;
-import core.Toolkit;
+import tools.Toolkit;
 import net.dv8tion.jda.core.entities.Game;
 
 import java.util.ArrayList;

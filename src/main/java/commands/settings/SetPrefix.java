@@ -4,7 +4,7 @@ import commands.CommandInfo;
 import commands.CommandInterface;
 import commands.SecurityLevel;
 import core.Statics;
-import core.Toolkit;
+import tools.Toolkit;
 import database.DATA;
 import messages.MsgBuilder;
 import net.dv8tion.jda.core.entities.MessageEmbed;

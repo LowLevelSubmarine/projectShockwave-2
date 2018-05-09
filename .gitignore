@@ -1,5 +1,7 @@
 config.xml
+errors.txt
 PSW2 Database/
 target/
+statistics/
 .idea/
 projectShockwave 2.iml

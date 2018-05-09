@@ -7,6 +7,7 @@ import core.Statics;
 import fr.bmartel.protocol.http.utils.ExceptionUtils;
 import net.dv8tion.jda.core.EmbedBuilder;
 import net.dv8tion.jda.core.entities.MessageEmbed;
+import net.dv8tion.jda.core.entities.TextChannel;
 import net.dv8tion.jda.core.entities.User;
 
 import java.awt.*;
@@ -188,6 +189,11 @@ public class MsgBuilder {
     public static MessageEmbed setStatusDone() {
         MsgBuilder builder = new MsgBuilder(PSW2COLOR, "\uD83D\uDD27", "EDITED STATUS");
         builder.setDescription("Der Status von " + selfMention() + " wurde erfolgreich umgestellt");
+        return builder.build();
+    }
+    public static MessageEmbed setNotifyChannelDone(TextChannel channel) {
+        MsgBuilder builder = new MsgBuilder(PSW2COLOR, "\uD83D\uDD27", "SET NOTIFYCHANNEL");
+        builder.setDescription("Der neue Benachrichtugungschannel ist " + channel.getAsMention() + ".");
         return builder.build();
     }
 }

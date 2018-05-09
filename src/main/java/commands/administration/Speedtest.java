@@ -3,7 +3,7 @@ package commands.administration;
 import commands.CommandInfo;
 import commands.CommandInterface;
 import commands.SecurityLevel;
-import core.Toolkit;
+import tools.Toolkit;
 import fr.bmartel.speedtest.SpeedTestReport;
 import fr.bmartel.speedtest.SpeedTestSocket;
 import fr.bmartel.speedtest.inter.ISpeedTestListener;

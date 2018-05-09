@@ -1,8 +1,8 @@
 package database;
 
 import com.toddway.shelf.ShelfItem;
+import commands.administration.statistics.StatisticContainer;
 import net.dv8tion.jda.core.entities.Game;
-import net.dv8tion.jda.core.entities.User;
 
 import java.util.ArrayList;
 
@@ -18,17 +18,27 @@ public class BSettings {
         item.put(game);
     }
 
-    public ArrayList<String> getBotAdmins() {
+    public ArrayList<String> getBotadmins() {
         ShelfItem item = DATA.getBotItem(keys.BOTADMINS);
         if (item.exists()) return item.get(ArrayList.class);
         return new ArrayList<>();
     }
-    public void setBotAdmins(ArrayList<String> botAdmins) {
+    public void setBotadmins(ArrayList<String> botAdmins) {
         ShelfItem item = DATA.getBotItem(keys.BOTADMINS);
         item.put(botAdmins);
     }
 
+    public StatisticContainer getStatisticContainer() {
+        ShelfItem item = DATA.getBotItem(keys.STATISTICCONTAINER);
+        if (item.exists()) return item.get(StatisticContainer.class);
+        return new StatisticContainer();
+    }
+    public void setStatisticContainer(StatisticContainer statisticContainer) {
+        ShelfItem item = DATA.getBotItem(keys.STATISTICCONTAINER);
+        item.put(statisticContainer);
+    }
+
     public enum keys {
-        GAME, BOTADMINS,
+        GAME, BOTADMINS, STATISTICCONTAINER,
     }
 }

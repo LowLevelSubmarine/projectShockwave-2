@@ -3,7 +3,7 @@ package commands.settings;
 import commands.CommandInfo;
 import commands.CommandInterface;
 import commands.SecurityLevel;
-import core.Toolkit;
+import tools.Toolkit;
 import database.DATA;
 import messages.MsgBuilder;
 import net.dv8tion.jda.core.entities.MessageEmbed;
@@ -22,7 +22,7 @@ public class SetBotadmins implements CommandInterface {
     public void run(CommandInfo info) {
         String method = info.getArgument(1);
         List<User> mentionedUsers = info.getMessage().getMentionedUsers();
-        if (method == null || !Toolkit.isOneOf(method.toLowerCase(), "add", "remove")) {
+        if (method == null || !Toolkit.isOneOf(method.toLowerCase(), "add", "remove") || mentionedUsers.size() != 1) {
             info.wrongSyntax();
             return;
         }
@@ -61,13 +61,13 @@ public class SetBotadmins implements CommandInterface {
 
 
     private static void addBotadmin(User user) {
-        ArrayList<String> botadmins = DATA.bot().getBotAdmins();
+        ArrayList<String> botadmins = DATA.bot().getBotadmins();
         botadmins.add(user.getId());
-        DATA.bot().setBotAdmins(botadmins);
+        DATA.bot().setBotadmins(botadmins);
     }
     private static void removeBotadmin(User user) {
-        ArrayList<String> botadmins = DATA.bot().getBotAdmins();
+        ArrayList<String> botadmins = DATA.bot().getBotadmins();
         botadmins.remove(user.getId());
-        DATA.bot().setBotAdmins(botadmins);
+        DATA.bot().setBotadmins(botadmins);
     }
 }

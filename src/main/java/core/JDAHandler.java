@@ -1,5 +1,6 @@
 package core;
 
+import commands.administration.statistics.StatisticHandler;
 import database.DATA;
 import listeners.GenericGuildMessageReactionListener;
 import listeners.GuildMessageReceivedListener;
@@ -54,7 +55,9 @@ public class JDAHandler {
     }
 
     private static boolean bootPreOperations() {
-        return DATA.boot();
+        boolean success = DATA.boot();
+        StatisticHandler.boot();
+        return success;
     }
 
     //Shuts everything connected to the DiscordAPI entirely down
@@ -62,6 +65,7 @@ public class JDAHandler {
         if (JDAHandler.isRunning()) {
             REASON = reason;
             notifyAboutShudown();
+            StatisticHandler.shutdown();
             JDA.shutdown();
             JDA = null;
             NotifyConsole.log(JDAHandler.class, Statics.TITLE + " is shutting down");
