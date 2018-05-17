@@ -4,6 +4,8 @@ import com.toddway.shelf.ShelfItem;
 import net.dv8tion.jda.core.entities.Guild;
 import net.dv8tion.jda.core.entities.TextChannel;
 
+import java.util.HashMap;
+
 public class GSettings {
 
     private Guild guild;
@@ -34,9 +36,19 @@ public class GSettings {
         item.put(notifyChannel);
     }
 
+    public HashMap<String, String> getSongMap() {
+        ShelfItem item = DATA.getGuildItem(keys.SONGMAP, this.guild);
+        if (item.exists()) return item.get(HashMap.class);
+        return new HashMap<>();
+    }
+    public void setSongMap(HashMap<String, String> songMap) {
+        ShelfItem item = DATA.getGuildItem(keys.SONGMAP, this.guild);
+        item.put(songMap);
+    }
+
 
 
     public enum keys {
-        PREFIX, NOTIFYCHANNEL,
+        PREFIX, NOTIFYCHANNEL, SONGMAP,
     }
 }

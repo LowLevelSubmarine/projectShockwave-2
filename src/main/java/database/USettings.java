@@ -1,6 +1,9 @@
 package database;
 
+import com.toddway.shelf.ShelfItem;
 import net.dv8tion.jda.core.entities.User;
+
+import java.util.HashMap;
 
 public class USettings {
 
@@ -9,7 +12,19 @@ public class USettings {
     public USettings(User user) {
         this.user = user;
     }
+
+    public HashMap<String, String> getSnappys() {
+        ShelfItem item = DATA.getUserItem(keys.SONGMAP, this.user);
+        if (item.exists()) return item.get(HashMap.class);
+        return new HashMap<>();
+    }
+    public void setSnappys(HashMap<String, String> snappys) {
+        ShelfItem item = DATA.getUserItem(keys.SONGMAP, this.user);
+        item.put(snappys);
+    }
+
+
     public enum keys {
-        MAP,
+        SONGMAP,
     }
 }

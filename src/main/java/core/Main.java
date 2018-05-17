@@ -8,11 +8,9 @@ import commands.administration.Statistics;
 import commands.administration.statistics.GuildDetails;
 import commands.administration.statistics.RunningOn;
 import commands.administration.statistics.StatisticHandler;
+import commands.administration.statistics.UserDetails;
 import commands.information.*;
-import commands.settings.SetBotadmins;
-import commands.settings.SetNotifyChannel;
-import commands.settings.SetPrefix;
-import commands.settings.SetStatus;
+import commands.settings.*;
 import database.DATA;
 import database.config.BotUser;
 
@@ -53,13 +51,17 @@ public class Main {
         CommandHandler.addCommand("ping", Ping.class);
         CommandHandler.addCommand("version", Version.class);
         CommandHandler.addCommand("setbotadmins", SetBotadmins.class);
+        CommandHandler.addCommand("setbotsnappys", SetBotSnappys.class);
         CommandHandler.addCommand("setnotifychannel", SetNotifyChannel.class);
         CommandHandler.addCommand("setprefix", SetPrefix.class);
+        CommandHandler.addCommand("setserversnappys", SetServerSnappys.class);
+        CommandHandler.addCommand("setsnappys", SetSnappys.class);
         CommandHandler.addCommand("setstatus", SetStatus.class);
     }
 
     private static void addStatistics() {
         StatisticHandler.addStatistic(new RunningOn());
         StatisticHandler.addStatistic(new GuildDetails());
+        StatisticHandler.addStatistic(new UserDetails());
     }
 }

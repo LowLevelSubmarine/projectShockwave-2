@@ -5,6 +5,7 @@ import commands.administration.statistics.StatisticContainer;
 import net.dv8tion.jda.core.entities.Game;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 
 public class BSettings {
 
@@ -38,7 +39,17 @@ public class BSettings {
         item.put(statisticContainer);
     }
 
+    public HashMap<String, String> getSnappys() {
+        ShelfItem item = DATA.getBotItem(keys.SONGMAP);
+        if (item.exists()) return item.get(HashMap.class);
+        return new HashMap<>();
+    }
+    public void setSnappys(HashMap<String, String> songMap) {
+        ShelfItem item = DATA.getBotItem(keys.SONGMAP);
+        item.put(songMap);
+    }
+
     public enum keys {
-        GAME, BOTADMINS, STATISTICCONTAINER,
+        GAME, BOTADMINS, STATISTICCONTAINER, SONGMAP,
     }
 }

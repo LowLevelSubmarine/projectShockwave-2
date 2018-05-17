@@ -196,4 +196,14 @@ public class MsgBuilder {
         builder.setDescription("Der neue Benachrichtugungschannel ist " + channel.getAsMention() + ".");
         return builder.build();
     }
+    public static MessageEmbed addedSnappy(String key, String value) {
+        MsgBuilder builder = new MsgBuilder(PSW2COLOR, "", "ADDED SNAPPY");
+        builder.setDescription("Dem Snappy " + key + " wurde der Wert " + value + " zugewiesen");
+        return builder.build();
+    }
+    public static MessageEmbed removedSnappy(String key) {
+        MsgBuilder builder = new MsgBuilder(PSW2COLOR, "", "REMOVED SNAPPY");
+        builder.setDescription("Der Snappy " + key + " wurde erfolgreich entfernt");
+        return builder.build();
+    }
 }
