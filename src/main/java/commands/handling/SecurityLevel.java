@@ -1,6 +1,6 @@
-package commands;
+package commands.handling;
 
-import database.DATA;
+import data.DATA;
 import net.dv8tion.jda.core.Permission;
 import net.dv8tion.jda.core.entities.Member;
 import net.dv8tion.jda.core.entities.User;

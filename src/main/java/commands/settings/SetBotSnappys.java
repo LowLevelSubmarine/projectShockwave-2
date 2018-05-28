@@ -1,15 +1,26 @@
 package commands.settings;
 
-import commands.CommandInfo;
-import commands.CommandInterface;
-import commands.SecurityLevel;
-import database.DATA;
+import commands.handling.CommandInfo;
+import commands.handling.CommandInterface;
+import commands.handling.CommandType;
+import commands.handling.SecurityLevel;
+import data.DATA;
 import messages.MsgBuilder;
 import net.dv8tion.jda.core.entities.MessageEmbed;
 
 import java.util.HashMap;
 
 public class SetBotSnappys implements CommandInterface {
+    @Override
+    public String invoke() {
+        return "setbotsnappys";
+    }
+
+    @Override
+    public CommandType type() {
+        return CommandType.SETTINGS;
+    }
+
     @Override
     public SecurityLevel securityLevel() {
         return SecurityLevel.BOT;
@@ -19,7 +30,7 @@ public class SetBotSnappys implements CommandInterface {
     public void run(CommandInfo info) {
         //Get values
         String key = info.getArgument(1);
-        String value = info.getArgument(2);
+        String value = info.getRaw(2);
 
         //Handle wrong syntax
         if (key == null) {
@@ -37,11 +48,6 @@ public class SetBotSnappys implements CommandInterface {
             embed = MsgBuilder.removedSnappy(key);
         }
         info.getChannel().sendMessage(embed).queue();
-    }
-
-    @Override
-    public String category() {
-        return "Einstellungen";
     }
 
     @Override

@@ -1,7 +1,7 @@
 package listeners;
 
-import commands.CommandHandler;
-import commands.CommandInfo;
+import commands.handling.CommandHandler;
+import commands.handling.CommandInfo;
 import net.dv8tion.jda.core.events.message.guild.GuildMessageReceivedEvent;
 import net.dv8tion.jda.core.hooks.ListenerAdapter;
 

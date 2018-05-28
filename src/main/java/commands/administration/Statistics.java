@@ -1,13 +1,24 @@
 package commands.administration;
 
-import commands.CommandInfo;
-import commands.CommandInterface;
-import commands.SecurityLevel;
-import commands.administration.statistics.StatisticHandler;
+import commands.handling.CommandInfo;
+import commands.handling.CommandInterface;
+import commands.handling.CommandType;
+import commands.handling.SecurityLevel;
+import commands.statistic_handling.StatisticHandler;
 
 import java.io.File;
 
 public class Statistics implements CommandInterface {
+
+    @Override
+    public String invoke() {
+        return "statistics";
+    }
+
+    @Override
+    public CommandType type() {
+        return CommandType.ADMINISTRATION;
+    }
 
     @Override
     public SecurityLevel securityLevel() {
@@ -18,11 +29,6 @@ public class Statistics implements CommandInterface {
     public void run(CommandInfo info) {
         File file = StatisticHandler.renderStatistics();
         if (file != null) info.getChannel().sendFile(file).queue();
-    }
-
-    @Override
-    public String category() {
-        return "Administration";
     }
 
     @Override

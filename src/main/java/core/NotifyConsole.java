@@ -1,6 +1,6 @@
 package core;
 
-import database.DATA;
+import data.DATA;
 
 import java.time.LocalDateTime;
 

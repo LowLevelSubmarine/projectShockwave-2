@@ -1,7 +1,7 @@
 package listeners;
 
-import commands.ButtonEvent;
-import commands.ButtonHandler;
+import commands.handling.ButtonEvent;
+import commands.handling.ButtonHandler;
 import net.dv8tion.jda.core.events.message.guild.react.GenericGuildMessageReactionEvent;
 import net.dv8tion.jda.core.hooks.ListenerAdapter;
 

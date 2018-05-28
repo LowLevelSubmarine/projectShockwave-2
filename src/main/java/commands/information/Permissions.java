@@ -1,13 +1,24 @@
 package commands.information;
 
-import commands.CommandInfo;
-import commands.CommandInterface;
-import commands.SecurityLevel;
+import commands.handling.CommandInfo;
+import commands.handling.CommandInterface;
+import commands.handling.CommandType;
+import commands.handling.SecurityLevel;
 import messages.MsgBuilder;
 import net.dv8tion.jda.core.entities.MessageEmbed;
 import net.dv8tion.jda.core.entities.PrivateChannel;
 
 public class Permissions implements CommandInterface {
+    @Override
+    public String invoke() {
+        return "permissions";
+    }
+
+    @Override
+    public CommandType type() {
+        return CommandType.INFORMATION;
+    }
+
     @Override
     public SecurityLevel securityLevel() {
         return SecurityLevel.NONE;
@@ -19,11 +30,6 @@ public class Permissions implements CommandInterface {
         MessageEmbed embed = MsgBuilder.permissions();
         PrivateChannel privateChannel = info.getUser().openPrivateChannel().complete();
         privateChannel.sendMessage(embed).queue();
-    }
-
-    @Override
-    public String category() {
-        return "Infos";
     }
 
     @Override

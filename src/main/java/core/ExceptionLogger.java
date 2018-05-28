@@ -1,6 +1,6 @@
 package core;
 
-import database.DATA;
+import data.DATA;
 import fr.bmartel.protocol.http.utils.ExceptionUtils;
 import messages.MsgBuilder;
 import net.dv8tion.jda.core.entities.PrivateChannel;

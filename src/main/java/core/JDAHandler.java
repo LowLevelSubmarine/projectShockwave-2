@@ -1,7 +1,7 @@
 package core;
 
-import commands.administration.statistics.StatisticHandler;
-import database.DATA;
+import commands.statistic_handling.StatisticHandler;
+import data.DATA;
 import listeners.GenericGuildMessageReactionListener;
 import listeners.GuildMessageReceivedListener;
 import listeners.ReadyListener;
@@ -93,7 +93,12 @@ public class JDAHandler {
         System.exit(1);
     }
     public static String getUsername() {
-        return JDA.getSelfUser().getName();
+        if (JDA != null) {
+            return JDA.getSelfUser().getName();
+        } else {
+            return "MISSING USERNAME";
+        }
+
     }
 
     private static void notifyAboutShudown() {

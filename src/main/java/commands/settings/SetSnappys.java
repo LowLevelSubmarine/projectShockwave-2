@@ -1,9 +1,10 @@
 package commands.settings;
 
-import commands.CommandInfo;
-import commands.CommandInterface;
-import commands.SecurityLevel;
-import database.DATA;
+import commands.handling.CommandInfo;
+import commands.handling.CommandInterface;
+import commands.handling.CommandType;
+import commands.handling.SecurityLevel;
+import data.DATA;
 import messages.MsgBuilder;
 import net.dv8tion.jda.core.entities.MessageEmbed;
 import net.dv8tion.jda.core.entities.User;
@@ -15,6 +16,16 @@ public class SetSnappys implements CommandInterface {
     User user;
 
     @Override
+    public String invoke() {
+        return "setsnappys";
+    }
+
+    @Override
+    public CommandType type() {
+        return CommandType.SETTINGS;
+    }
+
+    @Override
     public SecurityLevel securityLevel() {
         return SecurityLevel.NONE;
     }
@@ -23,7 +34,7 @@ public class SetSnappys implements CommandInterface {
     public void run(CommandInfo info) {
         //Get the values
         String value = info.getArgument(1);
-        String key = info.getArgument(2);
+        String key = info.getRaw(2);
 
         //Report wrong syntax
         if (key == null) {
@@ -42,11 +53,6 @@ public class SetSnappys implements CommandInterface {
             embed = MsgBuilder.removedSnappy(key);
         }
         info.getChannel().sendMessage(embed).queue();
-    }
-
-    @Override
-    public String category() {
-        return "Einstellungen";
     }
 
     @Override

@@ -1,13 +1,24 @@
 package commands.information;
 
-import commands.CommandInfo;
-import commands.CommandInterface;
-import commands.SecurityLevel;
+import commands.handling.CommandInfo;
+import commands.handling.CommandInterface;
+import commands.handling.CommandType;
+import commands.handling.SecurityLevel;
 import messages.MsgBuilder;
 import net.dv8tion.jda.core.entities.MessageEmbed;
 import net.dv8tion.jda.core.entities.TextChannel;
 
 public class Ping implements CommandInterface {
+    @Override
+    public String invoke() {
+        return "ping";
+    }
+
+    @Override
+    public CommandType type() {
+        return CommandType.INFORMATION;
+    }
+
     @Override
     public SecurityLevel securityLevel() {
         return SecurityLevel.NONE;
@@ -19,11 +30,6 @@ public class Ping implements CommandInterface {
         TextChannel textChannel = info.getChannel();
         MessageEmbed embed = MsgBuilder.ping(ping);
         textChannel.sendMessage(embed).queue();
-    }
-
-    @Override
-    public String category() {
-        return "Infos";
     }
 
     @Override

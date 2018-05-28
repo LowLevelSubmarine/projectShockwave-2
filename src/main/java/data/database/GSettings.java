@@ -1,6 +1,7 @@
-package database;
+package data.database;
 
 import com.toddway.shelf.ShelfItem;
+import data.DATA;
 import net.dv8tion.jda.core.entities.Guild;
 import net.dv8tion.jda.core.entities.TextChannel;
 
@@ -36,19 +37,31 @@ public class GSettings {
         item.put(notifyChannel);
     }
 
-    public HashMap<String, String> getSongMap() {
+    public HashMap<String, String> getSnappys() {
         ShelfItem item = DATA.getGuildItem(keys.SONGMAP, this.guild);
         if (item.exists()) return item.get(HashMap.class);
         return new HashMap<>();
     }
-    public void setSongMap(HashMap<String, String> songMap) {
+    public void setSnappys(HashMap<String, String> songMap) {
         ShelfItem item = DATA.getGuildItem(keys.SONGMAP, this.guild);
         item.put(songMap);
+    }
+
+    public int getVolume() {
+        ShelfItem item = DATA.getGuildItem(keys.VOLUME, this.guild);
+        if (item.exists()) {
+            return item.get(Integer.class);
+        }
+        return DATA.config().getBackupVolume();
+    }
+    public void setVolume(int volume) {
+        ShelfItem item = DATA.getGuildItem(keys.VOLUME, this.guild);
+        item.put(volume);
     }
 
 
 
     public enum keys {
-        PREFIX, NOTIFYCHANNEL, SONGMAP,
+        PREFIX, NOTIFYCHANNEL, SONGMAP, VOLUME,
     }
 }

@@ -1,4 +1,4 @@
-package database.config;
+package data.config;
 
 import com.thoughtworks.xstream.XStream;
 import tools.Toolkit;
@@ -15,6 +15,7 @@ public class Config {
     private String hoster;
     private String backupPrefix;
     private String backupGame;
+    private String backupVolume;
     private String debugMode;
     private List<String> debugSupporters;
 
@@ -27,6 +28,7 @@ public class Config {
         this.hoster = "user-id of the bot hoster";
         this.backupPrefix = "the backupPrefix";
         this.backupGame = "The status";
+        this.backupVolume = "value between 0 and 200";
         this.debugMode = "false or true";
         this.debugSupporters = new ArrayList<>();
         this.debugSupporters.add("user-id of a debug-supporter");
@@ -87,6 +89,19 @@ public class Config {
             return "The field \"backupGame\" inside of the config-file is empty";
         }
 
+        //Check if "backupVolume" is an integer and if so if it is between 0 and 200;
+        if (this.backupVolume.isEmpty()) {
+            return "The field \"backupVolume\" inside of the config-file is empty";
+        }
+        try {
+            int volume = Integer.parseInt(this.backupVolume);
+            if (volume < 0 || volume > 200) {
+                return "The field \"backupVolume\" inside of the config-file is not a value between 0 and 200";
+            }
+        } catch (NumberFormatException e) {
+            return "The field \"backupVolume\" inside of the config-file is not a valid number";
+        }
+
         //Check if "debugMode" is empty or neither equals true nor false
         if (this.debugMode.isEmpty()) {
             return "The field \"debugMode\" inside of the config-file is empty";
@@ -141,6 +156,14 @@ public class Config {
 
     public Game getBackupGame() {
         return Game.playing(this.backupGame);
+    }
+
+    public int getBackupVolume() {
+        try {
+            return Toolkit.limit(Integer.parseInt(this.backupVolume), 0, 200);
+        } catch (NumberFormatException e) {
+            return 100;
+        }
     }
 
     public boolean debugMode() {

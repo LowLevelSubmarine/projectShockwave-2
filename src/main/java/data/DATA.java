@@ -1,4 +1,4 @@
-package database;
+package data;
 
 import com.thoughtworks.xstream.XStream;
 import com.thoughtworks.xstream.converters.ConversionException;
@@ -6,7 +6,10 @@ import com.toddway.shelf.Shelf;
 import com.toddway.shelf.ShelfItem;
 import core.JDAHandler;
 import core.NotifyConsole;
-import database.config.Config;
+import data.config.Config;
+import data.database.BSettings;
+import data.database.GSettings;
+import data.database.USettings;
 import net.dv8tion.jda.core.entities.Guild;
 import net.dv8tion.jda.core.entities.User;
 
@@ -49,13 +52,13 @@ public class DATA {
         return CONFIG;
     }
 
-    static ShelfItem getUserItem(USettings.keys key, User user) {
+    public static ShelfItem getUserItem(USettings.keys key, User user) {
         return USHELF.item(user.getId() + "_" + key.name());
     }
-    static ShelfItem getGuildItem(GSettings.keys key, Guild guild) {
+    public static ShelfItem getGuildItem(GSettings.keys key, Guild guild) {
         return GSHELF.item(guild.getId() + "_" + key.name());
     }
-    static ShelfItem getBotItem(BSettings.keys key) {
+    public static ShelfItem getBotItem(BSettings.keys key) {
         return BSHELF.item(key.name());
     }
 

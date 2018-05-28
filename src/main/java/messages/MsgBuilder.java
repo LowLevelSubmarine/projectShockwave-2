@@ -1,7 +1,7 @@
 package messages;
 
-import commands.CommandHandler;
-import commands.SecurityLevel;
+import commands.handling.CommandHandler;
+import commands.handling.SecurityLevel;
 import core.JDAHandler;
 import core.Statics;
 import fr.bmartel.protocol.http.utils.ExceptionUtils;
@@ -204,6 +204,11 @@ public class MsgBuilder {
     public static MessageEmbed removedSnappy(String key) {
         MsgBuilder builder = new MsgBuilder(PSW2COLOR, "", "REMOVED SNAPPY");
         builder.setDescription("Der Snappy " + key + " wurde erfolgreich entfernt");
+        return builder.build();
+    }
+    public static MessageEmbed setVolume(int volume) {
+        MsgBuilder builder = new MsgBuilder(PSW2COLOR, "", "SET VOLUME");
+        builder.setDescription("Die Lautstärke wurde erfolgreich auf " + volume + "% gesteltt");
         return builder.build();
     }
 }

@@ -1,6 +1,6 @@
 package commands.administration;
 
-import commands.*;
+import commands.handling.*;
 import core.JDAHandler;
 import messages.MsgBuilder;
 import net.dv8tion.jda.core.entities.Message;
@@ -13,6 +13,16 @@ public class Restart implements CommandInterface, ButtonHook {
     private static final String buttonDeny = "❌";
     private String restartReason;
     private User user;
+
+    @Override
+    public String invoke() {
+        return "restart";
+    }
+
+    @Override
+    public CommandType type() {
+        return CommandType.ADMINISTRATION;
+    }
 
     @Override
     public SecurityLevel securityLevel() {
@@ -46,11 +56,6 @@ public class Restart implements CommandInterface, ButtonHook {
                     break;
             }
         }
-    }
-
-    @Override
-    public String category() {
-        return "Administration";
     }
 
     @Override

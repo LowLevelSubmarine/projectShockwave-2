@@ -1,9 +1,10 @@
 package commands.settings;
 
-import commands.CommandInfo;
-import commands.CommandInterface;
-import commands.SecurityLevel;
-import database.DATA;
+import commands.handling.CommandInfo;
+import commands.handling.CommandInterface;
+import commands.handling.CommandType;
+import commands.handling.SecurityLevel;
+import data.DATA;
 import messages.MsgBuilder;
 import net.dv8tion.jda.core.entities.MessageEmbed;
 import net.dv8tion.jda.core.entities.TextChannel;
@@ -11,6 +12,16 @@ import net.dv8tion.jda.core.entities.TextChannel;
 import java.util.List;
 
 public class SetNotifyChannel implements CommandInterface {
+
+    @Override
+    public String invoke() {
+        return "setnotifychannel";
+    }
+
+    @Override
+    public CommandType type() {
+        return CommandType.SETTINGS;
+    }
 
     @Override
     public SecurityLevel securityLevel() {
@@ -27,11 +38,6 @@ public class SetNotifyChannel implements CommandInterface {
         DATA.guild(info.getGuild()).setNotifyChannel(mentionedChannels.get(0));
         MessageEmbed embed = MsgBuilder.setNotifyChannelDone(mentionedChannels.get(0));
         info.getChannel().sendMessage(embed).queue();
-    }
-
-    @Override
-    public String category() {
-        return "Server";
     }
 
     @Override

@@ -1,16 +1,27 @@
 package commands.information;
 
-import commands.CommandInfo;
-import commands.CommandInterface;
-import commands.SecurityLevel;
+import commands.handling.CommandInfo;
+import commands.handling.CommandInterface;
+import commands.handling.CommandType;
+import commands.handling.SecurityLevel;
 import core.JDAHandler;
 import core.Statics;
-import database.DATA;
+import data.DATA;
 import messages.MsgBuilder;
 import net.dv8tion.jda.core.entities.MessageEmbed;
 import net.dv8tion.jda.core.entities.User;
 
 public class Info implements CommandInterface {
+    @Override
+    public String invoke() {
+        return "info";
+    }
+
+    @Override
+    public CommandType type() {
+        return CommandType.INFORMATION;
+    }
+
     @Override
     public SecurityLevel securityLevel() {
         return SecurityLevel.NONE;
@@ -30,11 +41,6 @@ public class Info implements CommandInterface {
         //Send message
         MessageEmbed embed = MsgBuilder.info(hosterMention, devMention, invite);
         info.getChannel().sendMessage(embed).queue();
-    }
-
-    @Override
-    public String category() {
-        return "Infos";
     }
 
     @Override

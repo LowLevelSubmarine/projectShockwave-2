@@ -1,15 +1,22 @@
 package commands.information;
 
-import commands.CommandHandler;
-import commands.CommandInfo;
-import commands.CommandInterface;
-import commands.SecurityLevel;
-import database.DATA;
+import commands.handling.*;
+import data.DATA;
 import messages.MsgBuilder;
 import net.dv8tion.jda.core.entities.MessageEmbed;
 import net.dv8tion.jda.core.entities.PrivateChannel;
 
 public class Help implements CommandInterface {
+    @Override
+    public String invoke() {
+        return "help";
+    }
+
+    @Override
+    public CommandType type() {
+        return CommandType.INFORMATION;
+    }
+
     @Override
     public SecurityLevel securityLevel() {
         return SecurityLevel.NONE;
@@ -36,11 +43,6 @@ public class Help implements CommandInterface {
                 info.getChannel().sendMessage(embed).queue();
             }
         }
-    }
-
-    @Override
-    public String category() {
-        return "Infos";
     }
 
     @Override

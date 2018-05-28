@@ -1,6 +1,7 @@
-package database;
+package data.database;
 
 import com.toddway.shelf.ShelfItem;
+import data.DATA;
 import net.dv8tion.jda.core.entities.User;
 
 import java.util.HashMap;

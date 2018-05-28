@@ -1,8 +1,8 @@
 package listeners;
 
-import commands.CommandHandler;
+import commands.handling.CommandHandler;
 import core.JDAHandler;
-import database.DATA;
+import data.DATA;
 import messages.MsgBuilder;
 import net.dv8tion.jda.core.JDA;
 import net.dv8tion.jda.core.entities.Guild;

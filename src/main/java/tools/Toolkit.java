@@ -122,4 +122,29 @@ public class Toolkit {
             return "N";
         }
     }
+
+    public static int limit(int value, int min, int max) {
+        if (value > max) {
+            return max;
+        } else if (value < min) {
+            return min;
+        } else {
+            return value;
+        }
+    }
+
+    public static Integer getInteger(String string) {
+        try {
+            return Integer.parseInt(string);
+        } catch (NumberFormatException e) {
+            return null;
+        }
+    }
+
+    public static boolean startsWith(String a, String... b) {
+        for (String c : b) {
+            if (a.startsWith(c)) return true;
+        }
+        return false;
+    }
 }

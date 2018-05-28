@@ -1,7 +1,8 @@
-package database;
+package data.database;
 
 import com.toddway.shelf.ShelfItem;
-import commands.administration.statistics.StatisticContainer;
+import commands.statistic_handling.StatisticContainer;
+import data.DATA;
 import net.dv8tion.jda.core.entities.Game;
 
 import java.util.ArrayList;

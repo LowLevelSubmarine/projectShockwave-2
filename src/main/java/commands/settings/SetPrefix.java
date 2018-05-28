@@ -1,15 +1,26 @@
 package commands.settings;
 
-import commands.CommandInfo;
-import commands.CommandInterface;
-import commands.SecurityLevel;
+import commands.handling.CommandInfo;
+import commands.handling.CommandInterface;
+import commands.handling.CommandType;
+import commands.handling.SecurityLevel;
 import core.Statics;
 import tools.Toolkit;
-import database.DATA;
+import data.DATA;
 import messages.MsgBuilder;
 import net.dv8tion.jda.core.entities.MessageEmbed;
 
 public class SetPrefix implements CommandInterface {
+
+    @Override
+    public String invoke() {
+        return "setprefix";
+    }
+
+    @Override
+    public CommandType type() {
+        return CommandType.SETTINGS;
+    }
 
     @Override
     public SecurityLevel securityLevel() {
@@ -37,11 +48,6 @@ public class SetPrefix implements CommandInterface {
         //Send message
         MessageEmbed embed = MsgBuilder.setPrefixDone(oldPrefix, newPrefix);
         info.getChannel().sendMessage(embed).queue();
-    }
-
-    @Override
-    public String category() {
-        return "Infos";
     }
 
     @Override

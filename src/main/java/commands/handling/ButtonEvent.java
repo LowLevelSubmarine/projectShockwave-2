@@ -1,4 +1,4 @@
-package commands;
+package commands.handling;
 
 import net.dv8tion.jda.core.entities.Guild;
 import net.dv8tion.jda.core.entities.Member;

@@ -1,18 +1,19 @@
 package core;
 
-import commands.CommandHandler;
+import commands.handling.CommandHandler;
 import commands.administration.Restart;
 import commands.administration.Shutdown;
 import commands.administration.Speedtest;
 import commands.administration.Statistics;
-import commands.administration.statistics.GuildDetails;
-import commands.administration.statistics.RunningOn;
-import commands.administration.statistics.StatisticHandler;
-import commands.administration.statistics.UserDetails;
+import commands.music.Play;
+import commands.statistic_handling.GuildDetails;
+import commands.statistic_handling.RunningOn;
+import commands.statistic_handling.StatisticHandler;
+import commands.statistic_handling.UserDetails;
 import commands.information.*;
 import commands.settings.*;
-import database.DATA;
-import database.config.BotUser;
+import data.DATA;
+import data.config.BotUser;
 
 
 public class Main {
@@ -38,25 +39,30 @@ public class Main {
         NotifyConsole.log(Main.class, Statics.TITLE + " is using the \"" + botUser.getName() + "\" token");
     }
 
-    private static void addCommands() {
-        CommandHandler.addCommand("restart", Restart.class);
-        CommandHandler.addCommand("shutdown", Shutdown.class);
-        CommandHandler.addCommand("speedtest", Speedtest.class);
-        CommandHandler.addCommand("statistics", Statistics.class);
-        CommandHandler.addCommand("changelog", Changelog.class);
-        CommandHandler.addCommand("help", Help.class);
-        CommandHandler.addCommand("info", Info.class);
-        CommandHandler.addCommand("invite", Invite.class);
-        CommandHandler.addCommand("permissions", Permissions.class);
-        CommandHandler.addCommand("ping", Ping.class);
-        CommandHandler.addCommand("version", Version.class);
-        CommandHandler.addCommand("setbotadmins", SetBotadmins.class);
-        CommandHandler.addCommand("setbotsnappys", SetBotSnappys.class);
-        CommandHandler.addCommand("setnotifychannel", SetNotifyChannel.class);
-        CommandHandler.addCommand("setprefix", SetPrefix.class);
-        CommandHandler.addCommand("setserversnappys", SetServerSnappys.class);
-        CommandHandler.addCommand("setsnappys", SetSnappys.class);
-        CommandHandler.addCommand("setstatus", SetStatus.class);
+    public static void addCommands() {
+        //Administration
+        CommandHandler.addCommand(new Restart());
+        CommandHandler.addCommand(new Shutdown());
+        CommandHandler.addCommand(new Speedtest());
+        CommandHandler.addCommand(new Statistics());
+        //Information
+        CommandHandler.addCommand(new Changelog());
+        CommandHandler.addCommand(new Help());
+        CommandHandler.addCommand(new Info());
+        CommandHandler.addCommand(new Invite());
+        CommandHandler.addCommand(new Permissions());
+        CommandHandler.addCommand(new Ping());
+        CommandHandler.addCommand(new Version());
+        //Music
+        CommandHandler.addCommand(new Play());
+        //Settings
+        CommandHandler.addCommand(new SetBotadmins());
+        CommandHandler.addCommand(new SetBotSnappys());
+        CommandHandler.addCommand(new SetNotifyChannel());
+        CommandHandler.addCommand(new SetPrefix());
+        CommandHandler.addCommand(new SetServerSnappys());
+        CommandHandler.addCommand(new SetSnappys());
+        CommandHandler.addCommand(new SetStatus());
     }
 
     private static void addStatistics() {

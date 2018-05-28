@@ -1,8 +1,9 @@
 package commands.information;
 
-import commands.CommandInfo;
-import commands.CommandInterface;
-import commands.SecurityLevel;
+import commands.handling.CommandInfo;
+import commands.handling.CommandInterface;
+import commands.handling.CommandType;
+import commands.handling.SecurityLevel;
 import messages.MsgBuilder;
 import net.dv8tion.jda.core.entities.MessageEmbed;
 
@@ -10,6 +11,16 @@ public class Invite implements CommandInterface {
 
     private static final String OAUTH2_START = "https://discordapp.com/api/oauth2/authorize?client_id=";
     private static final String OAUTH2_END = "&permissions=8&scope=bot";
+
+    @Override
+    public String invoke() {
+        return "invite";
+    }
+
+    @Override
+    public CommandType type() {
+        return CommandType.INFORMATION;
+    }
 
     @Override
     public SecurityLevel securityLevel() {
@@ -25,11 +36,6 @@ public class Invite implements CommandInterface {
         //Send message
         MessageEmbed embed = MsgBuilder.invite(botInvite);
         info.getChannel().sendMessage(embed).queue();
-    }
-
-    @Override
-    public String category() {
-        return "Infos";
     }
 
     @Override

@@ -1,4 +1,4 @@
-package database.config;
+package data.config;
 
 public class BotUser {
     private String name = "The name of the token";

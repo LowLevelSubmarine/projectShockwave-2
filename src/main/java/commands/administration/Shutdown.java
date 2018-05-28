@@ -1,6 +1,6 @@
 package commands.administration;
 
-import commands.*;
+import commands.handling.*;
 import core.JDAHandler;
 import messages.MsgBuilder;
 import net.dv8tion.jda.core.entities.Message;
@@ -13,6 +13,16 @@ public class Shutdown implements CommandInterface, ButtonHook {
     private static final String buttonDeny = "❌";
     private String shutdownReason;
     private User user;
+
+    @Override
+    public String invoke() {
+        return "shutdown";
+    }
+
+    @Override
+    public CommandType type() {
+        return CommandType.ADMINISTRATION;
+    }
 
     @Override
     public SecurityLevel securityLevel() {
@@ -48,11 +58,6 @@ public class Shutdown implements CommandInterface, ButtonHook {
         } else {
             ButtonHandler.registerTicket(event, this);
         }
-    }
-
-    @Override
-    public String category() {
-        return "Administration";
     }
 
     @Override

@@ -1,10 +1,11 @@
 package commands.settings;
 
-import commands.CommandInfo;
-import commands.CommandInterface;
-import commands.SecurityLevel;
+import commands.handling.CommandInfo;
+import commands.handling.CommandInterface;
+import commands.handling.CommandType;
+import commands.handling.SecurityLevel;
 import tools.Toolkit;
-import database.DATA;
+import data.DATA;
 import messages.MsgBuilder;
 import net.dv8tion.jda.core.entities.MessageEmbed;
 import net.dv8tion.jda.core.entities.User;
@@ -13,6 +14,16 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class SetBotadmins implements CommandInterface {
+    @Override
+    public String invoke() {
+        return "setbotadmins";
+    }
+
+    @Override
+    public CommandType type() {
+        return CommandType.SETTINGS;
+    }
+
     @Override
     public SecurityLevel securityLevel() {
         return SecurityLevel.OWNER;
@@ -36,11 +47,6 @@ public class SetBotadmins implements CommandInterface {
             MessageEmbed embed = MsgBuilder.removeBotadminDone(mentionedUsers.get(0));
             info.getChannel().sendMessage(embed).queue();
         }
-    }
-
-    @Override
-    public String category() {
-        return "Administration";
     }
 
     @Override

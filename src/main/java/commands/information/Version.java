@@ -1,13 +1,24 @@
 package commands.information;
 
-import commands.CommandInfo;
-import commands.CommandInterface;
-import commands.SecurityLevel;
+import commands.handling.CommandInfo;
+import commands.handling.CommandInterface;
+import commands.handling.CommandType;
+import commands.handling.SecurityLevel;
 import core.VersionInfo;
 import messages.MsgBuilder;
 import net.dv8tion.jda.core.entities.MessageEmbed;
 
 public class Version implements CommandInterface {
+    @Override
+    public String invoke() {
+        return "version";
+    }
+
+    @Override
+    public CommandType type() {
+        return CommandType.INFORMATION;
+    }
+
     @Override
     public SecurityLevel securityLevel() {
         return SecurityLevel.NONE;
@@ -22,11 +33,6 @@ public class Version implements CommandInterface {
         //Build and send message
         MessageEmbed embed = MsgBuilder.version(versionNumber, versionTitle);
         info.getChannel().sendMessage(embed).queue();
-    }
-
-    @Override
-    public String category() {
-        return "Infos";
     }
 
     @Override

@@ -1,8 +1,9 @@
 package commands.administration;
 
-import commands.CommandInfo;
-import commands.CommandInterface;
-import commands.SecurityLevel;
+import commands.handling.CommandInfo;
+import commands.handling.CommandInterface;
+import commands.handling.CommandType;
+import commands.handling.SecurityLevel;
 import tools.Toolkit;
 import fr.bmartel.speedtest.SpeedTestReport;
 import fr.bmartel.speedtest.SpeedTestSocket;
@@ -27,6 +28,16 @@ public class Speedtest implements CommandInterface, ISpeedTestListener {
     private SpeedTestSocket speedtest = new SpeedTestSocket();
     private String downloadProgress = null;
     private String uploadProgress = null;
+
+    @Override
+    public String invoke() {
+        return "speedtest";
+    }
+
+    @Override
+    public CommandType type() {
+        return CommandType.ADMINISTRATION;
+    }
 
     @Override
     public SecurityLevel securityLevel() {
@@ -61,11 +72,6 @@ public class Speedtest implements CommandInterface, ISpeedTestListener {
     @Override
     public void onError(SpeedTestError speedTestError, String errorMessage) {
         System.out.println(errorMessage);
-    }
-
-    @Override
-    public String category() {
-        return "Administration";
     }
 
     @Override
