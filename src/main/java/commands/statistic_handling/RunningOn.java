@@ -4,7 +4,7 @@ import core.JDAHandler;
 import net.dv8tion.jda.core.entities.Guild;
 import tools.Table;
 
-public class RunningOn implements StatisticInterface {
+public class RunningOn implements StatInterface {
     @Override
     public String title() {
         return JDAHandler.getUsername() + " is running on following Guilds:";

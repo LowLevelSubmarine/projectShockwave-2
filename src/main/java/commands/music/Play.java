@@ -42,7 +42,7 @@ public class Play implements CommandInterface, TrackSearchResultHook {
         //Command stuff
         this.member = info.getMember();
         identifier = makeSearchstring(identifier);
-        GuildPlayer.searchTracks(identifier, this);
+        GuildPlayerManager.searchTracks(identifier, this);
     }
 
     @Override
@@ -61,8 +61,8 @@ public class Play implements CommandInterface, TrackSearchResultHook {
     }
 
     @Override
-    public void onTracksFound(TrackContainer tracks) {
-        PlayerHandler.getOrCreateQueue(this.member.getGuild()).queue(new QueueItem(tracks.getFirstResult(), this.member));
+    public void onTracksFound(TrackSearchResultContainer tracks) {
+        GuildPlayerManager.getGuildPlayer(this.member.getGuild()).queue(new QueueItem(tracks.getFirstResult(), this.member));
     }
 
     @Override

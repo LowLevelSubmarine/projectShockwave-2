@@ -50,7 +50,7 @@ public class SetStatus implements CommandInterface {
 
     @Override
     public String description() {
-        return "Stellt ein was " + JDAHandler.getUsername() + " als \"spielt/streamt/guckt/hört ...\" anzeigt" ;
+        return "Stellt ein was " + JDAHandler.getUsername() + " als \"spielt/streamt/schaut/hört auf ...\" anzeigt" ;
     }
 
     @Override

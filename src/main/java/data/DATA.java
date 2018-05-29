@@ -4,7 +4,7 @@ import com.thoughtworks.xstream.XStream;
 import com.thoughtworks.xstream.converters.ConversionException;
 import com.toddway.shelf.Shelf;
 import com.toddway.shelf.ShelfItem;
-import core.JDAHandler;
+import core.ExceptionLogger;
 import core.NotifyConsole;
 import data.config.Config;
 import data.database.BSettings;
@@ -63,9 +63,9 @@ public class DATA {
     }
 
     private static void createShelfs() {
-        USHELF = createShelf(FOLDERNAME, UFILENAME);
-        GSHELF = createShelf(FOLDERNAME, GFILENAME);
-        BSHELF = createShelf(FOLDERNAME, BFILENAME);
+        USHELF = createShelf(UFILENAME);
+        GSHELF = createShelf(GFILENAME);
+        BSHELF = createShelf(BFILENAME);
     }
     private static boolean loadConfigXML() {
         try {
@@ -89,17 +89,18 @@ public class DATA {
             NotifyConsole.log(DATA.class, "An error accoured while reading the \"" + CONFIGPATH + "\" file. " +
                     "Try deleting the File before running projectShockwave again.");
         } catch (IOException e) {
-            JDAHandler.fatalError();
+            ExceptionLogger.log(e);
+            System.exit(2);
         }
         return false;
     }
-    private static Shelf createShelf(String folderName, String fileName) {
+    private static Shelf createShelf(String fileName) {
         //Create or get folder
-        File folder = new File(folderName);
+        File folder = new File(DATA.FOLDERNAME);
         folder.mkdir();
 
         //Create or get file
-        String path = folderName + "/" + fileName;
+        String path = DATA.FOLDERNAME + "/" + fileName;
         File file = new File(path);
 
         //Return shelf

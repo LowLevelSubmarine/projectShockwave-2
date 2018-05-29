@@ -5,10 +5,11 @@ import commands.administration.Restart;
 import commands.administration.Shutdown;
 import commands.administration.Speedtest;
 import commands.administration.Statistics;
+import commands.music.Loop;
 import commands.music.Play;
 import commands.statistic_handling.GuildDetails;
 import commands.statistic_handling.RunningOn;
-import commands.statistic_handling.StatisticHandler;
+import commands.statistic_handling.StatHandler;
 import commands.statistic_handling.UserDetails;
 import commands.information.*;
 import commands.settings.*;
@@ -54,6 +55,7 @@ public class Main {
         CommandHandler.addCommand(new Ping());
         CommandHandler.addCommand(new Version());
         //Music
+        CommandHandler.addCommand(new Loop());
         CommandHandler.addCommand(new Play());
         //Settings
         CommandHandler.addCommand(new SetBotadmins());
@@ -66,8 +68,8 @@ public class Main {
     }
 
     private static void addStatistics() {
-        StatisticHandler.addStatistic(new RunningOn());
-        StatisticHandler.addStatistic(new GuildDetails());
-        StatisticHandler.addStatistic(new UserDetails());
+        StatHandler.addStatInterface(new RunningOn());
+        StatHandler.addStatInterface(new GuildDetails());
+        StatHandler.addStatInterface(new UserDetails());
     }
 }

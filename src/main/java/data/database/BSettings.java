@@ -1,7 +1,7 @@
 package data.database;
 
 import com.toddway.shelf.ShelfItem;
-import commands.statistic_handling.StatisticContainer;
+import commands.statistic_handling.StatContainer;
 import data.DATA;
 import net.dv8tion.jda.core.entities.Game;
 
@@ -30,14 +30,14 @@ public class BSettings {
         item.put(botAdmins);
     }
 
-    public StatisticContainer getStatisticContainer() {
+    public StatContainer getStatisticContainer() {
         ShelfItem item = DATA.getBotItem(keys.STATISTICCONTAINER);
-        if (item.exists()) return item.get(StatisticContainer.class);
-        return new StatisticContainer();
+        if (item.exists()) return item.get(StatContainer.class);
+        return new StatContainer();
     }
-    public void setStatisticContainer(StatisticContainer statisticContainer) {
+    public void setStatisticContainer(StatContainer statContainer) {
         ShelfItem item = DATA.getBotItem(keys.STATISTICCONTAINER);
-        item.put(statisticContainer);
+        item.put(statContainer);
     }
 
     public HashMap<String, String> getSnappys() {

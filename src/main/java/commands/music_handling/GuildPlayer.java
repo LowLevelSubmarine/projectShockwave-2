@@ -1,10 +1,7 @@
 package commands.music_handling;
 
 import com.sedmelluq.discord.lavaplayer.player.AudioPlayer;
-import com.sedmelluq.discord.lavaplayer.player.AudioPlayerManager;
-import com.sedmelluq.discord.lavaplayer.player.DefaultAudioPlayerManager;
 import com.sedmelluq.discord.lavaplayer.player.event.AudioEventAdapter;
-import com.sedmelluq.discord.lavaplayer.source.AudioSourceManagers;
 import com.sedmelluq.discord.lavaplayer.tools.FriendlyException;
 import com.sedmelluq.discord.lavaplayer.track.AudioTrack;
 import com.sedmelluq.discord.lavaplayer.track.AudioTrackEndReason;
@@ -14,17 +11,14 @@ import java.util.LinkedList;
 
 public class GuildPlayer extends AudioEventAdapter {
 
-    private static final AudioPlayerManager MANAGER = createAudioPlayerManager();
-
     private LinkedList<QueueItem> queue = new LinkedList<>();
     private Guild guild;
     private AudioPlayer player;
-    private VoiceChannel joinChannel;
     private boolean loopMode = false;
 
     public GuildPlayer(Guild guild) {
         this.guild = guild;
-        this.player = MANAGER.createPlayer();
+        this.player = GuildPlayerManager.getAudioPlayerManager().createPlayer();
 
         this.player.addListener(this);
         this.player.setVolume(100);
@@ -54,18 +48,19 @@ public class GuildPlayer extends AudioEventAdapter {
         this.player.setPaused(pause);
     }
 
+    public void switchLoopMode() {
+        this.loopMode = !this.loopMode;
+    }
+
     private AudioTrack getNextTrack() {
-        AudioTrack nextTrack = null;
-        for (boolean loop = true; loop;) {
+        while (!queue.isEmpty()) {
             if (queue.peekFirst().isEmpty()) {
                 queue.poll();
             } else {
-                if (loopMode) nextTrack = queue.peekFirst().peekTrack();
-                else nextTrack = queue.peekFirst().pollTrack();
-                loop = false;
+                return queue.peekFirst().pollTrack();
             }
         }
-        return nextTrack;
+        return null;
     }
 
     /**
@@ -106,11 +101,14 @@ public class GuildPlayer extends AudioEventAdapter {
      */
     @Override
     public void onTrackEnd(AudioPlayer player, AudioTrack lastTrack, AudioTrackEndReason endReason) {
-        AudioTrack nextTrack = getNextTrack();
-        if (nextTrack != null) {
-            this.player.playTrack(nextTrack);
-        } else {
-            this.guild.getAudioManager().closeAudioConnection();
+        AudioTrack nextTrack;
+        if (loopMode) nextTrack = lastTrack.makeClone();
+        else nextTrack = getNextTrack();
+        if (nextTrack != null) this.player.playTrack(nextTrack);
+        else {
+            new Thread(() -> {
+                this.guild.getAudioManager().closeAudioConnection();
+            }).start();
         }
     }
 
@@ -132,18 +130,5 @@ public class GuildPlayer extends AudioEventAdapter {
     @Override
     public void onTrackStuck(AudioPlayer player, AudioTrack track, long thresholdMs) {
         // Adapter dummy method
-    }
-
-
-
-
-    public static void searchTracks(String identifier, TrackSearchResultHook hook) {
-        MANAGER.loadItem(identifier, new TrackSearchResultHandler(hook));
-    }
-
-    private static AudioPlayerManager createAudioPlayerManager() {
-        AudioPlayerManager audioPlayerManager = new DefaultAudioPlayerManager();
-        AudioSourceManagers.registerRemoteSources(audioPlayerManager);
-        return audioPlayerManager;
     }
 }

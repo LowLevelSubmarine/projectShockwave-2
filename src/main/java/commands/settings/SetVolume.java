@@ -4,7 +4,7 @@ import commands.handling.CommandInfo;
 import commands.handling.CommandInterface;
 import commands.handling.CommandType;
 import commands.handling.SecurityLevel;
-import commands.music_handling.PlayerHandler;
+import commands.music_handling.GuildPlayerManager;
 import commands.music_handling.GuildPlayer;
 import core.JDAHandler;
 import data.DATA;
@@ -41,9 +41,9 @@ public class SetVolume implements CommandInterface {
 
         //Do the math
         DATA.guild(info.getGuild()).setVolume(volume);
-        GuildPlayer guildPlayer = PlayerHandler.getQueue(info.getGuild());
-        if (guildPlayer != null) {
-            guildPlayer.setVolume(volume);
+        if (GuildPlayerManager.hasGuildPlayer(info.getGuild())) {
+            GuildPlayer gPlayer = GuildPlayerManager.getGuildPlayer(info.getGuild());
+            gPlayer.setVolume(volume);
         }
         MessageEmbed embed = MsgBuilder.setVolume(volume);
         info.getChannel().sendMessage(embed).queue();

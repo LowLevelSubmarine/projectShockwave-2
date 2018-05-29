@@ -1,5 +1,6 @@
 package commands.handling;
 
+import core.ExceptionLogger;
 import messages.MsgBuilder;
 
 import java.util.*;
@@ -19,12 +20,18 @@ public class CommandHandler {
         COMMANDS.put(cmdInterface.invoke(), cmdInterface);
     }
 
+    public static boolean invokeExists(String invoke) {
+        return COMMANDS.containsKey(invoke);
+    }
+
     public static CommandInterface getCommandInterface(String invoke) {
         invoke = invoke.toLowerCase();
-        try {
-            return COMMANDS.get(invoke).getClass().newInstance();
-        } catch (InstantiationException | IllegalAccessException | NullPointerException e) {
-            e.printStackTrace();
+        if (invokeExists(invoke)) {
+            try {
+                return COMMANDS.get(invoke).getClass().newInstance();
+            } catch (InstantiationException | IllegalAccessException e) {
+                ExceptionLogger.log(e);
+            }
         }
         return null;
     }
@@ -38,7 +45,7 @@ public class CommandHandler {
         HashMap<String, ArrayList<String>> commandsByType = new HashMap<>();
         for (CommandInterface cmdInterface : COMMANDS.values()) {
             ArrayList<String> commands = commandsByType.getOrDefault(cmdInterface.type().getName(), new ArrayList<>());
-            commands.add("" + cmdInterface.invoke().toLowerCase() + " - " + cmdInterface.title());
+            commands.add("*" + cmdInterface.invoke().toLowerCase() + "* - " + cmdInterface.title());
             commandsByType.put(cmdInterface.type().getName(), commands);
         }
         //Sort

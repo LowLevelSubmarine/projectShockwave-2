@@ -1,7 +1,8 @@
 package core;
 
-import commands.statistic_handling.StatisticHandler;
+import commands.statistic_handling.StatHandler;
 import data.DATA;
+import listeners.ExceptionListener;
 import listeners.GenericGuildMessageReactionListener;
 import listeners.GuildMessageReceivedListener;
 import listeners.ReadyListener;
@@ -21,14 +22,14 @@ import java.util.List;
 
 public class JDAHandler {
 
-    private static final int RESTARTTIME = 10;
-    private static final int SHUTDOWNTIME = 10;
-    private static String REASON;
+    private static final int NONDEBUGSHUTDOWNtIME = 10;
+    private static final int DEBUGSHUTDOWNTIME = 2;
+    private static int SHUTDOWNTIME;
     private static JDA JDA;
 
     //Boots everything connected to the DiscordAPI up
     public static void boot() {
-        if (bootPreOperations()) {
+        if (preBootOperations()) {
             //Set JDA
             JDABuilder builder = new JDABuilder(AccountType.BOT);
             builder.setToken(Main.getToken());
@@ -38,6 +39,7 @@ public class JDAHandler {
             builder.setEnableShutdownHook(false);
 
             //Add listeners
+            builder.addEventListener(new ExceptionListener());
             builder.addEventListener(new GenericGuildMessageReactionListener());
             builder.addEventListener(new GuildMessageReceivedListener());
             builder.addEventListener(new ReadyListener());
@@ -54,18 +56,18 @@ public class JDAHandler {
         }
     }
 
-    private static boolean bootPreOperations() {
+    private static boolean preBootOperations() {
+        setShutdownTime();
         boolean success = DATA.boot();
-        StatisticHandler.boot();
+        StatHandler.boot();
         return success;
     }
 
     //Shuts everything connected to the DiscordAPI entirely down
     public static void shutdown(String reason) {
         if (JDAHandler.isRunning()) {
-            REASON = reason;
-            notifyAboutShudown();
-            StatisticHandler.shutdown();
+            notifyAboutShudown(reason);
+            StatHandler.shutdown();
             JDA.shutdown();
             JDA = null;
             NotifyConsole.log(JDAHandler.class, Statics.TITLE + " is shutting down");
@@ -77,36 +79,35 @@ public class JDAHandler {
         boot();
     }
 
-
-
     public static boolean isRunning() {
         return JDA != null;
     }
+
     public static JDA getJDA() {
         return JDA;
     }
-    public static void updateJDA(JDA jda) {
+
+    public static void setJDA(JDA jda) {
         JDA = jda;
     }
-    public static void fatalError() {
-        System.out.println("Es gab einen fatalen Fehler beim ausführen des Codes");
-        System.exit(1);
-    }
+
     public static String getUsername() {
-        if (JDA != null) {
-            return JDA.getSelfUser().getName();
-        } else {
-            return "MISSING USERNAME";
-        }
-
+        if (isRunning()) return JDA.getSelfUser().getName();
+        return "MISSING_USERNAME";
     }
 
-    private static void notifyAboutShudown() {
-        MessageEmbed embed = MsgBuilder.shutdownNotification(REASON, SHUTDOWNTIME);
+    private static void setShutdownTime() {
+        if (DATA.config().debugMode()) {
+            SHUTDOWNTIME = DEBUGSHUTDOWNTIME;
+        } else {
+            SHUTDOWNTIME = NONDEBUGSHUTDOWNtIME;
+        }
+    }
+
+    private static void notifyAboutShudown(String reason) {
+        MessageEmbed embed = MsgBuilder.shutdownNotification(reason, SHUTDOWNTIME);
         notifyGuildsAndWait(embed, SHUTDOWNTIME);
     }
-
-
 
     private static void notifyGuildsAndWait(MessageEmbed embed, int seconds) {
         //List of Messages wich should later be deleted

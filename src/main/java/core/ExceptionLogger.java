@@ -16,10 +16,16 @@ public class ExceptionLogger {
     private final static String EXCEPTIONLOGFILENAME = "errors.txt";
     private static BufferedWriter writer;
 
-    public static void log (Exception exception) {
-        writeToLogFile(exception);
-        contactDebugSupporter(exception);
-        NotifyConsole.debug(ExceptionLogger.class, "Succsessfully catched and logged Exception");
+    public static void log(Exception exception) {
+        String message = ExceptionUtils.getExceptionMessage(exception);
+        writeToLogFile(message);
+        contactDebugSupporter(message);
+    }
+
+    public static void log(Throwable throwable) {
+        String message = throwable.getMessage() + " / " + throwable.getLocalizedMessage();
+        writeToLogFile(message);
+        contactDebugSupporter(message);
     }
 
 
@@ -37,10 +43,10 @@ public class ExceptionLogger {
             }
         }
     }
-    private static void writeToLogFile(Exception exception) {
+    private static void writeToLogFile(String message) {
         try {
             checkWriter();
-            writer.write(ExceptionUtils.getExceptionMessage(exception));
+            writer.write(message);
             writer.newLine();
             writer.newLine();
             writer.flush();
@@ -48,12 +54,12 @@ public class ExceptionLogger {
             NotifyConsole.debug(ExceptionLogger.class, "An error occurred while writen to exceptionlogfile");
         }
     }
-    private static void contactDebugSupporter(Exception exception) {
+    private static void contactDebugSupporter(String message) {
         try {
             for (String debugSupporterId : DATA.config().getDebugSupporters()) {
                 User user = JDAHandler.getJDA().getUserById(debugSupporterId);
                 PrivateChannel channel = user.openPrivateChannel().complete();
-                channel.sendMessage(MsgBuilder.exceptionLogInfo(exception)).queue();
+                channel.sendMessage(MsgBuilder.exceptionLogInfo(message)).queue();
             }
         } catch (Exception e) {
             NotifyConsole.debug(ExceptionLogger.class, "An error occurred while trying to contact debugSupporter");

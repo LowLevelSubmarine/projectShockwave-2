@@ -28,7 +28,7 @@ public class CommandInfo {
     public CommandInfo(GuildMessageReceivedEvent event) {
         this.raw = event.getMessage().getContentRaw();
         this.prefix = DATA.guild(event.getGuild()).getPrefix();
-        //Only parse when raw fits the command pattern (Starts with the invoke and has more content than just the invoke)
+        //Only parse when raw fits the command pattern (Starts with the guilds prefix and has at least one more argument)
         if (raw.startsWith(prefix) && raw.length() > prefix.length()) {
             this.isCommand = true;
             this.raw = this.raw.replaceFirst(prefix, "");

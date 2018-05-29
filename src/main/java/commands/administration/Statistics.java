@@ -4,7 +4,7 @@ import commands.handling.CommandInfo;
 import commands.handling.CommandInterface;
 import commands.handling.CommandType;
 import commands.handling.SecurityLevel;
-import commands.statistic_handling.StatisticHandler;
+import commands.statistic_handling.StatHandler;
 
 import java.io.File;
 
@@ -27,7 +27,7 @@ public class Statistics implements CommandInterface {
 
     @Override
     public void run(CommandInfo info) {
-        File file = StatisticHandler.renderStatistics();
+        File file = StatHandler.renderStatistics();
         if (file != null) info.getChannel().sendFile(file).queue();
     }
 

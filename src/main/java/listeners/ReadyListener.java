@@ -17,7 +17,7 @@ public class ReadyListener extends ListenerAdapter {
     private static final int DELETEMESSAGEAFTER = 10;
 
     public void onReady(ReadyEvent event) {
-        JDAHandler.updateJDA(event.getJDA());
+        JDAHandler.setJDA(event.getJDA());
         CommandHandler.renderCommandList();
         notifyAboutBootup(event.getJDA());
     }

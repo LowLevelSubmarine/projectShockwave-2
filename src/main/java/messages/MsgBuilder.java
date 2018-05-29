@@ -4,7 +4,6 @@ import commands.handling.CommandHandler;
 import commands.handling.SecurityLevel;
 import core.JDAHandler;
 import core.Statics;
-import fr.bmartel.protocol.http.utils.ExceptionUtils;
 import net.dv8tion.jda.core.EmbedBuilder;
 import net.dv8tion.jda.core.entities.MessageEmbed;
 import net.dv8tion.jda.core.entities.TextChannel;
@@ -18,10 +17,15 @@ public class MsgBuilder {
     private EmbedBuilder builder;
 
     private MsgBuilder(Color color, String emote, String title) {
-        base(color, emote + " - " + title.toUpperCase());
+        this.base(color);
+        this.builder.setTitle(emote + " - " + title.toUpperCase());
     }
     private MsgBuilder(Color color, String emote) {
-        base(color, emote);
+        this.base(color);
+        this.builder.setTitle(emote);
+    }
+    private MsgBuilder(Color color) {
+        this.base(color);
     }
 
     private MsgBuilder setDescription(String description) {
@@ -36,10 +40,9 @@ public class MsgBuilder {
         return builder.build();
     }
 
-    private void base(Color color, String headline) {
+    private void base(Color color) {
         this.builder = new EmbedBuilder();
         this.builder.setColor(color);
-        this.builder.setTitle(headline);
     }
 
 
@@ -78,10 +81,10 @@ public class MsgBuilder {
         builder.setDescription("Du hast nicht die benötigten Berechtigungen um diesen Befehl auszuführen!");
         return builder.build();
     }
-    public static MessageEmbed exceptionLogInfo(Exception exception) {
+    public static MessageEmbed exceptionLogInfo(String exception) {
         MsgBuilder builder = new MsgBuilder(PSW2COLOR, "\uD83D\uDED1", "EXCEPTION");
         builder.setDescription("Ich hatte einen Fehler!");
-        builder.addField("Errorcode", ExceptionUtils.getExceptionMessage(exception), false);
+        builder.addField("Errorcode", exception, false);
         return builder.build();
     }
     public static MessageEmbed shutdownQuerry(String reason) {
@@ -111,7 +114,7 @@ public class MsgBuilder {
         MsgBuilder builder = new MsgBuilder(PSW2COLOR, "ℹ", "COMMANDS");
         Map<String, String> commandList = CommandHandler.getCommandList();
         for (String categoryName : commandList.keySet()) {
-            builder.addField(categoryName, commandList.get(categoryName), true);
+            builder.addField(categoryName, commandList.get(categoryName), false);
         }
         return builder.build();
     }
@@ -197,18 +200,23 @@ public class MsgBuilder {
         return builder.build();
     }
     public static MessageEmbed addedSnappy(String key, String value) {
-        MsgBuilder builder = new MsgBuilder(PSW2COLOR, "", "ADDED SNAPPY");
-        builder.setDescription("Dem Snappy " + key + " wurde der Wert " + value + " zugewiesen");
+        MsgBuilder builder = new MsgBuilder(PSW2COLOR, "\uD83D\uDD27", "ADDED SNAPPY");
+        builder.setDescription("Dem Snappy " + key + " wurde der Wert " + value + " zugewiesen.");
         return builder.build();
     }
     public static MessageEmbed removedSnappy(String key) {
-        MsgBuilder builder = new MsgBuilder(PSW2COLOR, "", "REMOVED SNAPPY");
-        builder.setDescription("Der Snappy " + key + " wurde erfolgreich entfernt");
+        MsgBuilder builder = new MsgBuilder(PSW2COLOR, "\uD83D\uDD27", "REMOVED SNAPPY");
+        builder.setDescription("Der Snappy " + key + " wurde erfolgreich entfernt.");
         return builder.build();
     }
     public static MessageEmbed setVolume(int volume) {
-        MsgBuilder builder = new MsgBuilder(PSW2COLOR, "", "SET VOLUME");
-        builder.setDescription("Die Lautstärke wurde erfolgreich auf " + volume + "% gesteltt");
+        MsgBuilder builder = new MsgBuilder(PSW2COLOR, "\uD83D\uDD27", "SET VOLUME");
+        builder.setDescription("Die Lautstärke wurde erfolgreich auf " + volume + "% gestelt.");
+        return builder.build();
+    }
+    public static MessageEmbed notInVoiceChannel(User user) {
+        MsgBuilder builder = new MsgBuilder(PSW2COLOR, "⚠", "NOT IN VOICECHANNEL");
+        builder.setDescription("Ich kann keine Musik abspielen wenn du nicht in einem Voicechannel bist.");
         return builder.build();
     }
 }

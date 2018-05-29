@@ -5,21 +5,21 @@ import com.sedmelluq.discord.lavaplayer.track.AudioTrack;
 import java.util.LinkedList;
 import java.util.List;
 
-public class TrackContainer {
+public class TrackSearchResultContainer {
 
     LinkedList<AudioTrack> tracks;
 
-    public TrackContainer(AudioTrack track) {
+    public TrackSearchResultContainer(AudioTrack track) {
         this.tracks = new LinkedList<>();
         this.tracks.add(track);
     }
 
-    public TrackContainer(List<AudioTrack> tracks) {
+    public TrackSearchResultContainer(List<AudioTrack> tracks) {
         this.tracks = new LinkedList<>();
         this.tracks.addAll(tracks);
     }
 
-    public TrackContainer() {
+    public TrackSearchResultContainer() {
         this.tracks = new LinkedList<>();
     }
 

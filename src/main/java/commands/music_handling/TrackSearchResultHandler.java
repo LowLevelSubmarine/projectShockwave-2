@@ -15,19 +15,19 @@ public class TrackSearchResultHandler implements AudioLoadResultHandler {
 
     @Override
     public void trackLoaded(AudioTrack track) {
-        TrackContainer tracks = new TrackContainer(track);
+        TrackSearchResultContainer tracks = new TrackSearchResultContainer(track);
         hook.onTracksFound(tracks);
     }
 
     @Override
     public void playlistLoaded(AudioPlaylist playlist) {
-        TrackContainer tracks = new TrackContainer(playlist.getTracks());
+        TrackSearchResultContainer tracks = new TrackSearchResultContainer(playlist.getTracks());
         hook.onTracksFound(tracks);
     }
 
     @Override
     public void noMatches() {
-        TrackContainer tracks = new TrackContainer();
+        TrackSearchResultContainer tracks = new TrackSearchResultContainer();
         hook.onTracksFound(tracks);
     }
 
