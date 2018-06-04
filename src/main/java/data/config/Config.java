@@ -9,6 +9,8 @@ import java.util.List;
 import java.util.Scanner;
 
 public class Config {
+    private String geniusClientId;
+    private String geniusAccessToken;
     private String autoselectBotUser;
     private List<BotUser> botUsers;
     private List<String> owners;
@@ -20,6 +22,8 @@ public class Config {
     private List<String> debugSupporters;
 
     public Config() {
+        this.geniusClientId = "the genius api client id";
+        this.geniusAccessToken = "the genius api access token";
         this.autoselectBotUser = "the token to be selected automatically";
         this.botUsers = new ArrayList<>();
         this.botUsers.add(new BotUser());
@@ -48,6 +52,16 @@ public class Config {
 
 
     public String getFlaws() {
+        //Check if "geniusClientId" is not empty
+        if (this.geniusClientId.isEmpty()) {
+            return "The field \"geniusClientId\" inside of the config-file is empty";
+        }
+
+        //Check if "geniusAccessToken" is not empty
+        if (this.geniusAccessToken.isEmpty()) {
+            return "The field \"geniusAccessToken\" inside of the config-file is empty";
+        }
+
         //Check if "autoselectBotUser" is a number
         try {
             Integer.parseInt(this.autoselectBotUser);
@@ -124,6 +138,14 @@ public class Config {
         return null;
     }
 
+
+    public String getGeniusClientId() {
+        return this.geniusClientId;
+    }
+
+    public String getGeniusAccessToken() {
+        return this.geniusAccessToken;
+    }
 
     public BotUser getBotUser() {
         int selection = Integer.parseInt(this.autoselectBotUser) - 1;

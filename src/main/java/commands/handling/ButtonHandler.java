@@ -24,4 +24,8 @@ public class ButtonHandler {
     public static void registerTicket(ButtonEvent event, ButtonHook hook) {
         TICKETS.put(event.getMessageLink(), hook);
     }
+
+    public static void revokeTicket(Message message) {
+        TICKETS.remove(new MessageLink(message));
+    }
 }

@@ -35,6 +35,11 @@ public class Speedtest implements CommandInterface, ISpeedTestListener {
     }
 
     @Override
+    public boolean silent() {
+        return false;
+    }
+
+    @Override
     public CommandType type() {
         return CommandType.ADMINISTRATION;
     }

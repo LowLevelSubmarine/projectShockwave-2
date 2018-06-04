@@ -5,7 +5,6 @@ import commands.administration.Restart;
 import commands.administration.Shutdown;
 import commands.administration.Speedtest;
 import commands.administration.Statistics;
-import commands.music.Loop;
 import commands.music.Play;
 import commands.statistic_handling.GuildDetails;
 import commands.statistic_handling.RunningOn;
@@ -37,7 +36,7 @@ public class Main {
         DATA.boot();
         BotUser botUser = DATA.config().getBotUser();
         TOKEN = botUser.getToken();
-        NotifyConsole.log(Main.class, Statics.TITLE + " is using the \"" + botUser.getName() + "\" token");
+        NotifyConsole.log(Main.class, VersionInfo.PROJECTTITLE + " is using the \"" + botUser.getName() + "\" token");
     }
 
     public static void addCommands() {
@@ -55,11 +54,11 @@ public class Main {
         CommandHandler.addCommand(new Ping());
         CommandHandler.addCommand(new Version());
         //Music
-        CommandHandler.addCommand(new Loop());
         CommandHandler.addCommand(new Play());
         //Settings
         CommandHandler.addCommand(new SetBotadmins());
         CommandHandler.addCommand(new SetBotSnappys());
+        CommandHandler.addCommand(new SetMusicChannel());
         CommandHandler.addCommand(new SetNotifyChannel());
         CommandHandler.addCommand(new SetPrefix());
         CommandHandler.addCommand(new SetServerSnappys());

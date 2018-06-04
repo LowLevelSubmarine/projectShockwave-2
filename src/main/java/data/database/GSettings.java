@@ -59,9 +59,21 @@ public class GSettings {
         item.put(volume);
     }
 
+    public TextChannel getMusicChannel() {
+        ShelfItem item = DATA.getGuildItem(keys.MUSICCHANNEL, this.guild);
+        if (item.exists()) {
+            return item.get(TextChannel.class);
+        }
+        return this.guild.getDefaultChannel();
+    }
+    public void setMusicChannel(TextChannel channel) {
+        ShelfItem item = DATA.getGuildItem(keys.MUSICCHANNEL, this.guild);
+        item.put(channel);
+    }
+
 
 
     public enum keys {
-        PREFIX, NOTIFYCHANNEL, SONGMAP, VOLUME,
+        PREFIX, NOTIFYCHANNEL, SONGMAP, VOLUME, MUSICCHANNEL,
     }
 }

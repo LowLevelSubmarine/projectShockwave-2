@@ -4,6 +4,7 @@ import com.sedmelluq.discord.lavaplayer.player.AudioPlayerManager;
 import com.sedmelluq.discord.lavaplayer.player.DefaultAudioPlayerManager;
 import com.sedmelluq.discord.lavaplayer.source.AudioSourceManagers;
 import net.dv8tion.jda.core.entities.Guild;
+import tools.Toolkit;
 
 import java.util.HashMap;
 
@@ -31,7 +32,10 @@ public class GuildPlayerManager {
     }
 
     public static void searchTracks(String identifier, TrackSearchResultHook hook) {
-        MANAGER.loadItem(identifier, new TrackSearchResultHandler(hook));
+        if (!Toolkit.startsWith(identifier, "http://", "https://")) {
+            identifier = "ytsearch:" + identifier;
+        }
+        MANAGER.loadItem(identifier, new TrackSearchResultHandler(hook, identifier));
     }
 
     static AudioPlayerManager getAudioPlayerManager() {

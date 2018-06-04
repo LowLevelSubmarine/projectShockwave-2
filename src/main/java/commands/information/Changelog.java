@@ -16,6 +16,11 @@ public class Changelog implements CommandInterface {
     }
 
     @Override
+    public boolean silent() {
+        return false;
+    }
+
+    @Override
     public CommandType type() {
         return CommandType.INFORMATION;
     }
@@ -42,7 +47,7 @@ public class Changelog implements CommandInterface {
 
     @Override
     public String description() {
-        return "Gibt die Änderungen seit der letzten Version von \"" + Statics.TITLE + "\" an";
+        return "Gibt die Änderungen seit der letzten Version von \"" + VersionInfo.PROJECTTITLE + "\" an";
     }
 
     @Override

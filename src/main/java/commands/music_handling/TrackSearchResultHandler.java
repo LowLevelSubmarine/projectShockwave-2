@@ -8,27 +8,28 @@ import com.sedmelluq.discord.lavaplayer.track.AudioTrack;
 public class TrackSearchResultHandler implements AudioLoadResultHandler {
 
     private TrackSearchResultHook hook;
+    private String identifier;
 
-    public TrackSearchResultHandler(TrackSearchResultHook hook) {
+    public TrackSearchResultHandler(TrackSearchResultHook hook, String identifier) {
         this.hook = hook;
+        this.identifier = identifier;
     }
 
     @Override
     public void trackLoaded(AudioTrack track) {
-        TrackSearchResultContainer tracks = new TrackSearchResultContainer(track);
-        hook.onTracksFound(tracks);
+        TrackSearchResultContainer results = new TrackSearchResultContainer(track);
+        hook.onTracksFound(results);
     }
 
     @Override
     public void playlistLoaded(AudioPlaylist playlist) {
-        TrackSearchResultContainer tracks = new TrackSearchResultContainer(playlist.getTracks());
-        hook.onTracksFound(tracks);
+        TrackSearchResultContainer results = new TrackSearchResultContainer(playlist, this.identifier);
+        hook.onTracksFound(results);
     }
 
     @Override
     public void noMatches() {
-        TrackSearchResultContainer tracks = new TrackSearchResultContainer();
-        hook.onTracksFound(tracks);
+        hook.onNoMatches();
     }
 
     @Override

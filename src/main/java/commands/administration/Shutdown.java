@@ -20,6 +20,11 @@ public class Shutdown implements CommandInterface, ButtonHook {
     }
 
     @Override
+    public boolean silent() {
+        return false;
+    }
+
+    @Override
     public CommandType type() {
         return CommandType.ADMINISTRATION;
     }

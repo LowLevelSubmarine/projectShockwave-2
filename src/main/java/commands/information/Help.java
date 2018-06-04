@@ -13,6 +13,11 @@ public class Help implements CommandInterface {
     }
 
     @Override
+    public boolean silent() {
+        return false;
+    }
+
+    @Override
     public CommandType type() {
         return CommandType.INFORMATION;
     }
@@ -31,7 +36,7 @@ public class Help implements CommandInterface {
             MessageEmbed embed = MsgBuilder.commandList();
             privateChannel.sendMessage(embed).queue();
         } else {
-            CommandInterface helpcmdInterface = CommandHandler.getCommandInterface(helpcmdInvoke);
+            CommandInterface helpcmdInterface = CommandHandler.getCommand(helpcmdInvoke);
             //Check if the given invoke actually has a corrisponding command
             if (helpcmdInterface == null) {
                 MessageEmbed embed = MsgBuilder.commandDescriptionMissingCommand();
@@ -39,7 +44,8 @@ public class Help implements CommandInterface {
             } else {
                 String description = helpcmdInterface.description();
                 String syntax = helpcmdInterface.syntax(DATA.guild(info.getGuild()).getPrefix());
-                MessageEmbed embed = MsgBuilder.commandDescription(helpcmdInvoke, description, syntax);
+                SecurityLevel secLevel = helpcmdInterface.securityLevel();
+                MessageEmbed embed = MsgBuilder.commandDescription(helpcmdInvoke, description, syntax, secLevel);
                 info.getChannel().sendMessage(embed).queue();
             }
         }

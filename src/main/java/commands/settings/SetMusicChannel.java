@@ -11,11 +11,10 @@ import net.dv8tion.jda.core.entities.TextChannel;
 
 import java.util.List;
 
-public class SetNotifyChannel implements CommandInterface {
-
+public class SetMusicChannel implements CommandInterface {
     @Override
     public String invoke() {
-        return "setnotifychannel";
+        return "setmusicchannel";
     }
 
     @Override
@@ -40,23 +39,23 @@ public class SetNotifyChannel implements CommandInterface {
             info.wrongSyntax();
             return;
         }
-        DATA.guild(info.getGuild()).setNotifyChannel(mentionedChannels.get(0));
-        MessageEmbed embed = MsgBuilder.setNotifyChannelDone(mentionedChannels.get(0));
+        DATA.guild(info.getGuild()).setMusicChannel(mentionedChannels.get(0));
+        MessageEmbed embed = MsgBuilder.setMusicChannelDone(mentionedChannels.get(0));
         info.getChannel().sendMessage(embed).queue();
     }
 
     @Override
     public String title() {
-        return "Legt den Benachrichtigungskanal fest";
+        return "Setzt den Musikkanal";
     }
 
     @Override
     public String description() {
-        return "Legt den Kanal fest in welchen der Bot Benachrichtigungen schickt die keine Antworten auf Usernachrichten sind";
+        return "Setzt den Textchannel in welchem die Queue angezeigt wird";
     }
 
     @Override
     public String syntax(String p) {
-        return p + "setnotifychannel < #mention >";
+        return p + "setmusicchannel < #Textchannel >";
     }
 }

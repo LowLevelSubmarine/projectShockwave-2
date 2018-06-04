@@ -6,16 +6,24 @@ import commands.handling.CommandInterface;
 import commands.handling.CommandType;
 import commands.handling.SecurityLevel;
 import commands.music_handling.*;
+import messages.MsgBuilder;
 import net.dv8tion.jda.core.entities.Member;
-import tools.Toolkit;
+import net.dv8tion.jda.core.entities.MessageEmbed;
+import net.dv8tion.jda.core.entities.TextChannel;
 
 public class Play implements CommandInterface, TrackSearchResultHook {
 
     Member member;
+    TextChannel channel;
 
     @Override
     public String invoke() {
         return "play";
+    }
+
+    @Override
+    public boolean silent() {
+        return true;
     }
 
     @Override
@@ -40,8 +48,8 @@ public class Play implements CommandInterface, TrackSearchResultHook {
         }
 
         //Command stuff
+        this.channel = info.getChannel();
         this.member = info.getMember();
-        identifier = makeSearchstring(identifier);
         GuildPlayerManager.searchTracks(identifier, this);
     }
 
@@ -52,7 +60,7 @@ public class Play implements CommandInterface, TrackSearchResultHook {
 
     @Override
     public String description() {
-        return "Spielt nach Einen YouTube Link, eine YouTube Playlist oder das erste Ergebnis einer YouTube Suche ab";
+        return "Spielt einen YouTube Link, eine Playlist oder das erste Ergebnis einer Suche ab";
     }
 
     @Override
@@ -61,20 +69,25 @@ public class Play implements CommandInterface, TrackSearchResultHook {
     }
 
     @Override
-    public void onTracksFound(TrackSearchResultContainer tracks) {
-        GuildPlayerManager.getGuildPlayer(this.member.getGuild()).queue(new QueueItem(tracks.getFirstResult(), this.member));
+    public void onTracksFound(TrackSearchResultContainer results) {
+        GuildPlayer gPlayer = GuildPlayerManager.getGuildPlayer(this.member.getGuild());
+        if (results.isPlaylist()) {
+            gPlayer.queue(results.getTracksAsPlaylist(), results.getPlaylistTitle(), results.getPlaylistUrl(), this.member);
+        } else if (results.isUrlResult()) {
+            gPlayer.queue(results.getUrlResult(), this.member);
+        } else if (results.areSearchresults()) {
+            gPlayer.queue(results.getSearchResult(0), this.member);
+        }
+    }
+
+    @Override
+    public void onNoMatches() {
+        MessageEmbed embed = MsgBuilder.notTrackFound();
+        this.channel.sendMessage(embed).queue();
     }
 
     @Override
     public void onTrackSearchException(FriendlyException e) {
-
-    }
-
-    private static String makeSearchstring(String identifier) {
-        if (!Toolkit.startsWith(identifier, "http://", "https://")) {
-            return "ytsearch:" + identifier;
-        } else {
-            return identifier;
-        }
+        onNoMatches();
     }
 }

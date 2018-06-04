@@ -2,6 +2,7 @@ package commands.handling;
 
 public interface CommandInterface {
     String invoke();
+    boolean silent();
     CommandType type();
     SecurityLevel securityLevel();
     void run(CommandInfo info);

@@ -2,6 +2,7 @@ package commands.handling;
 
 import core.ExceptionLogger;
 import messages.MsgBuilder;
+import net.dv8tion.jda.core.entities.MessageEmbed;
 
 import java.util.*;
 
@@ -10,9 +11,18 @@ public class CommandHandler {
     private static HashMap<String, String> COMMANDLIST = null;
 
     public static void fire(CommandInfo info) {
-        CommandInterface cmInterface = getCommandInterface(info.getInvoke());
-        if (cmInterface != null) {
-            checkPermissionAndRun(cmInterface, info);
+        String invoke = info.getInvoke();
+        //Check if command exists
+        if (commandExists(invoke)) {
+            CommandInterface command = getCommand(invoke);
+            SecurityLevel securityLevel = command.securityLevel();
+            if (securityLevel.isAuthorized(info.getMember())) {
+                if (command.silent()) info.getMessage().delete().queue();
+                command.run(info);
+            } else {
+                MessageEmbed embed = MsgBuilder.missingAuthorization();
+                info.getChannel().sendMessage(embed).queue();
+            }
         }
     }
 
@@ -20,13 +30,13 @@ public class CommandHandler {
         COMMANDS.put(cmdInterface.invoke(), cmdInterface);
     }
 
-    public static boolean invokeExists(String invoke) {
+    public static boolean commandExists(String invoke) {
         return COMMANDS.containsKey(invoke);
     }
 
-    public static CommandInterface getCommandInterface(String invoke) {
+    public static CommandInterface getCommand(String invoke) {
         invoke = invoke.toLowerCase();
-        if (invokeExists(invoke)) {
+        if (commandExists(invoke)) {
             try {
                 return COMMANDS.get(invoke).getClass().newInstance();
             } catch (InstantiationException | IllegalAccessException e) {
@@ -64,14 +74,5 @@ public class CommandHandler {
 
         //EXPORT
         COMMANDLIST = sortedCommandsBySortedTypes;
-    }
-
-    private static void checkPermissionAndRun(CommandInterface cmdInterface, CommandInfo info) {
-        SecurityLevel securityLevel = cmdInterface.securityLevel();
-        if (securityLevel.isAuthorized(info.getMember())) {
-            cmdInterface.run(info);
-        } else {
-            info.getChannel().sendMessage(MsgBuilder.missingAuthorization()).queue();
-        }
     }
 }

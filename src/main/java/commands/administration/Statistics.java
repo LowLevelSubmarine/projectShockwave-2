@@ -16,6 +16,11 @@ public class Statistics implements CommandInterface {
     }
 
     @Override
+    public boolean silent() {
+        return false;
+    }
+
+    @Override
     public CommandType type() {
         return CommandType.ADMINISTRATION;
     }

@@ -147,4 +147,62 @@ public class Toolkit {
         }
         return false;
     }
+
+    public static String deleteAll(String a, String... b) {
+        for (String c : b) {
+            a = a.replaceAll(c, "");
+        }
+        return a;
+    }
+
+    public static boolean contains(String a, String... b) {
+        for (String c : b) {
+            if (!a.contains(c)) return false;
+        }
+        return true;
+    }
+
+    public static String removeInOut(String a, String b, String c) {
+        while (contains(a, b, c)) {
+            int in = a.indexOf(b);
+            int out = a.indexOf(c);
+            a = a.replace(a.substring(in, out + 1), "");
+        }
+        return a;
+    }
+
+    public static String removeLastIfIs(String a, String b) {
+        if (a.substring(a.length() - 1, a.length()).equals(b)) {
+            a = a.substring(0, a.length() - 1);
+        }
+        return a;
+    }
+
+    public static boolean isInBetween(int a, int b, int c) {
+        return a >= b && a <= c;
+    }
+
+    public static int lastUnrestrictedIndexOf(String a, int max, String b) {
+        if (a.length() < max) max = a.length();
+        a = a.substring(0, max);
+        int x = a.lastIndexOf(b);
+        if (x == -1) return max;
+        else return x;
+    }
+
+    public static String[] splitStringAt(String a, int b) {
+        String[] x = {a.substring(0, b), a.substring(b, a.length())};
+        return x;
+    }
+
+    public static ArrayList<String> getMaxStringsSplittedAt(String a, int max, String b) {
+        ArrayList<String> x = new ArrayList<>();
+        while (a.length() > max) {
+            String[] s = splitStringAt(a, lastUnrestrictedIndexOf(a, max, b));
+            a = s[1].substring(b.length());
+            x.add(s[0]);
+        }
+        x.add(a);
+        return x;
+    }
 }

@@ -14,7 +14,6 @@ public class GuildPlayer extends AudioEventAdapter {
     private LinkedList<QueueItem> queue = new LinkedList<>();
     private Guild guild;
     private AudioPlayer player;
-    private boolean loopMode = false;
 
     public GuildPlayer(Guild guild) {
         this.guild = guild;
@@ -25,11 +24,32 @@ public class GuildPlayer extends AudioEventAdapter {
         this.guild.getAudioManager().setSendingHandler(new PlayerSendHandler(this.player));
     }
 
-    public void queue(QueueItem item) {
+    public void queue(AudioTrack track, Member member) {
+        QueueItem item = new QueueItem(track, member);
+        item.queued();
         this.queue.add(item);
-        if (!isPlaying()) {
-            this.player.playTrack(getNextTrack());
-        }
+        if (!isPlaying()) this.player.playTrack(getTrack());
+    }
+
+    public void queue(LinkedList<AudioTrack> tracks, String playlistTitle, String playlistLink, Member member) {
+        QueueItem item = new QueueItem(tracks, playlistTitle, playlistLink, member);
+        item.queued();
+        this.queue.add(item);
+        if (!isPlaying()) this.player.playTrack(getTrack());
+    }
+
+    public void dequeue(QueueItem item) {
+        this.queue.remove(item);
+        item.dequeued();
+    }
+
+    public void skipTrack() {
+        this.player.stopTrack();
+    }
+
+    public void skipPlaylist() {
+        this.queue.peekFirst().clear();
+        this.player.stopTrack();
     }
 
     public Guild getGuild() {
@@ -40,27 +60,22 @@ public class GuildPlayer extends AudioEventAdapter {
         return this.player.getPlayingTrack() != null;
     }
 
+    public boolean isPlaying(QueueItem item) {
+        return this.queue.peekFirst().equals(item);
+    }
+
     public void setVolume(int volume) {
         this.player.setVolume(volume);
     }
 
     public void setPaused(boolean pause) {
         this.player.setPaused(pause);
+        if (pause) this.queue.peekFirst().paused();
+        else this.queue.peekFirst().playing();
     }
 
-    public void switchLoopMode() {
-        this.loopMode = !this.loopMode;
-    }
-
-    private AudioTrack getNextTrack() {
-        while (!queue.isEmpty()) {
-            if (queue.peekFirst().isEmpty()) {
-                queue.poll();
-            } else {
-                return queue.peekFirst().pollTrack();
-            }
-        }
-        return null;
+    private AudioTrack getTrack() {
+        return this.queue.peekFirst().getTrack();
     }
 
     /**
@@ -85,12 +100,10 @@ public class GuildPlayer extends AudioEventAdapter {
      */
     @Override
     public void onTrackStart(AudioPlayer player, AudioTrack track) {
+        this.queue.peekFirst().playing();
         if (!this.guild.getAudioManager().isConnected()) {
-            Member member = track.getUserData(Member.class);
-            GuildVoiceState voiceState = member.getVoiceState();
-            if (voiceState.inVoiceChannel()) {
-                this.guild.getAudioManager().openAudioConnection(voiceState.getChannel());
-            }
+            GuildVoiceState voiceState = this.queue.peekFirst().getMember().getVoiceState();
+            if (voiceState.inVoiceChannel()) this.guild.getAudioManager().openAudioConnection(voiceState.getChannel());
         }
     }
 
@@ -101,14 +114,15 @@ public class GuildPlayer extends AudioEventAdapter {
      */
     @Override
     public void onTrackEnd(AudioPlayer player, AudioTrack lastTrack, AudioTrackEndReason endReason) {
-        AudioTrack nextTrack;
-        if (loopMode) nextTrack = lastTrack.makeClone();
-        else nextTrack = getNextTrack();
-        if (nextTrack != null) this.player.playTrack(nextTrack);
-        else {
-            new Thread(() -> {
-                this.guild.getAudioManager().closeAudioConnection();
-            }).start();
+        this.queue.peekFirst().finishedTrack();
+        if (this.queue.peekFirst().isFinished()) {
+            this.queue.peekFirst().played();
+            this.queue.pollFirst();
+        }
+        if (!this.queue.isEmpty()) {
+            this.player.playTrack(this.queue.peekFirst().getTrack());
+        } else {
+            new Thread(() -> this.guild.getAudioManager().closeAudioConnection()).start();
         }
     }
 

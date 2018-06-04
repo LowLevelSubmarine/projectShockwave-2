@@ -18,6 +18,11 @@ public class Info implements CommandInterface {
     }
 
     @Override
+    public boolean silent() {
+        return false;
+    }
+
+    @Override
     public CommandType type() {
         return CommandType.INFORMATION;
     }
@@ -33,7 +38,7 @@ public class Info implements CommandInterface {
         String hosterId = DATA.config().getHoster();
         User hosterUser = JDAHandler.getJDA().getUserById(hosterId);
         String hosterMention = hosterUser.getAsMention();
-        String devId = Statics.CODERUSERID;
+        String devId = Statics.DEVELOPERUSERID;
         User devUser = JDAHandler.getJDA().getUserById(devId);
         String devMention = devUser.getAsMention();
         String invite = Statics.GAMINGNATIONINVITE;
