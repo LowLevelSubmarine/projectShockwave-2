@@ -54,10 +54,10 @@ public class Restart implements CommandInterface, ButtonHook {
                     JDAHandler.restart(this.restartReason);
                     break;
                 case buttonDeny:
-                    ButtonHandler.registerTicket(event, this);
+                    event.reregister();
                     break;
                 default:
-                    ButtonHandler.registerTicket(event, this);
+                    event.reregister();
                     break;
             }
         }

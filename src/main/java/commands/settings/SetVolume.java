@@ -48,6 +48,8 @@ public class SetVolume implements CommandInterface {
         DATA.guild(info.getGuild()).setVolume(volume);
         if (GuildPlayerManager.hasGuildPlayer(info.getGuild())) {
             GuildPlayer gPlayer = GuildPlayerManager.getGuildPlayer(info.getGuild());
+            //Convert the external volume to internal volume (maybe inside the GuildPlayer.class)
+            //So that not every setVolume call requieres a conversion (config.xml etc.)
             gPlayer.setVolume(volume);
         }
         MessageEmbed embed = MsgBuilder.setVolume(volume);

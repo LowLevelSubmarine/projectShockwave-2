@@ -47,6 +47,7 @@ public class GSettings {
         item.put(songMap);
     }
 
+    //External volume !!!
     public int getVolume() {
         ShelfItem item = DATA.getGuildItem(keys.VOLUME, this.guild);
         if (item.exists()) {

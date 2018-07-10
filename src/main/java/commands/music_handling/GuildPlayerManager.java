@@ -17,7 +17,7 @@ public class GuildPlayerManager {
         if (GUILDPLAYERS.containsKey(guild)) {
             return GUILDPLAYERS.get(guild);
         } else {
-            return createQueue(guild);
+            return createGuildPlayer(guild);
         }
     }
 
@@ -25,7 +25,7 @@ public class GuildPlayerManager {
         return GUILDPLAYERS.containsKey(guild);
     }
 
-    private static GuildPlayer createQueue(Guild guild) {
+    private static GuildPlayer createGuildPlayer(Guild guild) {
         GuildPlayer guildPlayer = new GuildPlayer(guild);
         GUILDPLAYERS.put(guild, guildPlayer);
         return guildPlayer;

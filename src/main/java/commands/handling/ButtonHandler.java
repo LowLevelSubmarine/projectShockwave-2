@@ -11,18 +11,18 @@ public class ButtonHandler {
     public static void fire(ButtonEvent event) {
         if (TICKETS.containsKey(event.getMessageLink())) {
             ButtonHook hook = TICKETS.get(event.getMessageLink());
+            event.setHook(hook);
             hook.onButtonPress(event);
+            //TODO: rethink
         }
     }
 
     public static void registerTicket(Message message, ButtonHook hook) {
         TICKETS.put(new MessageLink(message), hook);
     }
-    public static void registerTicket(MessageLink link, ButtonHook hook) {
-        TICKETS.put(link, hook);
-    }
-    public static void registerTicket(ButtonEvent event, ButtonHook hook) {
-        TICKETS.put(event.getMessageLink(), hook);
+
+    static void registerTicket(ButtonEvent event) {
+        TICKETS.put(event.getMessageLink(), event.getHook());
     }
 
     public static void revokeTicket(Message message) {

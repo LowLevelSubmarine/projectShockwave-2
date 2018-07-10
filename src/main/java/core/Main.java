@@ -6,6 +6,8 @@ import commands.administration.Shutdown;
 import commands.administration.Speedtest;
 import commands.administration.Statistics;
 import commands.music.Play;
+import commands.music.Search;
+import commands.music.Stop;
 import commands.statistic_handling.GuildDetails;
 import commands.statistic_handling.RunningOn;
 import commands.statistic_handling.StatHandler;
@@ -55,6 +57,8 @@ public class Main {
         CommandHandler.addCommand(new Version());
         //Music
         CommandHandler.addCommand(new Play());
+        CommandHandler.addCommand(new Search());
+        CommandHandler.addCommand(new Stop());
         //Settings
         CommandHandler.addCommand(new SetBotadmins());
         CommandHandler.addCommand(new SetBotSnappys());
@@ -64,6 +68,7 @@ public class Main {
         CommandHandler.addCommand(new SetServerSnappys());
         CommandHandler.addCommand(new SetSnappys());
         CommandHandler.addCommand(new SetStatus());
+        CommandHandler.addCommand(new SetVolume());
     }
 
     private static void addStatistics() {

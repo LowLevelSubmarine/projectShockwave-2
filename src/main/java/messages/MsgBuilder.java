@@ -1,18 +1,21 @@
 package messages;
 
+import com.sedmelluq.discord.lavaplayer.track.AudioTrack;
 import commands.handling.CommandHandler;
 import commands.handling.SecurityLevel;
 import commands.music_handling.QueueItem;
+import core.Emotes;
 import core.JDAHandler;
 import core.Statics;
 import core.VersionInfo;
+import data.DATA;
 import net.dv8tion.jda.core.EmbedBuilder;
-import net.dv8tion.jda.core.JDA;
 import net.dv8tion.jda.core.entities.MessageEmbed;
 import net.dv8tion.jda.core.entities.TextChannel;
 import net.dv8tion.jda.core.entities.User;
 
 import java.awt.*;
+import java.util.LinkedList;
 import java.util.Map;
 
 public class MsgBuilder {
@@ -54,10 +57,6 @@ public class MsgBuilder {
 
 
 
-
-
-
-
     private static final Color PSW2COLOR = new Color(255, 101, 0);
     private static String link(String text, String link) {
         return "[" + text + "](" + link + ")";
@@ -66,12 +65,17 @@ public class MsgBuilder {
         return JDAHandler.getJDA().getSelfUser().getAsMention();
     }
 
-    public static MessageEmbed info(String hosterMention, String devMention, String serverInvite) {
-        MsgBuilder builder = new MsgBuilder(PSW2COLOR, "ℹ", "INFORMATION");
-        builder.setDescription(VersionInfo.PROJECTTITLE + " läuft aktuell " + selfMention() + "  " + link("GamingNation", serverInvite) + " Server entwickelt.\n" +
-                "");
-        builder.addField("Hoster", hosterMention, true);
-        builder.addField("Entwickler", devMention, true);
+    public static MessageEmbed info() {
+        User developer = JDAHandler.getJDA().getUserById(Statics.DEVELOPERUSERID);
+        User hoster = JDAHandler.getJDA().getUserById(DATA.config().getHoster());
+        MsgBuilder builder = new MsgBuilder(PSW2COLOR, "ℹ", "BOT INFORMATION");
+        builder.setDescription(selfMention() + " läuft aktuell mit " + link(VersionInfo.PROJECTTITLE, Statics.GITHUBPROJECT) +
+                "welcher ein, auf Benutzerinteraktion spezialisierter, deutschsprachiger Musik-Bot ist. " +
+                "Er wurde ursprünglich für den " + link("GamingNation Server", Statics.GAMINGNATIONINVITE) +
+                " entwickelt, kann aber nun unabhängig genutzt werden.");
+        builder.addField("Entwickler", developer.getAsMention(), true);
+        builder.addField("Hoster", hoster.getAsMention(), true);
+        builder.addField("Version", VersionInfo.NAME, true);
         return builder.build();
     }
     public static MessageEmbed bootupNotification() {
@@ -291,17 +295,27 @@ public class MsgBuilder {
         builder.setDescription("Der neue Musikkanal ist " + channel.getAsMention() + ".");
         return builder.build();
     }
-    public static MessageEmbed lyrics(String text, String source, Integer page, Integer pages) {
-        MsgBuilder builder;
-        String description = text;
-        if (page == null || page == 1) {
-            builder = new MsgBuilder(PSW2COLOR, "\uD83D\uDCC4", "GENIUS LYRICS");
-            description = "Quelle: " + source + "\n\n" + description;
-        } else {
-            builder = new MsgBuilder(PSW2COLOR);
+    public static MessageEmbed trackSearchResults(LinkedList<AudioTrack> results) {
+        MsgBuilder builder = new MsgBuilder(PSW2COLOR, "\uD83D\uDD0E", "SEARCH RESULTS");
+        String desc = Emotes.NR1 + " " + link(results.get(0).getInfo().title, results.get(0).getInfo().uri) + "\n";
+        if (results.size() >= 1) {
+            desc += Emotes.NR2 + " " + link(results.get(1).getInfo().title, results.get(0).getInfo().uri) + "\n";
         }
-        builder.setDescription(description);
-        if (page != null && pages != null) builder.setFooter("Seite " + page + " von " + pages + ".");
+        if (results.size() >= 2) {
+            desc += Emotes.NR3 + " " + link(results.get(2).getInfo().title, results.get(0).getInfo().uri) + "\n";
+        }
+        if (results.size() >= 4) {
+            desc += Emotes.NR4 + " " + link(results.get(3).getInfo().title, results.get(0).getInfo().uri) + "\n";
+        }
+        if (results.size() >= 5) {
+            desc += Emotes.NR5 + " " + link(results.get(4).getInfo().title, results.get(0).getInfo().uri) + "\n";
+        }
+        builder.setDescription(desc);
+        return builder.build();
+    }
+    public static MessageEmbed trackSearchNoResults() {
+        MsgBuilder builder = new MsgBuilder(PSW2COLOR, "", "");
+        builder.setDescription("Die Suche ergab leider keine Ergebnisse");
         return builder.build();
     }
 }

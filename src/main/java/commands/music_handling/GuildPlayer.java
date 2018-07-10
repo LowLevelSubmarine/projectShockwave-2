@@ -5,9 +5,12 @@ import com.sedmelluq.discord.lavaplayer.player.event.AudioEventAdapter;
 import com.sedmelluq.discord.lavaplayer.tools.FriendlyException;
 import com.sedmelluq.discord.lavaplayer.track.AudioTrack;
 import com.sedmelluq.discord.lavaplayer.track.AudioTrackEndReason;
+import core.VolumeConverter;
+import data.DATA;
 import net.dv8tion.jda.core.entities.*;
 
 import java.util.LinkedList;
+import java.util.List;
 
 public class GuildPlayer extends AudioEventAdapter {
 
@@ -20,7 +23,7 @@ public class GuildPlayer extends AudioEventAdapter {
         this.player = GuildPlayerManager.getAudioPlayerManager().createPlayer();
 
         this.player.addListener(this);
-        this.player.setVolume(100);
+        this.setVolume(DATA.guild(this.guild).getVolume());
         this.guild.getAudioManager().setSendingHandler(new PlayerSendHandler(this.player));
     }
 
@@ -52,6 +55,15 @@ public class GuildPlayer extends AudioEventAdapter {
         this.player.stopTrack();
     }
 
+    public void stop() {
+        LinkedList<QueueItem> exceptFirst = new LinkedList<>(this.queue);
+        exceptFirst.removeFirst();
+        for (QueueItem item : exceptFirst) {
+            dequeue(item);
+        }
+        skipPlaylist(); //...or single track
+    }
+
     public Guild getGuild() {
         return this.guild;
     }
@@ -65,6 +77,7 @@ public class GuildPlayer extends AudioEventAdapter {
     }
 
     public void setVolume(int volume) {
+        volume = VolumeConverter.toIntern(volume);
         this.player.setVolume(volume);
     }
 

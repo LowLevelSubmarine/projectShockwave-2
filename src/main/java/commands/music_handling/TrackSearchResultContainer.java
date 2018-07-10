@@ -51,6 +51,10 @@ public class TrackSearchResultContainer {
         return this.playlist.getTracks().get(i);
     }
 
+    public LinkedList<AudioTrack> getSearchResults() {
+        return new LinkedList<>(this.playlist.getTracks());
+    }
+
     public AudioTrack getUrlResult() {
         return this.track;
     }

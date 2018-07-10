@@ -34,17 +34,8 @@ public class Info implements CommandInterface {
 
     @Override
     public void run(CommandInfo info) {
-        //Generate mentions for the hoster and the developer, and get the GamingNation invite
-        String hosterId = DATA.config().getHoster();
-        User hosterUser = JDAHandler.getJDA().getUserById(hosterId);
-        String hosterMention = hosterUser.getAsMention();
-        String devId = Statics.DEVELOPERUSERID;
-        User devUser = JDAHandler.getJDA().getUserById(devId);
-        String devMention = devUser.getAsMention();
-        String invite = Statics.GAMINGNATIONINVITE;
-
         //Send message
-        MessageEmbed embed = MsgBuilder.info(hosterMention, devMention, invite);
+        MessageEmbed embed = MsgBuilder.info();
         info.getChannel().sendMessage(embed).queue();
     }
 

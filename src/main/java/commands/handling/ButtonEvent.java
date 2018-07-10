@@ -7,6 +7,7 @@ import net.dv8tion.jda.core.events.message.guild.react.GenericGuildMessageReacti
 
 public class ButtonEvent {
     private MessageLink messageLink;
+    private ButtonHook hook;
     private String emote;
     private User user;
     private Member member;
@@ -20,8 +21,18 @@ public class ButtonEvent {
         this.guild= event.getGuild();
     }
 
+    public void reregister() {
+        ButtonHandler.registerTicket(this);
+    }
+
     public MessageLink getMessageLink() {
         return this.messageLink;
+    }
+    public void setHook(ButtonHook hook) {
+        this.hook = hook;
+    }
+    public ButtonHook getHook() {
+        return this.hook;
     }
     public String getEmote() {
         return this.emote;

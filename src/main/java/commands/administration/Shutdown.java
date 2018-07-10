@@ -57,11 +57,11 @@ public class Shutdown implements CommandInterface, ButtonHook {
                     event.getMessageLink().getMessage().delete().queue();
                     break;
                 default:
-                    ButtonHandler.registerTicket(event, this);
+                    event.reregister();
                     break;
             }
         } else {
-            ButtonHandler.registerTicket(event, this);
+            event.reregister();
         }
     }
 

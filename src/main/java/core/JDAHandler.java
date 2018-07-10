@@ -6,8 +6,6 @@ import listeners.ExceptionListener;
 import listeners.GenericGuildMessageReactionListener;
 import listeners.GuildMessageReceivedListener;
 import listeners.ReadyListener;
-import lyrics.GA;
-import lyrics.GABuilder;
 import messages.MsgBuilder;
 import net.dv8tion.jda.core.AccountType;
 import net.dv8tion.jda.core.JDA;
@@ -19,7 +17,6 @@ import net.dv8tion.jda.core.entities.MessageEmbed;
 import net.dv8tion.jda.core.entities.TextChannel;
 
 import javax.security.auth.login.LoginException;
-import java.io.IOException;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -29,7 +26,6 @@ public class JDAHandler {
     private static final int DEBUGSHUTDOWNTIME = 2;
     private static int SHUTDOWNTIME;
     private static JDA JDA;
-    private static GA GA;
 
     //Boots everything connected to the DiscordAPI up
     public static void boot() {
@@ -64,7 +60,6 @@ public class JDAHandler {
         setShutdownTime();
         boolean success = DATA.boot();
         StatHandler.boot();
-        buildGA();
         return success;
     }
 
@@ -96,21 +91,9 @@ public class JDAHandler {
         JDA = jda;
     }
 
-    public static GA getGA() {
-        return GA;
-    }
-
     public static String getUsername() {
         if (isRunning()) return JDA.getSelfUser().getName();
         return "MISSING_USERNAME";
-    }
-
-    private static void buildGA() {
-        String clientId = DATA.config().getGeniusClientId();
-        String accessToken = DATA.config().getGeniusAccessToken();
-        String userAgent = VersionInfo.PROJECTTITLE;
-        GABuilder gaBuilder = new GABuilder(clientId, accessToken, userAgent);
-        GA = gaBuilder.build();
     }
 
     private static void setShutdownTime() {

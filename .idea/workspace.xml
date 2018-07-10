@@ -1,40 +1,36 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="ArtifactsWorkspaceSettings">
+    <artifacts-to-build>
+      <artifact name="projectShockwave 2:jar" />
+    </artifacts-to-build>
+  </component>
   <component name="ChangeListManager">
     <list default="true" id="98545169-6396-45d1-9266-97882fdb0bca" name="Default" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/projectShockwave 2.iml" beforeDir="false" afterPath="$PROJECT_DIR$/projectShockwave 2.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/commands/administration/Restart.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/commands/administration/Restart.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/commands/administration/Shutdown.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/commands/administration/Shutdown.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/commands/administration/Speedtest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/commands/administration/Speedtest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/commands/administration/Statistics.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/commands/administration/Statistics.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/commands/handling/ButtonEvent.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/commands/handling/ButtonEvent.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/commands/handling/ButtonHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/commands/handling/ButtonHandler.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/commands/handling/CommandHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/commands/handling/CommandHandler.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/commands/handling/CommandInterface.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/commands/handling/CommandInterface.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/commands/information/Changelog.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/commands/information/Changelog.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/commands/information/Help.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/commands/information/Help.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/commands/information/Info.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/commands/information/Info.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/commands/information/Invite.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/commands/information/Invite.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/commands/information/Permissions.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/commands/information/Permissions.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/commands/information/Ping.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/commands/information/Ping.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/commands/information/Version.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/commands/information/Version.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/commands/music/Loop.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/commands/music/Loop.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/commands/music/Play.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/commands/music/Play.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/commands/music/Skip.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/commands/music/SkipPlaylist.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/commands/music/Search.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/commands/music/Search.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/commands/music/Stop.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/commands/music/Stop.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/commands/music_handling/GuildPlayer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/commands/music_handling/GuildPlayer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/commands/music_handling/GuildPlayerManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/commands/music_handling/GuildPlayerManager.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/commands/music_handling/PlayerSendHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/commands/music_handling/PlayerSendHandler.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/commands/music_handling/QueueItem.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/commands/music_handling/QueueItem.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/commands/settings/SetBotSnappys.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/commands/settings/SetBotSnappys.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/commands/settings/SetBotadmins.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/commands/settings/SetBotadmins.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/commands/settings/SetNotifyChannel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/commands/settings/SetNotifyChannel.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/commands/settings/SetPrefix.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/commands/settings/SetPrefix.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/commands/settings/SetServerSnappys.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/commands/settings/SetServerSnappys.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/commands/settings/SetSnappys.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/commands/settings/SetSnappys.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/commands/settings/SetStatus.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/commands/settings/SetStatus.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/commands/music_handling/TrackSearchResultContainer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/commands/music_handling/TrackSearchResultContainer.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/commands/settings/SetVolume.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/commands/settings/SetVolume.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/core/JDAHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/core/JDAHandler.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/core/Lyrics.java" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/core/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/core/Main.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/core/Statics.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/core/Statics.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/core/VersionInfo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/core/VersionInfo.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/data/database/GSettings.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/data/database/GSettings.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/lyrics/GA.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/lyrics/GABuilder.java" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/messages/MsgBuilder.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/messages/MsgBuilder.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
@@ -54,26 +50,8 @@
       <file leaf-file-name="QueueItem.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/commands/music_handling/QueueItem.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="255">
-              <caret line="227" column="5" lean-forward="true" selection-start-line="227" selection-start-column="5" selection-end-line="227" selection-end-column="5" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Statics.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/core/Statics.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="36">
-              <caret line="2" column="22" selection-start-line="2" selection-start-column="22" selection-end-line="2" selection-end-column="22" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Play.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/commands/music/Play.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="435">
-              <caret line="79" column="9" lean-forward="true" selection-start-line="79" selection-start-column="9" selection-end-line="79" selection-end-column="9" />
+            <state relative-caret-position="702">
+              <caret line="39" column="44" selection-start-line="39" selection-start-column="44" selection-end-line="39" selection-end-column="44" />
             </state>
           </provider>
         </entry>
@@ -81,44 +59,17 @@
       <file leaf-file-name="TrackSearchResultContainer.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/commands/music_handling/TrackSearchResultContainer.java">
           <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="432">
+              <caret line="24" column="41" selection-start-line="24" selection-start-column="41" selection-end-line="24" selection-end-column="41" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Stop.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/commands/music/Stop.java">
+          <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="612">
-              <caret line="34" selection-start-line="34" selection-end-line="34" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="TrackSearchResultHandler.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/commands/music_handling/TrackSearchResultHandler.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="162">
-              <caret line="9" column="31" selection-start-line="9" selection-start-column="31" selection-end-line="9" selection-end-column="31" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="TrackSearchResultHook.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/commands/music_handling/TrackSearchResultHook.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="108">
-              <caret line="6" column="23" selection-start-line="6" selection-start-column="23" selection-end-line="6" selection-end-column="23" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="MsgBuilder.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/messages/MsgBuilder.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1224">
-              <caret line="68" column="88" selection-start-line="68" selection-start-column="88" selection-end-line="68" selection-end-column="88" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Help.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/commands/information/Help.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1008">
-              <caret line="56" column="5" selection-start-line="56" selection-start-column="5" selection-end-line="56" selection-end-column="5" />
+              <caret line="34" column="9" selection-start-line="34" selection-start-column="9" selection-end-line="34" selection-end-column="9" />
             </state>
           </provider>
         </entry>
@@ -126,17 +77,62 @@
       <file leaf-file-name="GuildPlayer.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/commands/music_handling/GuildPlayer.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="900">
-              <caret line="50" column="34" selection-start-line="50" selection-start-column="34" selection-end-line="50" selection-end-column="34" />
+            <state relative-caret-position="1116">
+              <caret line="62" column="9" selection-start-line="62" selection-start-column="9" selection-end-line="62" selection-end-column="9" />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="GuildPlayerManager.java" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/main/java/commands/music_handling/GuildPlayerManager.java">
+      <file leaf-file-name="Play.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/commands/music/Play.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="435">
-              <caret line="45" column="80" selection-start-line="45" selection-start-column="80" selection-end-line="45" selection-end-column="80" />
+            <state relative-caret-position="1080">
+              <caret line="60" column="33" selection-start-line="60" selection-start-column="33" selection-end-line="60" selection-end-column="33" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Statics.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/core/Statics.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="162">
+              <caret line="9" selection-start-line="9" selection-end-line="9" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Main.java" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/main/java/core/Main.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="68">
+              <caret line="58" column="31" lean-forward="true" selection-start-line="58" selection-start-column="31" selection-end-line="58" selection-end-column="31" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="pom.xml" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/pom.xml">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="432">
+              <caret line="24" column="20" selection-start-line="24" selection-start-column="20" selection-end-line="24" selection-end-column="20" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="VolumeConverter.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/core/VolumeConverter.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="180">
+              <caret line="10" selection-start-line="10" selection-end-line="10" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="SnappyConverter.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/commands/music_handling/SnappyConverter.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="54">
+              <caret line="3" column="44" selection-start-line="3" selection-start-column="44" selection-end-line="3" selection-end-column="44" />
             </state>
           </provider>
         </entry>
@@ -189,15 +185,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/src/main/java/lyrics/Lyrics.java" />
-        <option value="$PROJECT_DIR$/src/main/java/commands/handling/CommandInterface.java" />
-        <option value="$PROJECT_DIR$/src/main/java/commands/administration/Restart.java" />
-        <option value="$PROJECT_DIR$/src/main/java/commands/administration/Shutdown.java" />
-        <option value="$PROJECT_DIR$/src/main/java/commands/administration/Speedtest.java" />
-        <option value="$PROJECT_DIR$/src/main/java/commands/administration/Statistics.java" />
-        <option value="$PROJECT_DIR$/src/main/java/commands/information/Changelog.java" />
-        <option value="$PROJECT_DIR$/src/main/java/commands/information/Invite.java" />
-        <option value="$PROJECT_DIR$/src/main/java/commands/information/Info.java" />
         <option value="$PROJECT_DIR$/src/main/java/commands/information/Permissions.java" />
         <option value="$PROJECT_DIR$/src/main/java/commands/information/Ping.java" />
         <option value="$PROJECT_DIR$/src/main/java/commands/information/Version.java" />
@@ -209,37 +196,46 @@
         <option value="$PROJECT_DIR$/src/main/java/commands/settings/SetServerSnappys.java" />
         <option value="$PROJECT_DIR$/src/main/java/commands/settings/SetSnappys.java" />
         <option value="$PROJECT_DIR$/src/main/java/commands/settings/SetStatus.java" />
-        <option value="$PROJECT_DIR$/src/main/java/commands/settings/SetVolume.java" />
         <option value="$PROJECT_DIR$/src/main/java/commands/handling/CommandHandler.java" />
         <option value="$PROJECT_DIR$/src/main/java/core/VersionInfo.java" />
-        <option value="$PROJECT_DIR$/src/main/java/commands/handling/ButtonEvent.java" />
         <option value="$PROJECT_DIR$/src/main/java/listeners/GenericGuildMessageReactionListener.java" />
-        <option value="$PROJECT_DIR$/src/main/java/data/database/GSettings.java" />
         <option value="$PROJECT_DIR$/src/main/java/commands/settings/SetMusicChannel.java" />
-        <option value="$PROJECT_DIR$/src/main/java/core/Main.java" />
         <option value="$PROJECT_DIR$/src/main/java/messages/MsgUtils.java" />
         <option value="$PROJECT_DIR$/src/main/java/core/PhantomJsUtils.java" />
-        <option value="$PROJECT_DIR$/pom.xml" />
         <option value="$PROJECT_DIR$/src/main/java/core/Testing.java" />
         <option value="$PROJECT_DIR$/src/main/java/core/Testing2.java" />
-        <option value="$PROJECT_DIR$/config.xml" />
         <option value="$PROJECT_DIR$/src/main/java/data/config/Config.java" />
-        <option value="$PROJECT_DIR$/src/main/java/commands/music_handling/PlayerSendHandler.java" />
         <option value="$PROJECT_DIR$/src/main/java/lyrics/GABuilder.java" />
-        <option value="$PROJECT_DIR$/src/main/java/core/JDAHandler.java" />
-        <option value="$PROJECT_DIR$/src/main/java/lyrics/GA.java" />
         <option value="$PROJECT_DIR$/src/main/java/core/Lyrics.java" />
         <option value="$PROJECT_DIR$/src/main/java/tools/Toolkit.java" />
         <option value="$PROJECT_DIR$/src/main/java/commands/music_handling/TrackSearchResultHook.java" />
         <option value="$PROJECT_DIR$/src/main/java/commands/music_handling/TrackSearchResultHandler.java" />
-        <option value="$PROJECT_DIR$/src/main/java/commands/music_handling/QueueItem.java" />
-        <option value="$PROJECT_DIR$/src/main/java/commands/music_handling/GuildPlayer.java" />
-        <option value="$PROJECT_DIR$/src/main/java/commands/music_handling/TrackSearchResultContainer.java" />
-        <option value="$PROJECT_DIR$/src/main/java/core/Statics.java" />
-        <option value="$PROJECT_DIR$/src/main/java/messages/MsgBuilder.java" />
         <option value="$PROJECT_DIR$/src/main/java/commands/information/Help.java" />
-        <option value="$PROJECT_DIR$/src/main/java/commands/music/Play.java" />
+        <option value="$PROJECT_DIR$/pom.xml" />
+        <option value="$PROJECT_DIR$/src/main/java/lyrics/GA.java" />
+        <option value="$PROJECT_DIR$/src/main/java/core/JDAHandler.java" />
+        <option value="$PROJECT_DIR$/src/main/java/commands/music_handling/PlayerSendHandler.java" />
+        <option value="$PROJECT_DIR$/src/main/java/commands/information/Info.java" />
         <option value="$PROJECT_DIR$/src/main/java/commands/music_handling/GuildPlayerManager.java" />
+        <option value="$PROJECT_DIR$/src/main/java/core/VolumeConverter.java" />
+        <option value="$PROJECT_DIR$/src/main/java/commands/settings/SetVolume.java" />
+        <option value="$PROJECT_DIR$/src/main/java/data/database/GSettings.java" />
+        <option value="$PROJECT_DIR$/src/main/java/core/Emotes.java" />
+        <option value="$PROJECT_DIR$/src/main/java/commands/handling/ButtonEvent.java" />
+        <option value="$PROJECT_DIR$/src/main/java/commands/handling/ButtonHandler.java" />
+        <option value="$PROJECT_DIR$/src/main/java/commands/music_handling/TrackSearchResultContainer.java" />
+        <option value="$PROJECT_DIR$/src/main/java/commands/administration/Restart.java" />
+        <option value="$PROJECT_DIR$/src/main/java/commands/administration/Shutdown.java" />
+        <option value="$PROJECT_DIR$/config.xml" />
+        <option value="$PROJECT_DIR$/src/main/java/messages/MsgBuilder.java" />
+        <option value="$PROJECT_DIR$/src/main/java/commands/music_handling/QueueItem.java" />
+        <option value="$PROJECT_DIR$/src/main/java/commands/music/Search.java" />
+        <option value="$PROJECT_DIR$/src/main/java/commands/music/Stop.java" />
+        <option value="$PROJECT_DIR$/src/main/java/commands/music_handling/GuildPlayer.java" />
+        <option value="$PROJECT_DIR$/src/main/java/commands/music_handling/SnappyConverter.java" />
+        <option value="$PROJECT_DIR$/src/main/java/commands/music/Play.java" />
+        <option value="$PROJECT_DIR$/src/main/java/core/Statics.java" />
+        <option value="$PROJECT_DIR$/src/main/java/core/Main.java" />
       </list>
     </option>
   </component>
@@ -251,10 +247,10 @@
     </option>
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="383" />
-    <option name="y" value="-28" />
-    <option name="width" value="981" />
-    <option name="height" value="1052" />
+    <option name="x" value="532" />
+    <option name="y" value="-9" />
+    <option name="width" value="985" />
+    <option name="height" value="1055" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true">
     <ConfirmationsSetting value="1" id="Add" />
@@ -289,160 +285,23 @@
               <item name="main" type="462c0819:PsiDirectoryNode" />
               <item name="java" type="462c0819:PsiDirectoryNode" />
             </path>
-            <path>
-              <item name="projectShockwave 2" type="b2602c69:ProjectViewProjectNode" />
-              <item name="projectShockwave 2" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="commands" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="projectShockwave 2" type="b2602c69:ProjectViewProjectNode" />
-              <item name="projectShockwave 2" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="commands" type="462c0819:PsiDirectoryNode" />
-              <item name="administration" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="projectShockwave 2" type="b2602c69:ProjectViewProjectNode" />
-              <item name="projectShockwave 2" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="commands" type="462c0819:PsiDirectoryNode" />
-              <item name="handling" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="projectShockwave 2" type="b2602c69:ProjectViewProjectNode" />
-              <item name="projectShockwave 2" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="commands" type="462c0819:PsiDirectoryNode" />
-              <item name="information" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="projectShockwave 2" type="b2602c69:ProjectViewProjectNode" />
-              <item name="projectShockwave 2" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="commands" type="462c0819:PsiDirectoryNode" />
-              <item name="music" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="projectShockwave 2" type="b2602c69:ProjectViewProjectNode" />
-              <item name="projectShockwave 2" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="commands" type="462c0819:PsiDirectoryNode" />
-              <item name="music_handling" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="projectShockwave 2" type="b2602c69:ProjectViewProjectNode" />
-              <item name="projectShockwave 2" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="commands" type="462c0819:PsiDirectoryNode" />
-              <item name="settings" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="projectShockwave 2" type="b2602c69:ProjectViewProjectNode" />
-              <item name="projectShockwave 2" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="commands" type="462c0819:PsiDirectoryNode" />
-              <item name="statistic_handling" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="projectShockwave 2" type="b2602c69:ProjectViewProjectNode" />
-              <item name="projectShockwave 2" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="core" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="projectShockwave 2" type="b2602c69:ProjectViewProjectNode" />
-              <item name="projectShockwave 2" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="data" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="projectShockwave 2" type="b2602c69:ProjectViewProjectNode" />
-              <item name="projectShockwave 2" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="data" type="462c0819:PsiDirectoryNode" />
-              <item name="config" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="projectShockwave 2" type="b2602c69:ProjectViewProjectNode" />
-              <item name="projectShockwave 2" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="data" type="462c0819:PsiDirectoryNode" />
-              <item name="database" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="projectShockwave 2" type="b2602c69:ProjectViewProjectNode" />
-              <item name="projectShockwave 2" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="listeners" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="projectShockwave 2" type="b2602c69:ProjectViewProjectNode" />
-              <item name="projectShockwave 2" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="lyrics" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="projectShockwave 2" type="b2602c69:ProjectViewProjectNode" />
-              <item name="projectShockwave 2" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="messages" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="projectShockwave 2" type="b2602c69:ProjectViewProjectNode" />
-              <item name="projectShockwave 2" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="tools" type="462c0819:PsiDirectoryNode" />
-            </path>
           </expand>
           <select />
         </subPane>
       </pane>
-      <pane id="PackagesPane" />
       <pane id="AndroidView" />
       <pane id="Scope" />
+      <pane id="PackagesPane" />
     </panes>
   </component>
   <component name="PropertiesComponent">
     <property name="last.edited.regexp" value="Sample Text" />
-    <property name="last_opened_file_path" value="$USER_HOME$/AppData/Local/GitHubDesktop/app-1.1.1/resources/app/git/cmd/git.exe" />
-    <property name="project.structure.last.edited" value="Modules" />
-    <property name="project.structure.proportion" value="0.0" />
-    <property name="project.structure.side.proportion" value="0.0" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/src/main/ressources" />
+    <property name="project.structure.last.edited" value="Artifacts" />
+    <property name="project.structure.proportion" value="0.15" />
+    <property name="project.structure.side.proportion" value="0.43126386" />
     <property name="run.code.analysis.last.selected.profile" value="pProject Default" />
-    <property name="settings.editor.selected.configurable" value="editor.preferences.folding" />
+    <property name="settings.editor.selected.configurable" value="vcs.Git" />
   </component>
   <component name="RunDashboard">
     <option name="ruleStates">
@@ -593,29 +452,29 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="-7" y="-7" width="1753" height="954" extended-state="6" />
+    <frame x="-7" y="-7" width="1550" height="838" extended-state="6" />
     <editor active="true" />
     <layout>
       <window_info anchor="right" id="Palette" order="3" />
       <window_info anchor="bottom" id="TODO" order="6" weight="0.32934782" />
-      <window_info anchor="bottom" id="Messages" order="7" weight="0.32818073" />
+      <window_info anchor="bottom" id="Messages" order="7" weight="0.32689655" />
       <window_info anchor="right" id="Palette&#9;" order="3" />
       <window_info id="Image Layers" order="2" />
       <window_info anchor="right" id="Capture Analysis" order="3" />
       <window_info anchor="bottom" id="Event Log" order="7" sideWeight="0.50028753" side_tool="true" weight="0.31866825" />
       <window_info anchor="right" id="Maven Projects" order="3" />
       <window_info anchor="bottom" id="Version Control" order="7" weight="0.32934782" />
-      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.49971247" visible="true" weight="0.31866825" />
+      <window_info active="true" anchor="bottom" id="Run" order="2" sideWeight="0.49971247" visible="true" weight="0.31862068" />
       <window_info anchor="bottom" id="Terminal" order="7" weight="0.32934782" />
       <window_info id="Capture Tool" order="2" />
       <window_info id="Designer" order="2" />
-      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.49565217" visible="true" weight="0.18631397" />
+      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.49565217" visible="true" weight="0.21809895" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.24973656" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info id="UI Designer" order="2" />
       <window_info anchor="right" id="Theme Preview" order="3" />
       <window_info id="Favorites" order="2" sideWeight="0.5043478" side_tool="true" weight="0.21002132" />
-      <window_info anchor="bottom" id="Debug" order="3" weight="0.39952436" />
+      <window_info anchor="bottom" id="Debug" order="3" weight="0.008275862" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="right" id="Commander" order="0" weight="0.4" />
@@ -627,27 +486,27 @@
       <window_info anchor="right" id="Palette" order="3" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
       <window_info anchor="right" id="Capture Analysis" order="4" />
-      <window_info anchor="bottom" id="Run" order="2" weight="0.34347826" />
+      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.49971247" weight="0.31866825" />
       <window_info anchor="right" id="Theme Preview" order="5" />
-      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.49565217" visible="true" weight="0.18171363" />
+      <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.49565217" visible="true" weight="0.18619792" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.24973656" />
       <window_info anchor="right" id="Commander" order="0" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="bottom" id="TODO" order="6" weight="0.32934782" />
-      <window_info anchor="bottom" id="Version Control" order="7" weight="0.32934782" />
       <window_info id="Image Layers" order="2" />
       <window_info id="Designer" order="3" />
       <window_info id="UI Designer" order="4" />
-      <window_info anchor="bottom" id="Find" order="1" weight="0.32934782" />
-      <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
+      <window_info anchor="bottom" id="Find" order="1" weight="0.32818073" />
+      <window_info anchor="bottom" id="Debug" order="3" weight="0.39952436" />
       <window_info anchor="right" id="Palette&#9;" order="6" />
       <window_info anchor="bottom" id="Terminal" order="8" weight="0.32934782" />
-      <window_info anchor="bottom" id="Event Log" order="9" side_tool="true" />
+      <window_info anchor="bottom" id="Event Log" order="9" sideWeight="0.50028753" side_tool="true" weight="0.31866825" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
-      <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
+      <window_info anchor="bottom" id="Version Control" order="7" weight="0.32934782" />
       <window_info id="Capture Tool" order="5" />
       <window_info anchor="bottom" id="Message" order="0" />
-      <window_info anchor="bottom" id="Messages" order="10" weight="0.32934782" />
+      <window_info anchor="bottom" id="Messages" order="10" weight="0.32818073" />
       <window_info anchor="right" id="Maven Projects" order="7" />
       <window_info id="Favorites" order="6" sideWeight="0.5043478" side_tool="true" weight="0.21002132" />
     </layout-to-restore>
@@ -664,145 +523,32 @@
           <properties />
           <option name="timeStamp" value="36" />
         </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/commands/music/Search.java</url>
+          <line>125</line>
+          <properties />
+          <option name="timeStamp" value="38" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/commands/music/Search.java</url>
+          <line>76</line>
+          <properties />
+          <option name="timeStamp" value="39" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/messages/MsgBuilder.java</url>
+          <line>298</line>
+          <properties />
+          <option name="timeStamp" value="40" />
+        </line-breakpoint>
       </breakpoints>
-      <option name="time" value="37" />
+      <option name="time" value="41" />
     </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/main/java/commands/settings/SetVolume.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="486">
-          <caret line="27" column="36" selection-start-line="27" selection-start-column="36" selection-end-line="27" selection-end-column="36" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/lyrics/Lyrics.java" />
-    <entry file="file://$PROJECT_DIR$/src/main/java/commands/handling/CommandHandler.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="270">
-          <caret line="15" column="36" selection-start-line="15" selection-start-column="36" selection-end-line="15" selection-end-column="36" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/core/VersionInfo.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="144">
-          <caret line="8" lean-forward="true" selection-start-line="8" selection-end-line="8" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/commands/handling/ButtonEvent.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="171">
-          <caret line="19" column="37" lean-forward="true" selection-start-line="19" selection-start-column="37" selection-end-line="19" selection-end-column="37" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/commands/handling/ButtonHandler.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="234">
-          <caret line="13" column="38" lean-forward="true" selection-start-line="13" selection-start-column="38" selection-end-line="13" selection-end-column="38" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/commands/administration/Shutdown.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="504">
-          <caret line="60" column="26" selection-start-line="60" selection-start-column="26" selection-end-line="60" selection-end-column="26" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/listeners/GuildMessageReceivedListener.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="306">
-          <caret line="17" column="1" lean-forward="true" selection-start-line="17" selection-start-column="1" selection-end-line="17" selection-end-column="1" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/listeners/GenericGuildMessageReactionListener.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="198">
-          <caret line="11" column="9" lean-forward="true" selection-start-line="11" selection-start-column="9" selection-end-line="11" selection-end-column="9" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/data/database/GSettings.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="370">
-          <caret line="66" column="46" selection-start-line="66" selection-start-column="46" selection-end-line="66" selection-end-column="46" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/commands/settings/SetNotifyChannel.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="648">
-          <caret line="36" column="39" selection-start-line="36" selection-start-column="39" selection-end-line="44" selection-end-column="53" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/commands/settings/SetMusicChannel.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="540">
-          <caret line="30" column="42" selection-start-line="30" selection-start-column="42" selection-end-line="30" selection-end-column="42" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/commands/music/Loop.java" />
-    <entry file="jar://$MAVEN_REPOSITORY$/org/slf4j/slf4j-api/1.7.25/slf4j-api-1.7.25-sources.jar!/org/slf4j/Logger.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="180">
-          <caret line="355" column="16" selection-start-line="355" selection-start-column="16" selection-end-line="355" selection-end-column="16" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$MAVEN_REPOSITORY$/com/sedmelluq/lavaplayer/1.2.64/lavaplayer-1.2.64.jar!/com/sedmelluq/discord/lavaplayer/player/event/AudioEventAdapter.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="360">
-          <caret line="21" column="89" selection-start-line="21" selection-start-column="89" selection-end-line="21" selection-end-column="89" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$MAVEN_REPOSITORY$/net/dv8tion/JDA/3.6.0_358/JDA-3.6.0_358-sources.jar!/net/dv8tion/jda/core/entities/Message.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="179">
-          <caret line="978" column="21" lean-forward="true" selection-start-line="978" selection-start-column="21" selection-end-line="978" selection-end-column="21" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://C:/Program Files/Java/jdk1.8.0_171/src.zip!/java/util/function/Consumer.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="197">
-          <caret line="48" column="9" selection-start-line="48" selection-start-column="9" selection-end-line="48" selection-end-column="9" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/core/Main.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="990">
-          <caret line="55" column="15" selection-start-line="55" selection-start-column="15" selection-end-line="55" selection-end-column="15" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/core/Builder.java" />
-    <entry file="file://$PROJECT_DIR$/src/main/java/core/testing4.java" />
-    <entry file="file://$PROJECT_DIR$/temp/1527942787566.html" />
     <entry file="file://$PROJECT_DIR$/temp/1527942906848.html" />
     <entry file="file://$PROJECT_DIR$/temp/1527942968804.html" />
     <entry file="file://$PROJECT_DIR$/src/main/java/core/PhantomJsUtils.java" />
-    <entry file="file://$PROJECT_DIR$/pom.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="418">
-          <caret line="70" column="21" lean-forward="true" selection-start-line="70" selection-start-column="21" selection-end-line="70" selection-end-column="21" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/data/DATA.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="197">
-          <caret line="26" column="49" selection-start-line="26" selection-start-column="49" selection-end-line="26" selection-end-column="49" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/data/config/Config.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="288">
@@ -826,27 +572,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/lyrics/GABuilder.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="72">
-          <caret line="4" column="55" selection-start-line="4" selection-start-column="55" selection-end-line="4" selection-end-column="55" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/commands/music_handling/PlayerSendHandler.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="540">
-          <caret line="30" column="22" selection-start-line="30" selection-start-column="22" selection-end-line="30" selection-end-column="22" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/config.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="36">
-          <caret line="2" column="85" selection-start-line="2" selection-start-column="21" selection-end-line="2" selection-end-column="85" />
-        </state>
-      </provider>
-    </entry>
     <entry file="jar://$MAVEN_REPOSITORY$/net/dv8tion/JDA/3.6.0_358/JDA-3.6.0_358-sources.jar!/net/dv8tion/jda/core/entities/impl/EmoteImpl.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-2405">
@@ -861,34 +586,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/core/Lyrics.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="432">
-          <caret line="24" selection-start-line="24" selection-end-line="24" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/tools/Toolkit.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="277">
-          <caret line="204" column="17" lean-forward="true" selection-start-line="204" selection-start-column="17" selection-end-line="204" selection-end-column="17" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/core/JDAHandler.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1242">
-          <caret line="69" selection-start-line="69" selection-end-line="69" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/lyrics/GA.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1098">
-          <caret line="61" column="41" selection-start-line="61" selection-start-column="41" selection-end-line="61" selection-end-column="41" />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/core/Lyrics.java" />
     <entry file="file://$PROJECT_DIR$/src/main/java/messages/MsgUtils.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="72">
@@ -910,34 +608,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/commands/music_handling/GuildPlayer.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="900">
-          <caret line="50" column="34" selection-start-line="50" selection-start-column="34" selection-end-line="50" selection-end-column="34" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/commands/music_handling/TrackSearchResultContainer.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="612">
-          <caret line="34" selection-start-line="34" selection-end-line="34" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/core/Statics.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="36">
-          <caret line="2" column="22" selection-start-line="2" selection-start-column="22" selection-end-line="2" selection-end-column="22" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/messages/MsgBuilder.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1224">
-          <caret line="68" column="88" selection-start-line="68" selection-start-column="88" selection-end-line="68" selection-end-column="88" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/commands/information/Help.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1008">
@@ -945,24 +615,237 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/commands/music/Play.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/lyrics/GABuilder.java" />
+    <entry file="file://$PROJECT_DIR$/src/main/java/lyrics/GA.java" />
+    <entry file="file://$PROJECT_DIR$/src/main/java/core/JDAHandler.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="435">
-          <caret line="79" column="9" lean-forward="true" selection-start-line="79" selection-start-column="9" selection-end-line="79" selection-end-column="9" />
+        <state relative-caret-position="270">
+          <caret line="27" column="27" selection-start-line="27" selection-start-column="27" selection-end-line="27" selection-end-column="27" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/commands/music_handling/QueueItem.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/commands/music_handling/PlayerSendHandler.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="255">
-          <caret line="227" column="5" lean-forward="true" selection-start-line="227" selection-start-column="5" selection-end-line="227" selection-end-column="5" />
+        <state relative-caret-position="371">
+          <caret line="29" column="61" selection-start-line="29" selection-start-column="61" selection-end-line="29" selection-end-column="61" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/errors.txt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-4725" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/commands/information/Info.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="475">
+          <caret line="47" column="33" lean-forward="true" selection-start-line="47" selection-start-column="33" selection-end-line="47" selection-end-column="33" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/core/VersionInfo.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="36">
+          <caret line="2" column="13" selection-start-line="2" selection-start-column="13" selection-end-line="2" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/tools/Toolkit.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="497">
+          <caret line="204" column="17" selection-start-line="204" selection-start-column="17" selection-end-line="204" selection-end-column="17" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/data/DATA.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="18">
+          <caret line="26" column="49" selection-start-line="26" selection-start-column="49" selection-end-line="26" selection-end-column="49" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/commands/administration/Statistics.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="18">
+          <caret line="13" column="28" selection-start-line="13" selection-start-column="28" selection-end-line="13" selection-end-column="28" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/commands/music_handling/GuildPlayerManager.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="435">
-          <caret line="45" column="80" selection-start-line="45" selection-start-column="80" selection-end-line="45" selection-end-column="80" />
+        <state relative-caret-position="18">
+          <caret line="10" column="33" selection-start-line="10" selection-start-column="33" selection-end-line="10" selection-end-column="33" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/notes.txt">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="jar://$MAVEN_REPOSITORY$/net/dv8tion/JDA/3.6.0_358/JDA-3.6.0_358-sources.jar!/net/dv8tion/jda/core/requests/RestAction.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="233">
+          <caret line="293" column="16" selection-start-line="293" selection-start-column="16" selection-end-line="293" selection-end-column="16" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/commands/information/Ping.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="594">
+          <caret line="33" column="44" selection-start-line="33" selection-start-column="44" selection-end-line="33" selection-end-column="44" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/core/Emotes.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="252">
+          <caret line="14" column="10" selection-start-line="14" selection-start-column="10" selection-end-line="14" selection-end-column="10" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/commands/handling/ButtonEvent.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="450">
+          <caret line="25" column="5" lean-forward="true" selection-start-line="25" selection-start-column="5" selection-end-line="25" selection-end-column="5" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/commands/settings/SetVolume.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="825">
+          <caret line="52" column="38" selection-start-line="52" selection-start-column="38" selection-end-line="52" selection-end-column="38" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/listeners/GenericGuildMessageReactionListener.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="252">
+          <caret line="14" lean-forward="true" selection-start-line="14" selection-end-line="14" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/commands/administration/Restart.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="208">
+          <caret line="59" column="39" selection-start-line="59" selection-start-column="39" selection-end-line="59" selection-end-column="39" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/commands/administration/Shutdown.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <caret line="63" column="31" selection-start-line="63" selection-start-column="31" selection-end-line="63" selection-end-column="31" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/commands/handling/CommandHandler.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="131">
+          <caret line="56" selection-start-line="56" selection-end-line="56" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/commands/handling/ButtonHandler.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="162">
+          <caret line="9" lean-forward="true" selection-start-line="9" selection-end-line="9" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/data/database/GSettings.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="310">
+          <caret line="67" column="44" selection-start-line="67" selection-start-column="44" selection-end-line="67" selection-end-column="44" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/commands/music/Search.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2376">
+          <caret line="132" column="5" selection-start-line="132" selection-start-column="5" selection-end-line="132" selection-end-column="5" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/config.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="342">
+          <caret line="19" column="18" selection-start-line="19" selection-start-column="18" selection-end-line="19" selection-end-column="18" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/messages/MsgBuilder.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="5364">
+          <caret line="298" selection-start-line="298" selection-end-line="298" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/commands/music_handling/QueueItem.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="702">
+          <caret line="39" column="44" selection-start-line="39" selection-start-column="44" selection-end-line="39" selection-end-column="44" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/commands/music/Stop.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="612">
+          <caret line="34" column="9" selection-start-line="34" selection-start-column="9" selection-end-line="34" selection-end-column="9" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/commands/music_handling/GuildPlayer.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1116">
+          <caret line="62" column="9" selection-start-line="62" selection-start-column="9" selection-end-line="62" selection-end-column="9" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/commands/music_handling/SnappyConverter.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="54">
+          <caret line="3" column="44" selection-start-line="3" selection-start-column="44" selection-end-line="3" selection-end-column="44" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/commands/music_handling/TrackSearchResultContainer.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="432">
+          <caret line="24" column="41" selection-start-line="24" selection-start-column="41" selection-end-line="24" selection-end-column="41" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/commands/music/Play.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1080">
+          <caret line="60" column="33" selection-start-line="60" selection-start-column="33" selection-end-line="60" selection-end-column="33" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/core/VolumeConverter.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="180">
+          <caret line="10" selection-start-line="10" selection-end-line="10" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/core/Statics.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="162">
+          <caret line="9" selection-start-line="9" selection-end-line="9" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/pom.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="432">
+          <caret line="24" column="20" selection-start-line="24" selection-start-column="20" selection-end-line="24" selection-end-column="20" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/core/Main.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="284">
+          <caret line="70" column="51" lean-forward="true" selection-start-line="70" selection-start-column="51" selection-end-line="70" selection-end-column="51" />
         </state>
       </provider>
     </entry>
@@ -972,10 +855,12 @@
       <state key="ArtifactsStructureConfigurable.UI">
         <settings>
           <artifact-editor />
+          <last-edited>projectShockwave 2:jar</last-edited>
           <splitter-proportions>
             <option name="proportions">
               <list>
-                <option value="0.2" />
+                <option value="0.43126386" />
+                <option value="0.5" />
               </list>
             </option>
           </splitter-proportions>
@@ -1023,7 +908,6 @@
             <option name="proportions">
               <list>
                 <option value="0.43126386" />
-                <option value="0.6" />
               </list>
             </option>
           </splitter-proportions>

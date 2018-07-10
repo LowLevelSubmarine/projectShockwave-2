@@ -50,6 +50,9 @@ public class Play implements CommandInterface, TrackSearchResultHook {
         //Command stuff
         this.channel = info.getChannel();
         this.member = info.getMember();
+        //Check for snappys
+        identifier = SnappyConverter.convert(identifier, this.member);
+        //Search by the identifier
         GuildPlayerManager.searchTracks(identifier, this);
     }
 
@@ -60,7 +63,7 @@ public class Play implements CommandInterface, TrackSearchResultHook {
 
     @Override
     public String description() {
-        return "Spielt einen YouTube Link, eine Playlist oder das erste Ergebnis einer Suche ab";
+        return "Spielt einen YouTube Link, eine Playlist oder das erste Ergebnis einer Suche ab.";
     }
 
     @Override
