@@ -6,7 +6,7 @@ import commands.handling.CommandType;
 import commands.handling.SecurityLevel;
 import commands.music_handling.GuildPlayerManager;
 import commands.music_handling.GuildPlayer;
-import core.JDAHandler;
+import core.BotHandler;
 import data.DATA;
 import messages.MsgBuilder;
 import net.dv8tion.jda.core.entities.MessageEmbed;
@@ -46,8 +46,8 @@ public class SetVolume implements CommandInterface {
 
         //Do the math
         DATA.guild(info.getGuild()).setVolume(volume);
-        if (GuildPlayerManager.hasGuildPlayer(info.getGuild())) {
-            GuildPlayer gPlayer = GuildPlayerManager.getGuildPlayer(info.getGuild());
+        if (GuildPlayerManager.has(info.getGuild())) {
+            GuildPlayer gPlayer = GuildPlayerManager.get(info.getGuild());
             //Convert the external volume to internal volume (maybe inside the GuildPlayer.class)
             //So that not every setVolume call requieres a conversion (config.xml etc.)
             gPlayer.setVolume(volume);
@@ -63,7 +63,7 @@ public class SetVolume implements CommandInterface {
 
     @Override
     public String description() {
-        return "Stellt die Lautstärke ein mit welcher " + JDAHandler.getUsername() + " Musik abspielt. Erlaubt sind alle Werte zwischen 0 und 200";
+        return "Stellt die Lautstärke ein mit welcher " + BotHandler.getUsername() + " Musik abspielt. Erlaubt sind alle Werte zwischen 0 und 200";
     }
 
     @Override

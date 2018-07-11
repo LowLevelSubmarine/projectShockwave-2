@@ -57,7 +57,7 @@ public class ExceptionLogger {
     private static void contactDebugSupporter(String message) {
         try {
             for (String debugSupporterId : DATA.config().getDebugSupporters()) {
-                User user = JDAHandler.getJDA().getUserById(debugSupporterId);
+                User user = BotHandler.getJDA().getUserById(debugSupporterId);
                 PrivateChannel channel = user.openPrivateChannel().complete();
                 channel.sendMessage(MsgBuilder.exceptionLogInfo(message)).queue();
             }

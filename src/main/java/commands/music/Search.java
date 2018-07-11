@@ -127,7 +127,7 @@ public class Search implements CommandInterface, TrackSearchResultHook, ButtonHo
             event.reregister();
         } else {
             this.resultMessage.delete().queue();
-            GuildPlayer player = GuildPlayerManager.getGuildPlayer(this.guild);
+            GuildPlayer player = GuildPlayerManager.get(this.guild);
             player.queue(results.get(selection), this.member);
         }
     }

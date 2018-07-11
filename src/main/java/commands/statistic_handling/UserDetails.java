@@ -1,7 +1,6 @@
 package commands.statistic_handling;
 
-import commands.music_handling.GuildPlayer;
-import core.JDAHandler;
+import core.BotHandler;
 import net.dv8tion.jda.core.entities.Guild;
 import net.dv8tion.jda.core.entities.Member;
 import net.dv8tion.jda.core.entities.PrivateChannel;
@@ -14,7 +13,7 @@ public class UserDetails implements StatInterface {
 
     @Override
     public String title() {
-        return "Details of users " + JDAHandler.getUsername() + " is connected to in some way";
+        return "Details of users " + BotHandler.getUsername() + " is connected to in some way";
     }
 
     @Override
@@ -33,14 +32,14 @@ public class UserDetails implements StatInterface {
 
     private ArrayList<User> getAllUsers() {
         ArrayList<User> allUsers = new ArrayList<>();
-        for (Guild guild : JDAHandler.getJDA().getGuilds()) {
+        for (Guild guild : BotHandler.getJDA().getGuilds()) {
             for (Member member : guild.getMembers()) {
                 if (!allUsers.contains(member.getUser())) {
                     allUsers.add(member.getUser());
                 }
             }
         }
-        for (PrivateChannel channel : JDAHandler.getJDA().getPrivateChannels()) {
+        for (PrivateChannel channel : BotHandler.getJDA().getPrivateChannels()) {
             if (allUsers.contains(channel.getUser())) {
                 allUsers.add(channel.getUser());
             }

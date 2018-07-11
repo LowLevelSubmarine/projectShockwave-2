@@ -11,6 +11,7 @@ import net.dv8tion.jda.core.entities.*;
 
 import java.util.LinkedList;
 import java.util.List;
+import java.util.TimerTask;
 
 public class GuildPlayer extends AudioEventAdapter {
 
@@ -56,6 +57,10 @@ public class GuildPlayer extends AudioEventAdapter {
     }
 
     public void stop() {
+        //Deny execution if the player is not playing
+        if (!isPlaying()) {
+            return;
+        }
         LinkedList<QueueItem> exceptFirst = new LinkedList<>(this.queue);
         exceptFirst.removeFirst();
         for (QueueItem item : exceptFirst) {

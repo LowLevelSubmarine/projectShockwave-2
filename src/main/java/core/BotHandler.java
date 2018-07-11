@@ -1,11 +1,10 @@
 package core;
 
+import commands.music_handling.GuildPlayer;
+import commands.music_handling.GuildPlayerManager;
 import commands.statistic_handling.StatHandler;
 import data.DATA;
-import listeners.ExceptionListener;
-import listeners.GenericGuildMessageReactionListener;
-import listeners.GuildMessageReceivedListener;
-import listeners.ReadyListener;
+import listeners.*;
 import messages.MsgBuilder;
 import net.dv8tion.jda.core.AccountType;
 import net.dv8tion.jda.core.JDA;
@@ -20,10 +19,10 @@ import javax.security.auth.login.LoginException;
 import java.util.LinkedList;
 import java.util.List;
 
-public class JDAHandler {
+public class BotHandler {
 
-    private static final int NONDEBUGSHUTDOWNtIME = 10;
-    private static final int DEBUGSHUTDOWNTIME = 2;
+    private static final int SHUTDOWNTIME_STD = 10;
+    private static final int SHUTDOWNTIME_DEBUG = 2;
     private static int SHUTDOWNTIME;
     private static JDA JDA;
 
@@ -42,6 +41,8 @@ public class JDAHandler {
             builder.addEventListener(new ExceptionListener());
             builder.addEventListener(new GenericGuildMessageReactionListener());
             builder.addEventListener(new GuildMessageReceivedListener());
+            builder.addEventListener(new GuildVoiceLeaveListener());
+            builder.addEventListener(new GuildVoiceMoveListener());
             builder.addEventListener(new ReadyListener());
 
             //Build JDA
@@ -52,7 +53,7 @@ public class JDAHandler {
             } catch (InterruptedException e) {
                 System.out.println("An error accoured while connecting to the Discord API.\nFor more informaiton visit status.discordapp.com");
             }
-            NotifyConsole.log(JDAHandler.class, VersionInfo.PROJECTTITLE + " is up and running");
+            NotifyConsole.log(BotHandler.class, VersionInfo.PROJECTTITLE + " is up and running");
         }
     }
 
@@ -65,12 +66,13 @@ public class JDAHandler {
 
     //Shuts everything connected to the DiscordAPI entirely down
     public static void shutdown(String reason) {
-        if (JDAHandler.isRunning()) {
+        if (BotHandler.isRunning()) {
+            stopAllGuildPlayers();
             notifyAboutShudown(reason);
             StatHandler.shutdown();
             JDA.shutdown();
             JDA = null;
-            NotifyConsole.log(JDAHandler.class, VersionInfo.PROJECTTITLE + " is shutting down");
+            NotifyConsole.log(BotHandler.class, VersionInfo.PROJECTTITLE + " is shutting down");
         }
     }
 
@@ -98,10 +100,15 @@ public class JDAHandler {
 
     private static void setShutdownTime() {
         if (DATA.config().debugMode()) {
-            SHUTDOWNTIME = DEBUGSHUTDOWNTIME;
+            SHUTDOWNTIME = SHUTDOWNTIME_DEBUG;
         } else {
-            SHUTDOWNTIME = NONDEBUGSHUTDOWNtIME;
+            SHUTDOWNTIME = SHUTDOWNTIME_STD;
         }
+    }
+
+    private static void stopAllGuildPlayers() {
+        List<GuildPlayer> players = GuildPlayerManager.getAllPlaying();
+        players.forEach(GuildPlayer::stop);
     }
 
     private static void notifyAboutShudown(String reason) {
@@ -114,7 +121,7 @@ public class JDAHandler {
         List<Message> messages = new LinkedList<>();
 
         //Send all Messages
-        for (Guild guild : JDAHandler.getJDA().getGuilds()) {
+        for (Guild guild : BotHandler.getJDA().getGuilds()) {
             TextChannel textChannel = DATA.guild(guild).getNotifychannel();
             Message message = textChannel.sendMessage(embed).complete();
             messages.add(message);

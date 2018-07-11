@@ -5,7 +5,7 @@ import commands.handling.CommandHandler;
 import commands.handling.SecurityLevel;
 import commands.music_handling.QueueItem;
 import core.Emotes;
-import core.JDAHandler;
+import core.BotHandler;
 import core.Statics;
 import core.VersionInfo;
 import data.DATA;
@@ -62,15 +62,15 @@ public class MsgBuilder {
         return "[" + text + "](" + link + ")";
     }
     private static String selfMention() {
-        return JDAHandler.getJDA().getSelfUser().getAsMention();
+        return BotHandler.getJDA().getSelfUser().getAsMention();
     }
 
     public static MessageEmbed info() {
-        User developer = JDAHandler.getJDA().getUserById(Statics.DEVELOPERUSERID);
-        User hoster = JDAHandler.getJDA().getUserById(DATA.config().getHoster());
+        User developer = BotHandler.getJDA().getUserById(Statics.DEVELOPERUSERID);
+        User hoster = BotHandler.getJDA().getUserById(DATA.config().getHoster());
         MsgBuilder builder = new MsgBuilder(PSW2COLOR, "ℹ", "BOT INFORMATION");
         builder.setDescription(selfMention() + " läuft aktuell mit " + link(VersionInfo.PROJECTTITLE, Statics.GITHUBPROJECT) +
-                "welcher ein, auf Benutzerinteraktion spezialisierter, deutschsprachiger Musik-Bot ist. " +
+                " welcher ein, auf Benutzerinteraktion spezialisierter, deutschsprachiger Musik-Bot ist. " +
                 "Er wurde ursprünglich für den " + link("GamingNation Server", Statics.GAMINGNATIONINVITE) +
                 " entwickelt, kann aber nun unabhängig genutzt werden.");
         builder.addField("Entwickler", developer.getAsMention(), true);

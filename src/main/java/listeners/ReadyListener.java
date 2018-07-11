@@ -1,7 +1,7 @@
 package listeners;
 
 import commands.handling.CommandHandler;
-import core.JDAHandler;
+import core.BotHandler;
 import data.DATA;
 import messages.MsgBuilder;
 import net.dv8tion.jda.core.JDA;
@@ -17,7 +17,7 @@ public class ReadyListener extends ListenerAdapter {
     private static final int DELETEMESSAGEAFTER = 10;
 
     public void onReady(ReadyEvent event) {
-        JDAHandler.setJDA(event.getJDA());
+        BotHandler.setJDA(event.getJDA());
         CommandHandler.renderCommandList();
         notifyAboutBootup(event.getJDA());
     }

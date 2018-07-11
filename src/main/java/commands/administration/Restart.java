@@ -1,7 +1,7 @@
 package commands.administration;
 
 import commands.handling.*;
-import core.JDAHandler;
+import core.BotHandler;
 import messages.MsgBuilder;
 import net.dv8tion.jda.core.entities.Message;
 import net.dv8tion.jda.core.entities.TextChannel;
@@ -51,7 +51,7 @@ public class Restart implements CommandInterface, ButtonHook {
             switch (event.getEmote()) {
                 case buttonAccept:
                     event.getMessageLink().getMessage().delete().complete();
-                    JDAHandler.restart(this.restartReason);
+                    BotHandler.restart(this.restartReason);
                     break;
                 case buttonDeny:
                     event.reregister();
@@ -65,12 +65,12 @@ public class Restart implements CommandInterface, ButtonHook {
 
     @Override
     public String title() {
-        return "Startet " + JDAHandler.getUsername() + " neu";
+        return "Startet " + BotHandler.getUsername() + " neu";
     }
 
     @Override
     public String description() {
-        return "Startet " + JDAHandler.getUsername() + " neu und gibt gegebenenfalls einen Grund dafür an. Der Vorgang muss zunächst bestätigt werden";
+        return "Startet " + BotHandler.getUsername() + " neu und gibt gegebenenfalls einen Grund dafür an. Der Vorgang muss zunächst bestätigt werden";
     }
 
     @Override

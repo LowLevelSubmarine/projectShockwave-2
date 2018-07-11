@@ -73,7 +73,7 @@ public class Play implements CommandInterface, TrackSearchResultHook {
 
     @Override
     public void onTracksFound(TrackSearchResultContainer results) {
-        GuildPlayer gPlayer = GuildPlayerManager.getGuildPlayer(this.member.getGuild());
+        GuildPlayer gPlayer = GuildPlayerManager.get(this.member.getGuild());
         if (results.isPlaylist()) {
             gPlayer.queue(results.getTracksAsPlaylist(), results.getPlaylistTitle(), results.getPlaylistUrl(), this.member);
         } else if (results.isUrlResult()) {

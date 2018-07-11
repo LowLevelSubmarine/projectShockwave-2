@@ -1,7 +1,7 @@
 package commands.administration;
 
 import commands.handling.*;
-import core.JDAHandler;
+import core.BotHandler;
 import messages.MsgBuilder;
 import net.dv8tion.jda.core.entities.Message;
 import net.dv8tion.jda.core.entities.TextChannel;
@@ -51,7 +51,7 @@ public class Shutdown implements CommandInterface, ButtonHook {
             switch (event.getEmote()) {
                 case buttonAccept:
                     event.getMessageLink().getMessage().delete().complete();
-                    JDAHandler.shutdown(this.shutdownReason);
+                    BotHandler.shutdown(this.shutdownReason);
                     break;
                 case buttonDeny:
                     event.getMessageLink().getMessage().delete().queue();
@@ -67,12 +67,12 @@ public class Shutdown implements CommandInterface, ButtonHook {
 
     @Override
     public String title() {
-        return "Fährt " + JDAHandler.getUsername() + " herunter";
+        return "Fährt " + BotHandler.getUsername() + " herunter";
     }
 
     @Override
     public String description() {
-        return "Fährt " + JDAHandler.getUsername() + " herunter und zeigt gegebenenfalls einen Grund dafür an. Der Vorgang muss zunächst bestätigt werden.";
+        return "Fährt " + BotHandler.getUsername() + " herunter und zeigt gegebenenfalls einen Grund dafür an. Der Vorgang muss zunächst bestätigt werden.";
     }
 
     @Override

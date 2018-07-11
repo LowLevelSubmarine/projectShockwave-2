@@ -1,6 +1,6 @@
 package commands.statistic_handling;
 
-import core.JDAHandler;
+import core.BotHandler;
 import net.dv8tion.jda.core.entities.Guild;
 import net.dv8tion.jda.core.entities.Member;
 import tools.Table;
@@ -8,13 +8,13 @@ import tools.Table;
 public class GuildDetails implements StatInterface {
     @Override
     public String title() {
-        return "Details about the members of the guilds " + JDAHandler.getUsername() + " is running on:";
+        return "Details about the members of the guilds " + BotHandler.getUsername() + " is running on:";
     }
 
     @Override
     public String render() {
         String rendered = "";
-        for (Guild guild : JDAHandler.getJDA().getGuilds()) {
+        for (Guild guild : BotHandler.getJDA().getGuilds()) {
             Table table = new Table();
             table.setTitles("Effective name", "Username", "Id");
             table.setSizes(50, 50, 18);

@@ -27,7 +27,7 @@ public class Main {
         addCommands();
         addStatistics();
         parseToken();
-        JDAHandler.boot();
+        BotHandler.boot();
     }
 
     public static String getToken() {

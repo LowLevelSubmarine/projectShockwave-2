@@ -6,4 +6,5 @@ public class Statics {
     public static final String GITHUBPROJECT = "https://github.com/LowLevelSubmarine/projectShockwave-2";
     public static final int MAXPREFIXLENGTH = 3;
     public static final double VOLUMEMULTIPLICATOR = 0.7;
+    public static final int PLAYINGIDLETIMEOUTSEC = 5;
 }

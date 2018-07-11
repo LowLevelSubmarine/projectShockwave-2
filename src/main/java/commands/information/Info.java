@@ -4,12 +4,8 @@ import commands.handling.CommandInfo;
 import commands.handling.CommandInterface;
 import commands.handling.CommandType;
 import commands.handling.SecurityLevel;
-import core.JDAHandler;
-import core.Statics;
-import data.DATA;
 import messages.MsgBuilder;
 import net.dv8tion.jda.core.entities.MessageEmbed;
-import net.dv8tion.jda.core.entities.User;
 
 public class Info implements CommandInterface {
     @Override

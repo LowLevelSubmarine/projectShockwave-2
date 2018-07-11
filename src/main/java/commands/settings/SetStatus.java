@@ -4,7 +4,7 @@ import commands.handling.CommandInfo;
 import commands.handling.CommandInterface;
 import commands.handling.CommandType;
 import commands.handling.SecurityLevel;
-import core.JDAHandler;
+import core.BotHandler;
 import tools.Toolkit;
 import data.DATA;
 import messages.MsgBuilder;
@@ -43,7 +43,7 @@ public class SetStatus implements CommandInterface {
         Game.GameType gameType = Game.GameType.valueOf(gameTypeRaw.toUpperCase());
         Game game = Game.of(gameType, text);
         DATA.bot().setGame(game);
-        JDAHandler.getJDA().getPresence().setGame(game);
+        BotHandler.getJDA().getPresence().setGame(game);
         MessageEmbed embed = MsgBuilder.setStatusDone();
         info.getChannel().sendMessage(embed).queue();
     }
@@ -55,7 +55,7 @@ public class SetStatus implements CommandInterface {
 
     @Override
     public String description() {
-        return "Stellt ein was " + JDAHandler.getUsername() + " als \"spielt/streamt/schaut/hört auf ...\" anzeigt" ;
+        return "Stellt ein was " + BotHandler.getUsername() + " als \"spielt/streamt/schaut/hört auf ...\" anzeigt" ;
     }
 
     @Override

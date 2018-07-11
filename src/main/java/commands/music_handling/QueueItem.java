@@ -93,7 +93,7 @@ public class QueueItem implements ButtonHook {
     public void queued() {
         MessageEmbed embed = MsgBuilder.itemQueued(this);
         this.message = this.channel.sendMessage(embed).complete();
-        this.message.addReaction("❌").queue();
+        this.message.addReaction("❌").complete();
         ButtonHandler.registerTicket(this.message, this);
     }
 
@@ -101,8 +101,8 @@ public class QueueItem implements ButtonHook {
         MessageEmbed embed = MsgBuilder.itemPlaying(this);
         this.message.editMessage(embed).complete();
         this.message.clearReactions().complete();
-        this.message.addReaction("\u23F8").queue();
-        this.message.addReaction("⏭").queue();
+        this.message.addReaction("\u23F8").complete();
+        this.message.addReaction("⏭").complete();
         if (isPlaylist()) this.message.addReaction("⬇").queue();
     }
 
@@ -110,8 +110,8 @@ public class QueueItem implements ButtonHook {
         MessageEmbed embed = MsgBuilder.itemPaused(this);
         this.message.editMessage(embed).complete();
         this.message.clearReactions().complete();
-        this.message.addReaction("▶").queue();
-        this.message.addReaction("⏭").queue();
+        this.message.addReaction("▶").complete();
+        this.message.addReaction("⏭").complete();
         if (isPlaylist()) this.message.addReaction("⬇").queue();
     }
 
@@ -119,7 +119,7 @@ public class QueueItem implements ButtonHook {
         ButtonHandler.revokeTicket(this.message);
         MessageEmbed embed = MsgBuilder.itemDequeued(this);
         this.message.editMessage(embed).complete();
-        this.message.clearReactions().queue();
+        this.message.clearReactions().complete();
         this.message.delete().queueAfter(5, TimeUnit.SECONDS);
     }
 
@@ -127,28 +127,28 @@ public class QueueItem implements ButtonHook {
         ButtonHandler.revokeTicket(this.message);
         MessageEmbed embed = MsgBuilder.itemPlayed(this);
         this.message.editMessage(embed).complete();
-        this.message.clearReactions().queue();
+        this.message.clearReactions().complete();
     }
 
     @Override
     public void onButtonPress(ButtonEvent event) {
         switch (event.getEmote()) {
             case "❌":
-                GuildPlayerManager.getGuildPlayer(this.channel.getGuild()).dequeue(this);
+                GuildPlayerManager.get(this.channel.getGuild()).dequeue(this);
                 break;
             case "\u23F8":
-                GuildPlayerManager.getGuildPlayer(this.channel.getGuild()).setPaused(true);
+                GuildPlayerManager.get(this.channel.getGuild()).setPaused(true);
                 event.reregister();
                 break;
             case "▶":
-                GuildPlayerManager.getGuildPlayer(this.channel.getGuild()).setPaused(false);
+                GuildPlayerManager.get(this.channel.getGuild()).setPaused(false);
                 event.reregister();
                 break;
             case "⏭":
-                GuildPlayerManager.getGuildPlayer(this.channel.getGuild()).skipTrack();
+                GuildPlayerManager.get(this.channel.getGuild()).skipTrack();
                 break;
             case "⬇":
-                GuildPlayerManager.getGuildPlayer(this.channel.getGuild()).skipPlaylist();
+                GuildPlayerManager.get(this.channel.getGuild()).skipPlaylist();
                 break;
             default:
                 event.reregister();

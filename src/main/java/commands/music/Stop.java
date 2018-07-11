@@ -4,7 +4,6 @@ import commands.handling.CommandInfo;
 import commands.handling.CommandInterface;
 import commands.handling.CommandType;
 import commands.handling.SecurityLevel;
-import commands.music_handling.GuildPlayer;
 import commands.music_handling.GuildPlayerManager;
 
 public class Stop implements CommandInterface {
@@ -30,8 +29,8 @@ public class Stop implements CommandInterface {
 
     @Override
     public void run(CommandInfo info) {
-        if (GuildPlayerManager.hasGuildPlayer(info.getGuild())) {
-            GuildPlayerManager.getGuildPlayer(info.getGuild()).stop();
+        if (GuildPlayerManager.has(info.getGuild())) {
+            GuildPlayerManager.get(info.getGuild()).stop();
         }
     }
 

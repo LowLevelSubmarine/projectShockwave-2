@@ -6,6 +6,6 @@ public class ShutdownHook extends Thread {
 
     @Override
     public void run() {
-        JDAHandler.shutdown(DEFAULTSHUTDOWNREASON);
+        BotHandler.shutdown(DEFAULTSHUTDOWNREASON);
     }
 }
