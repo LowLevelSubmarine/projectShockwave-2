@@ -33,7 +33,7 @@ public class ExceptionLogger {
     private static void checkWriter() {
         if (writer == null) {
             try {
-                File logFile = new File(EXCEPTIONLOGFILENAME);
+                File logFile = DATA.createExceptionLogFile(EXCEPTIONLOGFILENAME);
                 if (!logFile.exists()) {
                     logFile.createNewFile();
                 }

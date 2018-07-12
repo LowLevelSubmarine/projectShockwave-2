@@ -20,15 +20,15 @@ import java.io.IOException;
 
 public class DATA {
 
-    private static final String CONFIGPATH = "config.xml";
-    private static final String FOLDERNAME = "PSW2 Database";
-    private static final String UFILENAME = "Users";
-    private static final String GFILENAME = "Guilds";
-    private static final String BFILENAME = "Bot";
+    private static final String CONFIGXMLNAME = "config.xml";
+    private static final String FOLDERNAME = "PSW2";
+    private static final String UFILENAME = "UserData";
+    private static final String GFILENAME = "GuildData";
+    private static final String BFILENAME = "BotData";
     private static Shelf USHELF;
     private static Shelf GSHELF;
     private static Shelf BSHELF;
-    private static File CONFIGFILE = new File(CONFIGPATH);
+    private static File CONFIGFILE = createConfigFile();
     private static Config CONFIG;
     private static XStream XSTREAM = Config.buildCompatibleXStream();
 
@@ -86,7 +86,7 @@ public class DATA {
             return true;
         } catch (ConversionException e) {
             e.printStackTrace();
-            NotifyConsole.log(DATA.class, "An error accoured while reading the \"" + CONFIGPATH + "\" file. " +
+            NotifyConsole.log(DATA.class, "An error accoured while reading the \"" + CONFIGXMLNAME + "\" file. " +
                     "Try deleting the File before running projectShockwave again.");
         } catch (IOException e) {
             ExceptionLogger.log(e);
@@ -98,12 +98,37 @@ public class DATA {
         //Create or get folder
         File folder = new File(DATA.FOLDERNAME);
         folder.mkdir();
-
         //Create or get file
         String path = DATA.FOLDERNAME + "/" + fileName;
         File file = new File(path);
-
         //Return shelf
         return new Shelf(file);
+    }
+    private static File createConfigFile() {
+        //Create or get folder
+        File folder = new File(DATA.FOLDERNAME);
+        folder.mkdirs();
+        //Create or get config file
+        String path = DATA.FOLDERNAME + "/" + CONFIGXMLNAME;
+        File file = new File(path);
+        //Return file
+        return file;
+    }
+    public static File createExceptionLogFile(String filename) {
+        //Create or get folder
+        File folder = new File(DATA.FOLDERNAME);
+        folder.mkdirs();
+        //Create or get exception log file
+        String path = DATA.FOLDERNAME + "/" + filename;
+        File file = new File(path);
+        //Return file
+        return file;
+    }
+    public static File createStatisticFolder(String foldername) {
+        //Create or get folder
+        File folder = new File(DATA.FOLDERNAME + "/" + foldername);
+        folder.mkdirs();
+        //Return folder
+        return folder;
     }
 }

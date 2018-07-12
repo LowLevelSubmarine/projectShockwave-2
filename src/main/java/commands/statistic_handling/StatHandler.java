@@ -8,7 +8,6 @@ import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.FormatFlagsConversionMismatchException;
 import java.util.Timer;
 
 public class StatHandler {
@@ -46,9 +45,8 @@ public class StatHandler {
         for(StatInterface statInterface : STATINTERFACES) {
             rendered += statInterface.title() + "\n\n" + statInterface.render() + "\n\n\n\n\n";
         }
-        File folder = new File(FOLDERNAME);
-        folder.mkdir();
-        File file = new File(FOLDERNAME + "/" + System.currentTimeMillis() + ".html");
+        File folder = DATA.createStatisticFolder(FOLDERNAME);
+        File file = new File(folder.getPath() + "/" + System.currentTimeMillis() + ".html");
         try {
             file.createNewFile();
             FileWriter writer = new FileWriter(file);
