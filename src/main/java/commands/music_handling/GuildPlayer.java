@@ -10,8 +10,6 @@ import data.DATA;
 import net.dv8tion.jda.core.entities.*;
 
 import java.util.LinkedList;
-import java.util.List;
-import java.util.TimerTask;
 
 public class GuildPlayer extends AudioEventAdapter {
 
@@ -29,17 +27,27 @@ public class GuildPlayer extends AudioEventAdapter {
     }
 
     public void queue(AudioTrack track, Member member) {
+        if (queue.isEmpty() && !member.getVoiceState().inVoiceChannel()) {
+            return;
+        }
         QueueItem item = new QueueItem(track, member);
         item.queued();
         this.queue.add(item);
-        if (!isPlaying()) this.player.playTrack(getTrack());
+        if (!isPlaying()) {
+            this.player.playTrack(getTrack());
+        }
     }
 
     public void queue(LinkedList<AudioTrack> tracks, String playlistTitle, String playlistLink, Member member) {
+        if (queue.isEmpty() && !member.getVoiceState().inVoiceChannel()) {
+            return;
+        }
         QueueItem item = new QueueItem(tracks, playlistTitle, playlistLink, member);
         item.queued();
         this.queue.add(item);
-        if (!isPlaying()) this.player.playTrack(getTrack());
+        if (!isPlaying()) {
+            this.player.playTrack(getTrack());
+        }
     }
 
     public void dequeue(QueueItem item) {
@@ -86,10 +94,18 @@ public class GuildPlayer extends AudioEventAdapter {
         this.player.setVolume(volume);
     }
 
+    public boolean isPaused() {
+        return this.player.isPaused();
+    }
+
     public void setPaused(boolean pause) {
         this.player.setPaused(pause);
         if (pause) this.queue.peekFirst().paused();
         else this.queue.peekFirst().playing();
+    }
+
+    public void setFrameBufferDuration(int duration) {
+        this.player.setFrameBufferDuration(duration);
     }
 
     private AudioTrack getTrack() {

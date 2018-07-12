@@ -5,9 +5,7 @@ import commands.administration.Restart;
 import commands.administration.Shutdown;
 import commands.administration.Speedtest;
 import commands.administration.Statistics;
-import commands.music.Play;
-import commands.music.Search;
-import commands.music.Stop;
+import commands.music.*;
 import commands.statistic_handling.GuildDetails;
 import commands.statistic_handling.RunningOn;
 import commands.statistic_handling.StatHandler;
@@ -56,10 +54,14 @@ public class Main {
         CommandHandler.addCommand(new Ping());
         CommandHandler.addCommand(new Version());
         //Music
+        CommandHandler.addCommand(new Pause());
         CommandHandler.addCommand(new Play());
         CommandHandler.addCommand(new Search());
+        CommandHandler.addCommand(new Skip());
+        CommandHandler.addCommand(new Skipplaylist());
         CommandHandler.addCommand(new Stop());
         //Settings
+        CommandHandler.addCommand(new SetAudioBuffer());
         CommandHandler.addCommand(new SetBotadmins());
         CommandHandler.addCommand(new SetBotSnappys());
         CommandHandler.addCommand(new SetMusicChannel());

@@ -3,6 +3,7 @@ package commands.music_handling;
 import com.sedmelluq.discord.lavaplayer.player.AudioPlayerManager;
 import com.sedmelluq.discord.lavaplayer.player.DefaultAudioPlayerManager;
 import com.sedmelluq.discord.lavaplayer.source.AudioSourceManagers;
+import data.DATA;
 import net.dv8tion.jda.core.entities.Guild;
 import tools.Toolkit;
 
@@ -33,12 +34,21 @@ public class GuildPlayerManager {
         return players;
     }
 
+    public static List<GuildPlayer> getAll() {
+        return new LinkedList<>(GUILDPLAYERS.values());
+    }
+
     public static boolean has(Guild guild) {
         return GUILDPLAYERS.containsKey(guild);
     }
 
     private static GuildPlayer create(Guild guild) {
+        //Create GuildPlayer object
         GuildPlayer guildPlayer = new GuildPlayer(guild);
+        //Set frame buffer duration of DATA
+        int frameBufferDuration = DATA.bot().getFrameBufferDuration();
+        guildPlayer.setFrameBufferDuration(frameBufferDuration);
+        //Add the GuildPlayer to the HashMap
         GUILDPLAYERS.put(guild, guildPlayer);
         return guildPlayer;
     }

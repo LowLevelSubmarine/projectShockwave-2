@@ -2,6 +2,7 @@ package data.database;
 
 import com.toddway.shelf.ShelfItem;
 import commands.statistic_handling.StatContainer;
+import core.Statics;
 import data.DATA;
 import net.dv8tion.jda.core.entities.Game;
 
@@ -50,7 +51,20 @@ public class BSettings {
         item.put(songMap);
     }
 
+    public int getFrameBufferDuration() {
+        ShelfItem item = DATA.getBotItem(keys.FRAMEBUFFERDURATION);
+        if (item.exists()) {
+            return item.get(Integer.class);
+        }
+        return Statics.DEFAULTFRAMEBUFFERDURATION;
+    }
+
+    public void setFrameBufferDuration(int duration) {
+        ShelfItem item = DATA.getBotItem(keys.FRAMEBUFFERDURATION);
+        item.put(duration);
+    }
+
     public enum keys {
-        GAME, BOTADMINS, STATISTICCONTAINER, SONGMAP,
+        GAME, BOTADMINS, STATISTICCONTAINER, SONGMAP, FRAMEBUFFERDURATION,
     }
 }

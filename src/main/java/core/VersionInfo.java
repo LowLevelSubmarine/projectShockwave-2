@@ -2,7 +2,7 @@ package core;
 
 public class VersionInfo {
     public static final String PROJECTTITLE = "ProjectShockwave-2";
-    public static final String NAME = "0.13.3 ALPHA";
-    public static final String TITLE = "Alpha Phase";
-    public static final String CHANGELOG = "- availabel in alpha phase-";
+    public static final String NAME = "1.0.0 BETA";
+    public static final String TITLE = "BETA PHASE";
+    public static final String CHANGELOG = "- initial release -";
 }

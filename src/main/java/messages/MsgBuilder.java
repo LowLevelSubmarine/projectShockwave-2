@@ -228,6 +228,11 @@ public class MsgBuilder {
         builder.setDescription("Die Lautstärke wurde erfolgreich auf " + volume + "% gestelt.");
         return builder.build();
     }
+    public static MessageEmbed setAudioBuffer(int seconds) {
+        MsgBuilder builder = new MsgBuilder(PSW2COLOR, "\uD83D\uDD27", "SET AUDIO BUFFER");
+        builder.setDescription("Der Audiobuffer wurde erfolgreich auf " + seconds + " Sekunden gestellt.");
+        return builder.build();
+    }
     public static MessageEmbed notInVoiceChannel(User user) {
         MsgBuilder builder = new MsgBuilder(PSW2COLOR, "⚠", "NOT IN VOICECHANNEL");
         builder.setDescription("Ich kann keine Musik abspielen wenn du nicht in einem Voicechannel bist.");

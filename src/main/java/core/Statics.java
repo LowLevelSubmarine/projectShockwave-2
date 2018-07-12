@@ -7,4 +7,5 @@ public class Statics {
     public static final int MAXPREFIXLENGTH = 3;
     public static final double VOLUMEMULTIPLICATOR = 0.7;
     public static final int PLAYINGIDLETIMEOUTSEC = 5;
+    public static final int DEFAULTFRAMEBUFFERDURATION = 5000;
 }

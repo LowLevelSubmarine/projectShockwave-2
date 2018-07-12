@@ -43,6 +43,15 @@ public class Play implements CommandInterface, TrackSearchResultHook {
 
         //Report wrong syntax
         if (identifier == null) {
+            //Resume if GuildPlayer is paused
+            if (GuildPlayerManager.has(info.getGuild())) {
+                GuildPlayer player = GuildPlayerManager.get(info.getGuild());
+                if (player.isPaused()) {
+                    player.setPaused(false);
+                    return;
+                }
+            }
+            //Notify the user about the wrong syntax if the GuildPlayer is not paused or does not exist
             info.wrongSyntax();
             return;
         }
