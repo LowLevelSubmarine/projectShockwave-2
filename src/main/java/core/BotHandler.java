@@ -40,6 +40,7 @@ public class BotHandler {
             //Add listeners
             builder.addEventListener(new ExceptionListener());
             builder.addEventListener(new GenericGuildMessageReactionListener());
+            builder.addEventListener(new GuildJoinListener());
             builder.addEventListener(new GuildMessageReceivedListener());
             builder.addEventListener(new GuildVoiceLeaveListener());
             builder.addEventListener(new GuildVoiceMoveListener());

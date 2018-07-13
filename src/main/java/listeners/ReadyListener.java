@@ -2,6 +2,7 @@ package listeners;
 
 import commands.handling.CommandHandler;
 import core.BotHandler;
+import core.PermissionChecker;
 import data.DATA;
 import messages.MsgBuilder;
 import net.dv8tion.jda.core.JDA;
@@ -20,6 +21,7 @@ public class ReadyListener extends ListenerAdapter {
         BotHandler.setJDA(event.getJDA());
         CommandHandler.renderCommandList();
         notifyAboutBootup(event.getJDA());
+        PermissionChecker.checkPermissions(event.getJDA());
     }
 
     private static void notifyAboutBootup(JDA jda) {

@@ -319,8 +319,14 @@ public class MsgBuilder {
         return builder.build();
     }
     public static MessageEmbed trackSearchNoResults() {
-        MsgBuilder builder = new MsgBuilder(PSW2COLOR, "", "");
+        MsgBuilder builder = new MsgBuilder(PSW2COLOR, "⚠", "NO RESULTS");
         builder.setDescription("Die Suche ergab leider keine Ergebnisse");
+        return builder.build();
+    }
+    public static MessageEmbed noPermissions() {
+        MsgBuilder builder = new MsgBuilder(PSW2COLOR, "❗", "NO PERMISSIONS");
+        builder.setDescription("Damit " + selfMention() + " ohne Probleme laufen werden Admin Berechtigungen " +
+                "benötigt.");
         return builder.build();
     }
 }
