@@ -45,6 +45,7 @@ public class BotHandler {
             builder.addEventListener(new GuildVoiceLeaveListener());
             builder.addEventListener(new GuildVoiceMoveListener());
             builder.addEventListener(new ReadyListener());
+            builder.addEventListener(new RoleUpdatePermissionListener());
 
             //Build JDA
             try {

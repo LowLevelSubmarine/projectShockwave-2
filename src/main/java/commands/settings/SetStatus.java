@@ -36,7 +36,7 @@ public class SetStatus implements CommandInterface {
     public void run(CommandInfo info) {
         String gameTypeRaw = info.getArgument(1);
         String text = info.getRaw(2);
-        if (text == null || !Toolkit.isOneOf(gameTypeRaw.toLowerCase(), "playing", "streaming", "watching", "listening")) {
+        if (text == null || !Toolkit.isOneOf(gameTypeRaw.toLowerCase(), "default", "streaming", "watching", "listening")) {
             info.wrongSyntax();
             return;
         }
@@ -60,6 +60,6 @@ public class SetStatus implements CommandInterface {
 
     @Override
     public String syntax(String p) {
-        return p +"setstatus < playing | streaming | watching | listening > < Text >";
+        return p +"setstatus < default | streaming | watching | listening > < Text >";
     }
 }

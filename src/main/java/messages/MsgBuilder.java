@@ -3,13 +3,13 @@ package messages;
 import com.sedmelluq.discord.lavaplayer.track.AudioTrack;
 import commands.handling.CommandHandler;
 import commands.handling.SecurityLevel;
+import commands.information.Invite;
 import commands.music_handling.QueueItem;
-import core.Emotes;
-import core.BotHandler;
-import core.Statics;
-import core.VersionInfo;
+import core.*;
 import data.DATA;
 import net.dv8tion.jda.core.EmbedBuilder;
+import net.dv8tion.jda.core.JDA;
+import net.dv8tion.jda.core.entities.Member;
 import net.dv8tion.jda.core.entities.MessageEmbed;
 import net.dv8tion.jda.core.entities.TextChannel;
 import net.dv8tion.jda.core.entities.User;
@@ -323,10 +323,14 @@ public class MsgBuilder {
         builder.setDescription("Die Suche ergab leider keine Ergebnisse");
         return builder.build();
     }
-    public static MessageEmbed noPermissions() {
-        MsgBuilder builder = new MsgBuilder(PSW2COLOR, "❗", "NO PERMISSIONS");
-        builder.setDescription("Damit " + selfMention() + " ohne Probleme laufen werden Admin Berechtigungen " +
-                "benötigt.");
+    public static MessageEmbed noPermissions(Member member) {
+        String invite = InviteGenerator.get(member.getUser());
+        MsgBuilder builder = new MsgBuilder(PSW2COLOR, "❗", "MISSING PERMISSION");
+        builder.setDescription("Damit " + selfMention() + " auf dem " + member.getGuild().getName() +
+                " Server ohne Probleme laufen kann, werden Admin Berechtigungen " +
+                "benötigt. Um Probleme zu vermeiden wird " + selfMention() + " nun den Server verlassen. " +
+                "Mit diesem " + link("Invitelink", invite) + " kannst du " + selfMention() +
+                " wieder zu deinem Server hinzufügen.");
         return builder.build();
     }
 }

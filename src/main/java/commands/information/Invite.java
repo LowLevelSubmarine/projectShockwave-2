@@ -4,13 +4,11 @@ import commands.handling.CommandInfo;
 import commands.handling.CommandInterface;
 import commands.handling.CommandType;
 import commands.handling.SecurityLevel;
+import core.InviteGenerator;
 import messages.MsgBuilder;
 import net.dv8tion.jda.core.entities.MessageEmbed;
 
 public class Invite implements CommandInterface {
-
-    private static final String OAUTH2_START = "https://discordapp.com/api/oauth2/authorize?client_id=";
-    private static final String OAUTH2_END = "&permissions=8&scope=bot";
 
     @Override
     public String invoke() {
@@ -35,8 +33,7 @@ public class Invite implements CommandInterface {
     @Override
     public void run(CommandInfo info) {
         //Generate invite-link
-        String botId = info.getJDA().getSelfUser().getId();
-        String botInvite = OAUTH2_START + botId + OAUTH2_END;
+        String botInvite = InviteGenerator.get(info.getJDA().getSelfUser());
 
         //Send message
         MessageEmbed embed = MsgBuilder.invite(botInvite);

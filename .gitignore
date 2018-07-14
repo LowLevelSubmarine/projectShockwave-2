@@ -1,8 +1,9 @@
 config.xml
 errors.txt
-PSW2 Database/
+PSW2/
 target/
 statistics/
 .idea/
 projectShockwave 2.iml
 notes.txt
+PSW2/BotData/GAME.obj
