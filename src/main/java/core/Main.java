@@ -14,6 +14,8 @@ import commands.information.*;
 import commands.settings.*;
 import data.DATA;
 import data.config.BotUser;
+import statics.NotifyConsole;
+import statics.VersionInfo;
 
 
 public class Main {

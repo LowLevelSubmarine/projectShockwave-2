@@ -2,7 +2,7 @@ package listeners;
 
 import commands.handling.CommandHandler;
 import core.BotHandler;
-import core.PermissionChecker;
+import statics.PermissionChecker;
 import data.DATA;
 import messages.MsgBuilder;
 import net.dv8tion.jda.core.JDA;

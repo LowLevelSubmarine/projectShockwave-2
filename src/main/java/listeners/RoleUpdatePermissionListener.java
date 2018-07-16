@@ -1,6 +1,6 @@
 package listeners;
 
-import core.PermissionChecker;
+import statics.PermissionChecker;
 import net.dv8tion.jda.core.events.role.update.RoleUpdatePermissionsEvent;
 import net.dv8tion.jda.core.hooks.ListenerAdapter;
 

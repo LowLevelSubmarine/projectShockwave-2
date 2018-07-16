@@ -1,4 +1,6 @@
-package core;
+package statics;
+
+import statics.Statics;
 
 public class VolumeConverter {
     public static int toIntern(int externalVolume) {

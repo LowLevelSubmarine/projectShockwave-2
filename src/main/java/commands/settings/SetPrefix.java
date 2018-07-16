@@ -4,7 +4,7 @@ import commands.handling.CommandInfo;
 import commands.handling.CommandInterface;
 import commands.handling.CommandType;
 import commands.handling.SecurityLevel;
-import core.Statics;
+import statics.Statics;
 import tools.Toolkit;
 import data.DATA;
 import messages.MsgBuilder;

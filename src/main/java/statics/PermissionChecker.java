@@ -1,4 +1,4 @@
-package core;
+package statics;
 
 import messages.MsgBuilder;
 import net.dv8tion.jda.core.JDA;
@@ -24,7 +24,7 @@ public class PermissionChecker implements Runnable {
             e.printStackTrace();
         }
         if (!this.guild.getSelfMember().hasPermission(Permission.ADMINISTRATOR)) {
-            MessageEmbed embed = MsgBuilder.noPermissions(this.guild.getOwner());
+            MessageEmbed embed = MsgBuilder.noPermissions(this.guild.getSelfMember());
             PrivateChannel channel = this.guild.getOwner().getUser().openPrivateChannel().complete();
             channel.sendMessage(embed).complete();
             this.guild.leave().queue();

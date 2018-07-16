@@ -1,4 +1,4 @@
-package core;
+package statics;
 
 import net.dv8tion.jda.core.entities.User;
 

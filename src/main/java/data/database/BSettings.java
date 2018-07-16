@@ -2,7 +2,7 @@ package data.database;
 
 import com.toddway.shelf.ShelfItem;
 import commands.statistic_handling.StatContainer;
-import core.Statics;
+import statics.Statics;
 import data.DATA;
 import net.dv8tion.jda.core.entities.Game;
 

@@ -3,16 +3,18 @@ package messages;
 import com.sedmelluq.discord.lavaplayer.track.AudioTrack;
 import commands.handling.CommandHandler;
 import commands.handling.SecurityLevel;
-import commands.information.Invite;
 import commands.music_handling.QueueItem;
 import core.*;
 import data.DATA;
 import net.dv8tion.jda.core.EmbedBuilder;
-import net.dv8tion.jda.core.JDA;
 import net.dv8tion.jda.core.entities.Member;
 import net.dv8tion.jda.core.entities.MessageEmbed;
 import net.dv8tion.jda.core.entities.TextChannel;
 import net.dv8tion.jda.core.entities.User;
+import statics.Emote;
+import statics.InviteGenerator;
+import statics.Statics;
+import statics.VersionInfo;
 
 import java.awt.*;
 import java.util.LinkedList;
@@ -302,18 +304,18 @@ public class MsgBuilder {
     }
     public static MessageEmbed trackSearchResults(LinkedList<AudioTrack> results) {
         MsgBuilder builder = new MsgBuilder(PSW2COLOR, "\uD83D\uDD0E", "SEARCH RESULTS");
-        String desc = Emotes.NR1 + " " + link(results.get(0).getInfo().title, results.get(0).getInfo().uri) + "\n";
+        String desc = Emote.NR1 + " " + link(results.get(0).getInfo().title, results.get(0).getInfo().uri) + "\n";
         if (results.size() >= 1) {
-            desc += Emotes.NR2 + " " + link(results.get(1).getInfo().title, results.get(0).getInfo().uri) + "\n";
+            desc += Emote.NR2 + " " + link(results.get(1).getInfo().title, results.get(0).getInfo().uri) + "\n";
         }
         if (results.size() >= 2) {
-            desc += Emotes.NR3 + " " + link(results.get(2).getInfo().title, results.get(0).getInfo().uri) + "\n";
+            desc += Emote.NR3 + " " + link(results.get(2).getInfo().title, results.get(0).getInfo().uri) + "\n";
         }
         if (results.size() >= 4) {
-            desc += Emotes.NR4 + " " + link(results.get(3).getInfo().title, results.get(0).getInfo().uri) + "\n";
+            desc += Emote.NR4 + " " + link(results.get(3).getInfo().title, results.get(0).getInfo().uri) + "\n";
         }
         if (results.size() >= 5) {
-            desc += Emotes.NR5 + " " + link(results.get(4).getInfo().title, results.get(0).getInfo().uri) + "\n";
+            desc += Emote.NR5 + " " + link(results.get(4).getInfo().title, results.get(0).getInfo().uri) + "\n";
         }
         builder.setDescription(desc);
         return builder.build();

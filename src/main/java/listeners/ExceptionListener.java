@@ -1,6 +1,6 @@
 package listeners;
 
-import core.ExceptionLogger;
+import statics.ExceptionLogger;
 import net.dv8tion.jda.core.events.ExceptionEvent;
 import net.dv8tion.jda.core.hooks.ListenerAdapter;
 

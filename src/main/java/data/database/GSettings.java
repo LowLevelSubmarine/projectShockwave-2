@@ -3,6 +3,7 @@ package data.database;
 import com.toddway.shelf.ShelfItem;
 import data.DATA;
 import net.dv8tion.jda.core.entities.Guild;
+import net.dv8tion.jda.core.entities.MessageChannel;
 import net.dv8tion.jda.core.entities.TextChannel;
 
 import java.util.HashMap;
@@ -29,12 +30,18 @@ public class GSettings {
 
     public TextChannel getNotifychannel() {
         ShelfItem item = DATA.getGuildItem(keys.NOTIFYCHANNEL, this.guild);
-        if (item.exists()) return item.get(TextChannel.class);
+        if (item.exists()) {
+            String channelId = item.get(String.class);
+            TextChannel channel = this.guild.getTextChannelById(channelId);
+            if (channelId != null) {
+                return channel;
+            }
+        }
         return this.guild.getDefaultChannel();
     }
     public void setNotifyChannel(TextChannel notifyChannel) {
         ShelfItem item = DATA.getGuildItem(keys.NOTIFYCHANNEL, this.guild);
-        item.put(notifyChannel);
+        item.put(notifyChannel.getId());
     }
 
     public HashMap<String, String> getSnappys() {
@@ -63,13 +70,17 @@ public class GSettings {
     public TextChannel getMusicChannel() {
         ShelfItem item = DATA.getGuildItem(keys.MUSICCHANNEL, this.guild);
         if (item.exists()) {
-            return item.get(TextChannel.class);
+            String channelId = item.get(String.class);
+            TextChannel channel = this.guild.getTextChannelById(channelId);
+            if (channel != null) {
+                return channel;
+            }
         }
         return this.guild.getDefaultChannel();
     }
     public void setMusicChannel(TextChannel channel) {
         ShelfItem item = DATA.getGuildItem(keys.MUSICCHANNEL, this.guild);
-        item.put(channel);
+        item.put(channel.getId());
     }
 
 

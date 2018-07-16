@@ -14,6 +14,8 @@ import net.dv8tion.jda.core.entities.Guild;
 import net.dv8tion.jda.core.entities.Message;
 import net.dv8tion.jda.core.entities.MessageEmbed;
 import net.dv8tion.jda.core.entities.TextChannel;
+import statics.NotifyConsole;
+import statics.VersionInfo;
 
 import javax.security.auth.login.LoginException;
 import java.util.LinkedList;

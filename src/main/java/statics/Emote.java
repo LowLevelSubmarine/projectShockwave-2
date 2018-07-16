@@ -1,6 +1,6 @@
-package core;
+package statics;
 
-public class Emotes {
+public class Emote {
 
     public static final String X = "❌";
 
@@ -10,7 +10,7 @@ public class Emotes {
     public static final String NR4 = "4⃣";
     public static final String NR5 = "5⃣";
     public static final String NR6 = "6⃣";
-    public static final String NR7 = "6⃣";
+    public static final String NR7 = "7⃣";
     public static final String NR8 = "8⃣";
     public static final String NR9 = "9⃣";
 

@@ -1,5 +1,6 @@
-package core;
+package statics;
 
+import core.BotHandler;
 import data.DATA;
 import fr.bmartel.protocol.http.utils.ExceptionUtils;
 import messages.MsgBuilder;

@@ -26,7 +26,7 @@ public class SetAudioBuffer implements CommandInterface {
 
     @Override
     public CommandType type() {
-        return CommandType.MUSIC;
+        return CommandType.SETTINGS;
     }
 
     @Override

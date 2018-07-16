@@ -1,6 +1,6 @@
 package commands.music_handling;
 
-import core.Statics;
+import statics.Statics;
 import net.dv8tion.jda.core.entities.Guild;
 import net.dv8tion.jda.core.managers.AudioManager;
 

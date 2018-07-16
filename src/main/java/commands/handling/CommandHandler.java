@@ -1,6 +1,6 @@
 package commands.handling;
 
-import core.ExceptionLogger;
+import statics.ExceptionLogger;
 import messages.MsgBuilder;
 import net.dv8tion.jda.core.entities.MessageEmbed;
 

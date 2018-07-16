@@ -1,7 +1,7 @@
 package commands.statistic_handling;
 
-import core.ExceptionLogger;
-import core.NotifyConsole;
+import statics.ExceptionLogger;
+import statics.NotifyConsole;
 import data.DATA;
 
 import java.io.File;

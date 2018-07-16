@@ -7,7 +7,7 @@ import commands.music_handling.GuildPlayer;
 import commands.music_handling.GuildPlayerManager;
 import commands.music_handling.TrackSearchResultContainer;
 import commands.music_handling.TrackSearchResultHook;
-import core.Emotes;
+import statics.Emote;
 import messages.MsgBuilder;
 import net.dv8tion.jda.core.entities.*;
 
@@ -85,12 +85,12 @@ public class Search implements CommandInterface, TrackSearchResultHook, ButtonHo
         MessageEmbed embed = MsgBuilder.trackSearchResults(this.results);
         this.resultMessage = this.channel.sendMessage(embed).complete();
         //Add buttons so that the user can select one of the tracks
-        this.resultMessage.addReaction(Emotes.NR1).complete();
-        this.resultMessage.addReaction(Emotes.NR2).complete();
-        this.resultMessage.addReaction(Emotes.NR3).complete();
-        this.resultMessage.addReaction(Emotes.NR4).complete();
-        this.resultMessage.addReaction(Emotes.NR5).complete();
-        this.resultMessage.addReaction(Emotes.X).complete();
+        this.resultMessage.addReaction(Emote.NR1).complete();
+        this.resultMessage.addReaction(Emote.NR2).complete();
+        this.resultMessage.addReaction(Emote.NR3).complete();
+        this.resultMessage.addReaction(Emote.NR4).complete();
+        this.resultMessage.addReaction(Emote.NR5).complete();
+        this.resultMessage.addReaction(Emote.X).complete();
         //Listen for button presses
         ButtonHandler.registerTicket(this.resultMessage, this);
     }
@@ -98,22 +98,22 @@ public class Search implements CommandInterface, TrackSearchResultHook, ButtonHo
     @Override
     public void onButtonPress(ButtonEvent event) {
         switch (event.getEmote()) {
-            case Emotes.X:
+            case Emote.X:
                 this.resultMessage.delete().queue();
                 break;
-            case Emotes.NR1:
+            case Emote.NR1:
                 trackSelected(event, 0);
                 break;
-            case Emotes.NR2:
+            case Emote.NR2:
                 trackSelected(event, 1);
                 break;
-            case Emotes.NR3:
+            case Emote.NR3:
                 trackSelected(event, 2);
                 break;
-            case Emotes.NR4:
+            case Emote.NR4:
                 trackSelected(event, 3);
                 break;
-            case Emotes.NR5:
+            case Emote.NR5:
                 trackSelected(event, 4);
                 break;
             default:

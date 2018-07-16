@@ -134,21 +134,21 @@ public class QueueItem implements ButtonHook {
     public void onButtonPress(ButtonEvent event) {
         switch (event.getEmote()) {
             case "❌":
-                GuildPlayerManager.get(this.channel.getGuild()).dequeue(this);
+                GuildPlayerManager.get(this.member.getGuild()).dequeue(this);
                 break;
             case "\u23F8":
-                GuildPlayerManager.get(this.channel.getGuild()).setPaused(true);
+                GuildPlayerManager.get(this.member.getGuild()).setPaused(true);
                 event.reregister();
                 break;
             case "▶":
-                GuildPlayerManager.get(this.channel.getGuild()).setPaused(false);
+                GuildPlayerManager.get(this.member.getGuild()).setPaused(false);
                 event.reregister();
                 break;
             case "⏭":
-                GuildPlayerManager.get(this.channel.getGuild()).skipTrack();
+                GuildPlayerManager.get(this.member.getGuild()).skipTrack();
                 break;
             case "⬇":
-                GuildPlayerManager.get(this.channel.getGuild()).skipPlaylist();
+                GuildPlayerManager.get(this.member.getGuild()).skipPlaylist();
                 break;
             default:
                 event.reregister();
